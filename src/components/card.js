@@ -1,21 +1,8 @@
-import React, { Component } from 'react'
+const Card = ({ cards }) => {
 
-class Card extends Component {
-    state = {
-        cards: []
-      }
-    
-    componentDidMount() {
-        fetch('http://localhost:3000/cards')
-        .then(resp => resp.json())
-        .then(data => this.setState({cards: data}))
-        .catch(err => console.log(err))
-    }
-
-    render() {
-        return (
-            <div>
-            {this.state.cards.map(card =>
+    return (
+        <div>
+            {cards.map(card =>
                 <div id={card.id}>
                     <h1>{card.name}</h1>
                     <img src={card.image_url.url} />
@@ -27,9 +14,9 @@ class Card extends Component {
                     <p>{card.reversed_meaning}</p>
                 </div>
             )}
-            </div>
-        )
-    }
+        </div>
+    )
+    
 }
 
 export default Card

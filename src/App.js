@@ -10,12 +10,25 @@ import {
 
 
 class App extends Component {
+
+  state = {
+    cards: []
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:3000/cards')
+    .then(resp => resp.json())
+    .then(data => this.setState({cards: data}))
+    .catch(err => console.log(err))
+  }
+ 
   render() {
+
     return (
       <div>
         <NavBar exact path="/" />
         <Route exact path="/" component={Home} />
-        <Route exact path="/cards" component={Card}/>
+        <Route path='/cards' render={routerProps => <Card {...routerProps} cards={this.state.cards}/>} />
       </div>
     )
   }
