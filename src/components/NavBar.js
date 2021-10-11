@@ -6,24 +6,19 @@ const NavBar = (props) => {
     return(
         <div className="nav-bar">
             <div>
-                
-                <NavLink to="/">Home</NavLink>
-                <br />
                 <div>
-                    {props.user.username ? <h1>Welcome {props.user.name}</h1> : (
-                <div>                
-                <NavLink to="/signup">Sign Up</NavLink>
-                <br />
-                <NavLink to="/login">Login</NavLink>
-          </div>
-        )
-        }
-        </div>
-
-                <br />
-                <NavLink to="/cards">Cards</NavLink>
-
+                    {props.user.username ? <p>Welcome {props.user.name}</p> : (
+                    <div>                
+                        <NavLink to="/signup">Sign Up</NavLink>
+                        <br />
+                        <NavLink to="/login">Login</NavLink>
+                    </div>
+                )}
             </div>
+            <NavLink to="/">Home</NavLink>
+            <br />
+            <NavLink to="/cards">Cards</NavLink>
+        </div>
         </div>
     )
 }

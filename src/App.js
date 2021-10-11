@@ -14,8 +14,7 @@ import {
 class App extends Component {
 
   state = {
-    user: {},
-    cards: []
+    user: {}
   }
 
   signUp = (user) => {
@@ -34,7 +33,17 @@ class App extends Component {
       })
     })
     .then(resp => resp.json())
-    .then(user => this.setState({user: user.user}))
+    .then(result => {
+      if (result.jwt) {
+        localStorage.setItem('token', result.jwt)
+        
+        this.setState({
+          user: result.user
+        })
+      } else {
+        console.log(result)
+      }
+    })
   }
 
   login = (user) => {
@@ -64,12 +73,6 @@ class App extends Component {
     })
   }
 
-  componentDidMount() {
-    fetch('http://localhost:3000/cards')
-    .then(resp => resp.json())
-    .then(data => this.setState({cards: data}))
-    .catch(err => console.log(err))
-  }
  
   render() {
     console.log(this.state)
@@ -79,7 +82,7 @@ class App extends Component {
         <Route exact path="/" component={Home} />
         <Route path="/signup" render={routerProps => <SignUp {...routerProps} signUp={this.signUp}/> } />
         <Route path="/login" render={routerProps => <Login {...routerProps} login={this.login}/> } />
-        <Route path='/cards' render={routerProps => <Card {...routerProps} cards={this.state.cards}/> } />
+        <Route path='/cards' render={routerProps => <Card {...routerProps} user={this.state.user}/> } />
       </div>
     )
   }

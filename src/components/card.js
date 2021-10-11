@@ -1,11 +1,26 @@
-const Card = ({ cards }) => {
+import React, { Component } from 'react'
 
-    return (
+class Card extends Component {
+    state = {
+        user: this.props.user,
+        cards: []
+    }
+    
+    componentDidMount() {
+        fetch('http://localhost:3000/cards')
+        .then(resp => resp.json())
+        .then(data => this.setState({cards: data}))
+        .catch(err => console.log(err))
+    }
+
+    render() {
+        console.log(this.props)
+        return (
         <div>
-            {cards.map(card =>
+            {this.state.cards.map(card =>
                 <div id={card.id}>
                     <h1>{card.name}</h1>
-                    <img src={card.image_url.url} alt={card.image_url.filename}/>
+                    <img src={card.image_url.url} />
                     <h3>Full Meaning</h3>
                     <p>{card.full_meaning}</p>
                     <h3>Upright Meaning</h3>
@@ -15,8 +30,8 @@ const Card = ({ cards }) => {
                 </div>
             )}
         </div>
-    )
-    
+        )
+    }
 }
 
 export default Card
