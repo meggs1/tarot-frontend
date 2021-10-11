@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Card from './components/card'
 
 class App extends Component {
 
@@ -14,16 +15,9 @@ class App extends Component {
   }
  
   render() {
-    console.log(this.state)
+
     return (
-      <div>
-        {this.state.cards.map(card =>
-          <div>
-            <h1>{card.name}</h1>
-            <img src={card.image_url.url} />
-          </div>
-          )}
-      </div>
+      <Card cards={this.state.cards} />
     )
   }
 }
