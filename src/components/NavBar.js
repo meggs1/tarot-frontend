@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom"
 
 const NavBar = (props) => {
-    console.log('navBar' + props.user)
+    // console.log('navBar' + props.user)
     return(
         <div className="nav-bar">
             <div>

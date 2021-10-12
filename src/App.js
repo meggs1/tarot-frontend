@@ -6,7 +6,7 @@ import SignUp from './components/SignUp'
 import Login from './components/Login'
 
 import {
-  BrowserRouter as Router,
+  // BrowserRouter as Router,
   Route
 } from 'react-router-dom';
 
@@ -14,7 +14,8 @@ import {
 class App extends Component {
 
   state = {
-    user: {}
+    user: {},
+    cards: []
   }
 
   signUp = (user) => {
@@ -35,8 +36,6 @@ class App extends Component {
     .then(resp => resp.json())
     .then(result => {
       if (result.jwt) {
-        localStorage.setItem('token', result.jwt)
-        
         this.setState({
           user: result.user
         })
@@ -63,7 +62,7 @@ class App extends Component {
     .then(resp => resp.json())
     .then(result => {
       if (result.jwt) {
-        localStorage.setItem('token', result.jwt)
+        localStorage.setItem("jwt", result.jwt)
         this.setState({
           user: result.user
         })
@@ -72,6 +71,8 @@ class App extends Component {
       }
     })
   }
+
+
 
  
   render() {
