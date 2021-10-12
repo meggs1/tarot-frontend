@@ -72,6 +72,20 @@ class App extends Component {
     })
   }
 
+  fetchUserPage = () => {
+    const token = localStorage.getItem("jwt")
+    const userId = this.state.user.id
+    fetch(`http://localhost:3000/users/${userId}`, {
+        method: "GET",
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    })
+    .then(resp => resp.json())
+    .then(data => console.log(data))
+    .catch(err => console.log(err))
+  }
+
 
 
  
@@ -80,10 +94,10 @@ class App extends Component {
     return (
       <div>
         <NavBar exact path="/" user={this.state.user}/>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" render={routerProps => <Home {...routerProps} fetchUserPage={this.fetchUserPage} user={this.state.user}/> }/>
         <Route path="/signup" render={routerProps => <SignUp {...routerProps} signUp={this.signUp}/> } />
         <Route path="/login" render={routerProps => <Login {...routerProps} login={this.login}/> } />
-        <Route path='/cards' render={routerProps => <Card {...routerProps} user={this.state.user}/> } />
+        <Route path='/cards' render={routerProps => <Card {...routerProps} /> } />
       </div>
     )
   }

@@ -3,25 +3,21 @@ import React, { Component } from 'react'
 class Card extends Component {
     // need to start redux to get this to be a stateless function.
     state = {
-        user: this.props.user,
         cards: []
     }
 
-      componentDidMount() {
+    componentDidMount() {
         const token = localStorage.getItem("jwt")
-    
         fetch('http://localhost:3000/cards', {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`,
             },
         })
-
-    .then(resp => resp.json())
-    .then(data => this.setState({cards: data}))
-    .catch(err => console.log(err))
-}
-
+        .then(resp => resp.json())
+        .then(data => this.setState({cards: data}))
+        .catch(err => console.log(err))
+    }
 
     render() {
         console.log(this.props)
