@@ -4,6 +4,10 @@ import NavBar from './components/NavBar'
 import Home from './components/Home'
 import SignUp from './components/SignUp'
 import Login from './components/Login'
+import { fetchCards } from "./actions/cardActions"
+
+import { connect } from "react-redux";
+
 
 import {
   // BrowserRouter as Router,
@@ -16,6 +20,9 @@ class App extends Component {
   state = {
     user: {},
     cards: []
+  }
+  componentDidMount() {
+    this.props.fetchCards()
   }
 
   signUp = (user) => {
@@ -90,7 +97,7 @@ class App extends Component {
 
  
   render() {
-    console.log(this.state)
+    console.log(this.props.cards)
     return (
       <div>
         <NavBar exact path="/" user={this.state.user}/>
@@ -103,4 +110,17 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    cards: state.cards,
+    loading: state.loading,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchCards: () => dispatch(fetchCards()),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
