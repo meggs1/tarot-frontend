@@ -50,6 +50,12 @@ class CardForm extends Component {
                         onChange={(e) => this.handleOnChange(e)} 
                     />
                     <br />
+                    <input 
+                        type="file"
+                        name="image"
+                        // accept="image/png, image/jpeg"
+                    />
+                    <br />
                     <input type="submit" />
                 </form>
             </div>

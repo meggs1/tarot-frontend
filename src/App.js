@@ -4,7 +4,10 @@ import NavBar from './components/NavBar'
 import Home from './components/Home'
 import SignUp from './components/SignUp'
 import Login from './components/Login'
+
 import { fetchCards } from "./actions/cardActions"
+import { fetchArcanas } from "./actions/arcanaActions"
+import { fetchSuits } from "./actions/suitActions"
 
 import { connect } from "react-redux";
 
@@ -19,6 +22,8 @@ class App extends Component {
   // }
   componentDidMount() {
     this.props.fetchCards()
+    this.props.fetchArcanas()
+    this.props.fetchSuits()
   }
 
   signUp = (user) => {
@@ -90,6 +95,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <NavBar exact path="/" user="user"/>
@@ -105,6 +111,8 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     cards: state.cards,
+    arcanas: state.arcanas,
+    suits: state.suits,
     loading: state.loading,
   }
 }
@@ -112,6 +120,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchCards: () => dispatch(fetchCards()),
+    fetchArcanas: () => dispatch(fetchArcanas()), 
+    fetchSuits: () => dispatch(fetchSuits())
   }
 }
 
