@@ -8,19 +8,15 @@ import { fetchCards } from "./actions/cardActions"
 
 import { connect } from "react-redux";
 
-
-import {
-  // BrowserRouter as Router,
-  Route
-} from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 
 class App extends Component {
 
-  state = {
-    user: {},
-    cards: []
-  }
+  // state = {
+  //   user: {},
+  //   cards: []
+  // }
   componentDidMount() {
     this.props.fetchCards()
   }
@@ -93,18 +89,14 @@ class App extends Component {
     .catch(err => console.log(err))
   }
 
-
-
- 
   render() {
-    console.log(this.props.cards)
     return (
       <div>
-        <NavBar exact path="/" user={this.state.user}/>
+        <NavBar exact path="/" user="user"/>
         <Route exact path="/" render={routerProps => <Home {...routerProps} fetchUserPage={this.fetchUserPage} user={this.state.user}/> }/>
         <Route path="/signup" render={routerProps => <SignUp {...routerProps} signUp={this.signUp}/> } />
         <Route path="/login" render={routerProps => <Login {...routerProps} login={this.login}/> } />
-        <Route path='/cards' render={routerProps => <Card {...routerProps} /> } />
+        <Route path='/cards' render={routerProps => <Card {...routerProps} cards={this.props.cards} /> } />
       </div>
     )
   }

@@ -8,7 +8,7 @@ export function fetchCards() {
             dispatch({ type: "ADD_CARDS", cards: data });
         })
         .catch(err => console.log(err))
-    };
+    }
 }
 
     // componentDidMount() {

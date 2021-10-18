@@ -13,9 +13,9 @@ const cardsReducer = (state = { cards: [], loading: false }, action) => {
         cards: action.cards,
         loading: false,
       };
-      
+
     default:
-      return state;
+      return state
   }
 }
 
