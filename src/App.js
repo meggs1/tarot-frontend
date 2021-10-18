@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Card from './components/Card'
+import Cards from './components/cards/Cards'
 import NavBar from './components/NavBar'
 import Home from './components/Home'
 import SignUp from './components/SignUp'
@@ -19,7 +19,8 @@ class App extends Component {
   // state = {
   //   user: {},
   //   cards: []
-  // }
+  // // }
+
   componentDidMount() {
     this.props.fetchCards()
     this.props.fetchArcanas()
@@ -95,14 +96,14 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <div>
         <NavBar exact path="/" user="user"/>
         <Route exact path="/" render={routerProps => <Home {...routerProps} fetchUserPage={this.fetchUserPage} user="user"/> }/>
         <Route path="/signup" render={routerProps => <SignUp {...routerProps} signUp={this.signUp}/> } />
         <Route path="/login" render={routerProps => <Login {...routerProps} login={this.login}/> } />
-        <Route path='/cards' render={routerProps => <Card {...routerProps} cards={this.props.cards} /> } />
+        <Route path='/cards' render={routerProps => <Cards {...routerProps} cards={this.props.cards.cards} /> } />
       </div>
     )
   }

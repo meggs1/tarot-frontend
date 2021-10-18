@@ -1,6 +1,6 @@
-import CardForm from "./CardForm"
+import CardForm from "./cards/CardForm"
 const Home = (props) => {
-    console.log(props)
+
     return(
         
         <div>
