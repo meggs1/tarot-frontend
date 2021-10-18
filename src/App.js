@@ -93,7 +93,7 @@ class App extends Component {
     return (
       <div>
         <NavBar exact path="/" user="user"/>
-        <Route exact path="/" render={routerProps => <Home {...routerProps} fetchUserPage={this.fetchUserPage} user={this.state.user}/> }/>
+        <Route exact path="/" render={routerProps => <Home {...routerProps} fetchUserPage={this.fetchUserPage} user="user"/> }/>
         <Route path="/signup" render={routerProps => <SignUp {...routerProps} signUp={this.signUp}/> } />
         <Route path="/login" render={routerProps => <Login {...routerProps} login={this.login}/> } />
         <Route path='/cards' render={routerProps => <Card {...routerProps} cards={this.props.cards} /> } />
