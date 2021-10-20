@@ -4,6 +4,7 @@ import NavBar from './components/NavBar'
 import Home from './components/Home'
 import SignUp from './components/SignUp'
 import Login from './components/Login'
+import CardForm from './components/cards/CardForm'
 
 import { fetchCards } from "./actions/cardActions"
 import { fetchArcanas } from "./actions/arcanaActions"
@@ -11,7 +12,7 @@ import { fetchSuits } from "./actions/suitActions"
 
 import { connect } from "react-redux";
 
-import { Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 
 class App extends Component {
@@ -96,14 +97,22 @@ class App extends Component {
   }
 
   render() {
-    // console.log(this.props)
+    // console.log('App props', this.props.cards)
+    // debugger
     return (
       <div>
         <NavBar exact path="/" user="user"/>
-        <Route exact path="/" render={routerProps => <Home {...routerProps} fetchUserPage={this.fetchUserPage} user="user"/> }/>
-        <Route path="/signup" render={routerProps => <SignUp {...routerProps} signUp={this.signUp}/> } />
-        <Route path="/login" render={routerProps => <Login {...routerProps} login={this.login}/> } />
-        <Route path='/cards' render={routerProps => <Cards {...routerProps} cards={this.props.cards.cards} /> } />
+        <Switch>
+          <Route exact path="/" render={routerProps => <Home {...routerProps} fetchUserPage={this.fetchUserPage} user="user"/> }/>
+          <Route exact path="/signup" render={routerProps => <SignUp {...routerProps} signUp={this.signUp}/> } />
+          <Route exact path="/login" render={routerProps => <Login {...routerProps} login={this.login}/> } />
+          <Route exact path='/cards' render={routerProps => <Cards {...routerProps} cards={this.props.cards.cards} /> } />
+          <Route path="/cards/:id/edit" render={routerProps => {
+            const card = this.props.cards.cards.find(card => String(card.id) === routerProps.match.params.id)
+            return ( <CardForm {...routerProps} {...card} /> )
+          }
+          }/>
+        </Switch>
       </div>
     )
   }

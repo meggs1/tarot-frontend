@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 
 class CardForm extends Component {
     state = {
-        name: '',
-        fullMeaning: '',
-        uprightMeaning: '',
-        reverseMeaning: ''
+        name: this.props.name,
+        fullMeaning: this.props.full_meaning,
+        uprightMeaning: this.props.upright_meaning,
+        reversedMeaning: this.props.reversed_meaning,
+        image: this.props.image
     }
 
     handleOnChange(e) {
@@ -15,6 +16,8 @@ class CardForm extends Component {
     }
 
     render() {
+        console.log('card form props', this.props)
+        // console.log('card form state', this.state)
         return (
             <div>
                 <form>
@@ -30,7 +33,7 @@ class CardForm extends Component {
                     <input
                         type="text"
                         name="name"
-                        value={this.state.name}
+                        value={this.state.fullMeaning}
                         onChange={(e) => this.handleOnChange(e)} 
                     />
                     <br />
@@ -38,7 +41,7 @@ class CardForm extends Component {
                     <input
                         type="text"
                         name="name"
-                        value={this.state.name}
+                        value={this.state.uprightMeaning}
                         onChange={(e) => this.handleOnChange(e)} 
                     />
                     <br />
@@ -46,10 +49,11 @@ class CardForm extends Component {
                     <input
                         type="text"
                         name="name"
-                        value={this.state.name}
+                        value={this.state.reversedMeaning}
                         onChange={(e) => this.handleOnChange(e)} 
                     />
                     <br />
+
                     <input 
                         type="file"
                         name="image"
