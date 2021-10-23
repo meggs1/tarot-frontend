@@ -5,7 +5,6 @@ class Cards extends Component {
 
     render() {
         // console.log('cards props', this.props)
-        // debugger
         return (
             
         <div>

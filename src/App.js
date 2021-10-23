@@ -6,8 +6,8 @@ import SignUp from './components/SignUp'
 import Login from './components/Login'
 import CardForm from './components/cards/CardForm'
 import CardsContainer from './containers/CardsContainer'
-
-import { fetchArcanas } from "./actions/arcanaActions"
+import ArcanasContainer from './containers/ArcanasContainer'
+// import { fetchArcanas } from "./actions/arcanaActions"
 import { fetchSuits } from "./actions/suitActions"
 
 import { connect } from "react-redux";
@@ -19,7 +19,7 @@ class App extends Component {
 
   componentDidMount() {
     // this.props.fetchCards()
-    this.props.fetchArcanas()
+    // this.props.fetchArcanas()
     this.props.fetchSuits()
   }
 
@@ -93,7 +93,6 @@ class App extends Component {
 
   render() {
     // console.log('App props', this.props.cards)
-    // debugger
     return (
       <div>
         <NavBar exact path="/" user="user"/>
@@ -102,6 +101,7 @@ class App extends Component {
           <Route exact path="/signup" render={routerProps => <SignUp {...routerProps} signUp={this.signUp}/> } />
           <Route exact path="/login" render={routerProps => <Login {...routerProps} login={this.login}/> } />
           <Route exact path='/cards' render={routerProps => <CardsContainer {...routerProps} /> } />
+          <Route exact path='/arcanas' render={routerProps => <ArcanasContainer {...routerProps} /> } />
           <Route path="/cards/:id/edit" render={routerProps => {
               return ( <CardForm {...routerProps} /> )
             }
@@ -115,7 +115,7 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     // cards: state.cards,
-    arcanas: state.arcanas,
+    // arcanas: state.arcanas,
     suits: state.suits,
     loading: state.loading,
   }
@@ -124,7 +124,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     // fetchCards: () => dispatch(fetchCards()),
-    fetchArcanas: () => dispatch(fetchArcanas()), 
+    // fetchArcanas: () => dispatch(fetchArcanas()), 
     fetchSuits: () => dispatch(fetchSuits()),
     // editCard: (card) => dispatch(editCard(card))
   }

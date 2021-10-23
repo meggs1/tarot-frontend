@@ -13,7 +13,6 @@ export function fetchCards() {
 
 export function editCard(card) {
     return (dispatch) => {
-        // debugger
         fetch(`http://localhost:3000/cards/${card.id}`, {
         method: 'PATCH',
         body: JSON.stringify(card),
