@@ -39,7 +39,6 @@ class CardForm extends Component {
 
     handleOnSubmit = (e) => {
         e.preventDefault()
-        debugger
         this.props.editCard(this.state)
     }
 

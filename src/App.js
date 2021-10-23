@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import Cards from './components/cards/Cards'
+
 import NavBar from './components/NavBar'
 import Home from './components/Home'
 import SignUp from './components/SignUp'
 import Login from './components/Login'
 import CardForm from './components/cards/CardForm'
+import CardsContainer from './containers/CardsContainer'
 
-import { editCard, fetchCards } from "./actions/cardActions"
 import { fetchArcanas } from "./actions/arcanaActions"
 import { fetchSuits } from "./actions/suitActions"
 
@@ -18,7 +18,7 @@ import { Switch, Route } from 'react-router-dom';
 class App extends Component {
 
   componentDidMount() {
-    this.props.fetchCards()
+    // this.props.fetchCards()
     this.props.fetchArcanas()
     this.props.fetchSuits()
   }
@@ -101,11 +101,10 @@ class App extends Component {
           <Route exact path="/" render={routerProps => <Home {...routerProps} fetchUserPage={this.fetchUserPage} user="user"/> }/>
           <Route exact path="/signup" render={routerProps => <SignUp {...routerProps} signUp={this.signUp}/> } />
           <Route exact path="/login" render={routerProps => <Login {...routerProps} login={this.login}/> } />
-          <Route exact path='/cards' render={routerProps => <Cards {...routerProps} cards={this.props.cards.cards} /> } />
+          <Route exact path='/cards' render={routerProps => <CardsContainer {...routerProps} /> } />
           <Route path="/cards/:id/edit" render={routerProps => {
-            // const card = this.props.cards.cards.find(card => String(card.id) === routerProps.match.params.id)
-            return ( <CardForm {...routerProps} /> )
-          }
+              return ( <CardForm {...routerProps} /> )
+            }
           }/>
         </Switch>
       </div>
@@ -115,7 +114,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    cards: state.cards,
+    // cards: state.cards,
     arcanas: state.arcanas,
     suits: state.suits,
     loading: state.loading,
@@ -124,10 +123,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchCards: () => dispatch(fetchCards()),
+    // fetchCards: () => dispatch(fetchCards()),
     fetchArcanas: () => dispatch(fetchArcanas()), 
     fetchSuits: () => dispatch(fetchSuits()),
-    editCard: (card) => dispatch(editCard(card))
+    // editCard: (card) => dispatch(editCard(card))
   }
 }
 
