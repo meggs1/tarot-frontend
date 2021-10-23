@@ -13,7 +13,7 @@ class Card extends Component {
         <div>
             <div id={card.id}>
                 <h1>{card.name}</h1>
-                <img src={card.image_url.url} alt={card.name}/>
+                <img src={card.image_url ? card.image_url.url : null} alt={card.name}/>
                 <br />
                 <p><strong>{card.arcana.name} Arcana</strong></p>
                 <p><strong>Suit: {card.suit.name}</strong></p>

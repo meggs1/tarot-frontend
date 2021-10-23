@@ -3,6 +3,7 @@ import { editCard } from '../../actions/cardActions'
 import { connect } from 'react-redux'
 
 class CardForm extends Component {
+    fileImage = React.createRef()
     
     state = {
         name: '',
@@ -48,13 +49,9 @@ class CardForm extends Component {
         return (
             <div>
                 <form onSubmit={this.handleOnSubmit}>
-                    Card Name:
-                    <input
-                        type="text"
-                        name="name"
-                        value={this.state.name}
-                        onChange={(e) => this.handleOnChange(e)} 
-                    />
+                    Card Name: {this.state.name}
+                    
+                   
                     <br />
                     Card Full Meaning:
                     <textarea
@@ -84,7 +81,7 @@ class CardForm extends Component {
                     <input 
                         type="file"
                         name="image"
-                        // accept="image/png, image/jpeg"
+                        ref={this.fileImage}
                     />
                     <br />
                     <input type="submit" />
