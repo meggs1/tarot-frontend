@@ -3,14 +3,14 @@ import { editCard } from '../../actions/cardActions'
 import { connect } from 'react-redux'
 
 class CardForm extends Component {
-    fileImage = React.createRef()
+    
     
     state = {
         name: '',
         fullMeaning: '',
         uprightMeaning: '',
         reversedMeaning: '',
-        image_url: '',
+        image: '',
         id: ''
     }
 
@@ -40,7 +40,8 @@ class CardForm extends Component {
 
     handleOnSubmit = (e) => {
         e.preventDefault()
-        this.props.editCard(this.state)
+        const card = this.state
+        this.props.editCard(card)
     }
 
     render() {
@@ -50,13 +51,12 @@ class CardForm extends Component {
             <div>
                 <form onSubmit={this.handleOnSubmit}>
                     Card Name: {this.state.name}
-                    
-                   
+
                     <br />
                     Card Full Meaning:
                     <textarea
                         type="text"
-                        name="name"
+                        name="fullMeaning"
                         value={this.state.fullMeaning}
                         onChange={(e) => this.handleOnChange(e)} 
                     />
@@ -64,7 +64,7 @@ class CardForm extends Component {
                     Card Upright Meaning:
                     <textarea
                         type="text"
-                        name="name"
+                        name="uprightMeaning"
                         value={this.state.uprightMeaning}
                         onChange={(e) => this.handleOnChange(e)} 
                     />
@@ -72,7 +72,7 @@ class CardForm extends Component {
                     Card Reverse Meaning:
                     <textarea
                         type="text"
-                        name="name"
+                        name="reversedMeaning"
                         value={this.state.reversedMeaning}
                         onChange={(e) => this.handleOnChange(e)} 
                     />
@@ -81,7 +81,7 @@ class CardForm extends Component {
                     <input 
                         type="file"
                         name="image"
-                        ref={this.fileImage}
+                        // accept="image/png, image/jpeg"
                     />
                     <br />
                     <input type="submit" />
