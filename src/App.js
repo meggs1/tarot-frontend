@@ -7,6 +7,7 @@ import Login from './components/Login'
 import CardForm from './components/cards/CardForm'
 import CardsContainer from './containers/CardsContainer'
 import ArcanasContainer from './containers/ArcanasContainer'
+import SuitsContainer from './containers/SuitsContainer'
 // import { fetchArcanas } from "./actions/arcanaActions"
 import { fetchSuits } from "./actions/suitActions"
 
@@ -20,7 +21,7 @@ class App extends Component {
   componentDidMount() {
     // this.props.fetchCards()
     // this.props.fetchArcanas()
-    this.props.fetchSuits()
+    // this.props.fetchSuits()
   }
 
   signUp = (user) => {
@@ -102,6 +103,7 @@ class App extends Component {
           <Route exact path="/login" render={routerProps => <Login {...routerProps} login={this.login}/> } />
           <Route exact path='/cards' render={routerProps => <CardsContainer {...routerProps} /> } />
           <Route exact path='/arcanas' render={routerProps => <ArcanasContainer {...routerProps} /> } />
+          <Route exact path='/suits' render={routerProps => <SuitsContainer {...routerProps} /> } />
           <Route path="/cards/:id/edit" render={routerProps => {
               return ( <CardForm {...routerProps} /> )
             }
@@ -125,7 +127,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     // fetchCards: () => dispatch(fetchCards()),
     // fetchArcanas: () => dispatch(fetchArcanas()), 
-    fetchSuits: () => dispatch(fetchSuits()),
+    // fetchSuits: () => dispatch(fetchSuits()),
     // editCard: (card) => dispatch(editCard(card))
   }
 }
