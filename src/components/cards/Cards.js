@@ -9,9 +9,7 @@ class Cards extends Component {
             
         <div>
             {this.props.cards.map( card => 
-              
-             <Card card={card} key={card.id} />
-            
+                <Card card={card} key={card.id} />
             )}
         </div>
         )

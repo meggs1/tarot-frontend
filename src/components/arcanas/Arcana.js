@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import cardsReducer from '../../reducers/cardsReducer'
 
-import Card from '../cards/Card'
+import Cards from '../cards/Cards'
 
 class Arcana extends Component {
     
@@ -12,7 +12,7 @@ class Arcana extends Component {
         return (
             <div>
                 <h1> {arcana.name} </h1>
-                <p> {cards.map(card => <Card card={card} />)} </p>
+                <p> {cards.map(card => <Cards cards={cards} />)} </p>
             </div>
         )
     }
