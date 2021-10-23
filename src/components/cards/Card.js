@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 
 class Card extends Component {
+
     render() {
         // console.log('card props', this.props)
-
         const card = this.props.card
+        
         return (
         <div>
             <div id={card.id}>

@@ -3,6 +3,7 @@ import Card from './Card'
 import { Link } from "react-router-dom"
 
 class Cards extends Component {
+
     render() {
         // console.log('cards props', this.props)
         // debugger
@@ -11,8 +12,8 @@ class Cards extends Component {
         <div>
             {this.props.cards.map( card => 
               
-             <Card card={card} key={card.id} />
-                
+             <Card card={card} />
+            
             )}
         </div>
         )

@@ -1,26 +1,54 @@
 import React, { Component } from 'react'
+import { editCard } from '../../actions/cardActions'
+import { connect } from 'react-redux'
 
 class CardForm extends Component {
+    
     state = {
-        name: this.props.name,
-        fullMeaning: this.props.full_meaning,
-        uprightMeaning: this.props.upright_meaning,
-        reversedMeaning: this.props.reversed_meaning,
-        image: this.props.image
+        name: '',
+        fullMeaning: '',
+        uprightMeaning: '',
+        reversedMeaning: '',
+        image_url: '',
+        id: ''
     }
 
-    handleOnChange(e) {
+    componentDidMount() {
+        this.findCard()
+    }
+
+    findCard = () => {
+
+        const card = this.props.cards.cards.find(card => card.id === parseInt(this.props.match.params.id))
+
+        this.setState({
+            id: card.id,
+            name: card.name,
+            image: card.image_url,
+            fullMeaning: card.full_meaning,
+            uprightMeaning: card.upright_meaning,
+            reversedMeaning: card.reversed_meaning,
+        })
+    }
+
+    handleOnChange = (e) => {
         this.setState({
           [e.target.name]: e.target.value,
         })
     }
 
+    handleOnSubmit = (e) => {
+        e.preventDefault()
+        debugger
+        this.props.editCard(this.state)
+    }
+
     render() {
-        console.log('card form props', this.props)
+        // console.log('card form props', this.props)
         // console.log('card form state', this.state)
         return (
             <div>
-                <form>
+                <form onSubmit={this.handleOnSubmit}>
                     Card Name:
                     <input
                         type="text"
@@ -30,7 +58,7 @@ class CardForm extends Component {
                     />
                     <br />
                     Card Full Meaning:
-                    <input
+                    <textarea
                         type="text"
                         name="name"
                         value={this.state.fullMeaning}
@@ -38,7 +66,7 @@ class CardForm extends Component {
                     />
                     <br />
                     Card Upright Meaning:
-                    <input
+                    <textarea
                         type="text"
                         name="name"
                         value={this.state.uprightMeaning}
@@ -46,7 +74,7 @@ class CardForm extends Component {
                     />
                     <br />
                     Card Reverse Meaning:
-                    <input
+                    <textarea
                         type="text"
                         name="name"
                         value={this.state.reversedMeaning}
@@ -67,4 +95,8 @@ class CardForm extends Component {
     }
 }
 
-export default CardForm
+const mapStateToProps = state => {
+    return { cards: state.cards }
+}
+
+export default connect(mapStateToProps, { editCard })(CardForm)
