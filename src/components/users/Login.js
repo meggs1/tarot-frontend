@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { login } from "../../actions/UsersActions"
+import { login } from "../../actions/usersActions"
 
 class Login extends Component {
     state = {

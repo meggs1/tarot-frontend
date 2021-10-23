@@ -7,13 +7,13 @@ const NavBar = (props) => {
         <div className="nav-bar">
             <div>
                 <div>
-                    {props.user.username ? <p>Welcome {props.user.name}</p> : (
+                    {/* {props.user.username ? <p>Welcome {props.user.name}</p> : ( */}
                     <div>                
                         <NavLink to="/signup">Sign Up</NavLink>
                         <br />
                         <NavLink to="/login">Login</NavLink>
                     </div>
-                )}
+                {/* )} */}
             </div>
             <NavLink to="/">Home</NavLink>
             <br />

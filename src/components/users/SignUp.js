@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { signUp } from "../../actions/UsersActions"
+import { signUp } from "../../actions/usersActions"
 
 class SignUp extends Component {
 
