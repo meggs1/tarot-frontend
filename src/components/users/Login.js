@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { login } from "../../actions/UsersActions"
 
 class Login extends Component {
     state = {
@@ -18,6 +19,7 @@ class Login extends Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <form onSubmit={this.handleSubmit}>
                 <h1>Log in form</h1>

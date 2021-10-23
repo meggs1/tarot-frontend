@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { signUp } from "../../actions/UsersActions"
 
 class SignUp extends Component {
 
