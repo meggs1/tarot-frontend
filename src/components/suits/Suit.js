@@ -2,19 +2,19 @@ import React, { Component } from 'react'
 
 import Cards from '../cards/Cards'
 
-class Arcana extends Component {
+class Suit extends Component {
     
     render() {
-        console.log('arcana props', this.props)
-        const arcana = this.props.arcana
+        console.log('Suit props', this.props)
+        const suit = this.props.suit
         const cards = this.props.cards
         return (
             <div>
-                <h1> {arcana.name} </h1>
+                <h1> {suit.name} </h1>
                 <Cards cards={cards} />
             </div>
         )
     }
 }
 
-export default Arcana
+export default Suit

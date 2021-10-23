@@ -38,7 +38,7 @@ class App extends Component {
           <Route exact path="/login" render={routerProps => <Login {...routerProps} /> } />
           <Route exact path='/cards' render={routerProps => <CardsContainer {...routerProps} /> } />
           <Route exact path='/arcanas' render={routerProps => <ArcanasContainer {...routerProps} cards={this.props.cards.cards}/> } />
-          <Route exact path='/suits' render={routerProps => <SuitsContainer {...routerProps} /> } />
+          <Route exact path='/suits' render={routerProps => <SuitsContainer {...routerProps} cards={this.props.cards.cards}/> } />
           <Route path="/cards/:id" render={routerProps => {
               return ( <Card {...routerProps} card={this.props.cards.cards.find(card => card.id === parseInt(routerProps.match.params.id))}/> )
             }

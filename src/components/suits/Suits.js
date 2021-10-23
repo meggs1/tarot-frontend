@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import Suit from './Suit'
+
 class Suits extends Component {
 
     render() {
@@ -7,9 +9,11 @@ class Suits extends Component {
         return (
             
         <div>
-            {this.props.suits.map( suit => 
-             <p>{suit.name}</p>
-            )}
+            <div>
+                {this.props.suits.map( suit => 
+                    <Suit key={suit.id} suit={suit} cards={this.props.cards.filter(card => card.suit.id === suit.id)}/>
+                )}
+            </div>
         </div>
         )
     }

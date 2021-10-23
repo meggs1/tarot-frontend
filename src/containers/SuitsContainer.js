@@ -14,7 +14,7 @@ class SuitsContainer extends Component {
     render() {
         return(
             <div>
-                <Suits suits={this.props.suits.suits} />
+                <Suits suits={this.props.suits.suits} cards={this.props.cards}/>
             </div>
         )
     }
