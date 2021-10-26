@@ -8,12 +8,12 @@ class Suit extends Component {
         showCards: false
     }
 
-    hideComponent() {
-        this.setState({ showCards: !this.state.showCards });
+    handleClick = () => {
+        this.setState({ showCards: !this.state.showCards })
     }
     
     render() {
-        // console.log('Suit props', this.props)
+        // csole.log('Suit props', this.props)
         const suit = this.props.suit
         const cards = this.props.cards
         return (
@@ -21,7 +21,7 @@ class Suit extends Component {
                 <h1> {suit.name} </h1>
                 <p> {suit.description} </p>
                 {this.state.showCards && <Cards cards={cards} className='cardInfo' />}
-                <button onClick={() => this.hideComponent("showCards")}>Show Cards</button>
+                <button onClick={this.handleClick}>Show Cards</button>
             </div>
         )
     }

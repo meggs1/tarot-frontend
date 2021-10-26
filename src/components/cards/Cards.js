@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Card from './Card'
+import CardImage from './CardImage'
 
 class Cards extends Component {
 
@@ -9,7 +10,7 @@ class Cards extends Component {
             
         <div className="card-list">
             {this.props.cards.map( card => 
-                <Card card={card} key={card.id} className="cardInfo"/>
+                <CardImage card={card} key={card.id} className="cardImage" />
             )}
         </div>
         )
