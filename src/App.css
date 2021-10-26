@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+.image_reversed {
+  transform: rotateX(180deg)
+}

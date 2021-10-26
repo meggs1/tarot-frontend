@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
-import CardDisplay from './CardImage'
+import CardImage from './CardImage'
 
 class Card extends Component {
 
@@ -14,8 +14,7 @@ class Card extends Component {
         <div>
             <div id={card.id}>
                 <h1>{card.name}</h1>
-                <CardDisplay  card={card}/>
-                {/* <img src={card.image_url ? card.image_url.url : null} alt={card.name} width="120" height="198" /> */}
+                <CardImage card={card}/>
                 <br />
                 <p><strong>{card.arcana.name} Arcana</strong></p>
                 <p><strong>Suit: {card.suit.name}</strong></p>
