@@ -42,8 +42,8 @@ class App extends Component {
           <Route exact path='/suits' render={routerProps => <SuitsContainer {...routerProps} cards={this.props.cards.cards}/> } />
           {/* <Route path="/cards/:id" render={routerProps => {
               return ( <Card {...routerProps} card={this.props.cards.cards.find(card => card.id === parseInt(routerProps.match.params.id))}/> )
-            }
-          } /> */}
+          } */}
+          } />
           <Route path="/cards/:id/edit" render={routerProps => {
               return ( <CardForm {...routerProps} /> )
             }
