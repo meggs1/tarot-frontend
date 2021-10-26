@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
+import CardDisplay from './CardImage'
 
 class Card extends Component {
 
@@ -7,13 +8,14 @@ class Card extends Component {
         // console.log('card props', this.props)
 
         const card = this.props.card
-        console.log('card', card)
+        // console.log('card', card)
 
         return (
         <div>
             <div id={card.id}>
                 <h1>{card.name}</h1>
-                <img src={card.image_url ? card.image_url.url : null} alt={card.name}/>
+                <CardDisplay  card={card}/>
+                {/* <img src={card.image_url ? card.image_url.url : null} alt={card.name} width="120" height="198" /> */}
                 <br />
                 <p><strong>{card.arcana.name} Arcana</strong></p>
                 <p><strong>Suit: {card.suit.name}</strong></p>
