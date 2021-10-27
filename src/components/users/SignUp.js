@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { signUp } from "../../actions/usersActions"
 
 class SignUp extends Component {
@@ -6,7 +7,8 @@ class SignUp extends Component {
     state = {
         name: '',
         username: '',
-        password: ''
+        password: '',
+
     }
 
     handleChange = (e) => {
@@ -17,8 +19,12 @@ class SignUp extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        this.props.signUp(this.state)
-        console.log(this.state)
+        // this.props.signUp(this.state)
+        const name = this.state.name
+        const username = this.state.username
+        const password = this.state.password
+        // console.log(this.state)
+        this.props.signUp({ name, username, password })
     }
 
     render() {
@@ -41,4 +47,10 @@ class SignUp extends Component {
     }
 }
 
-export default SignUp
+const mapDispatchToProps = (dispatch) => {
+    return {
+      signUp: (user) => dispatch(signUp(user))
+    };
+  }
+
+export default connect(null, mapDispatchToProps)(SignUp)
