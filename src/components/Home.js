@@ -33,9 +33,6 @@ class Home extends Component {
           }
         
         this.setState({cards: selectedCards})
-        return (
-            selectedCards
-        )
     }
 
     drawCards = () => {

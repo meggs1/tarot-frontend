@@ -11,8 +11,8 @@ import CardsContainer from './containers/CardsContainer'
 import ArcanasContainer from './containers/ArcanasContainer'
 import SuitsContainer from './containers/SuitsContainer'
 
-// import { fetchArcanas } from "./actions/arcanaActions"
-// import { fetchSuits } from "./actions/suitActions"
+import { fetchArcanas } from "./actions/arcanaActions"
+import { fetchSuits } from "./actions/suitActions"
 import { fetchCards } from './actions/cardActions'
 
 import { connect } from "react-redux";
@@ -24,8 +24,8 @@ class App extends Component {
 
   componentDidMount() {
     this.props.fetchCards()
-    // this.props.fetchArcanas()
-    // this.props.fetchSuits()
+    this.props.fetchArcanas()
+    this.props.fetchSuits()
   }
 
   render() {
@@ -38,8 +38,8 @@ class App extends Component {
           <Route exact path="/signup" render={routerProps => <SignUp {...routerProps} /> } />
           <Route exact path="/login" render={routerProps => <Login {...routerProps} /> } />
           <Route exact path='/cards' render={routerProps => <CardsContainer {...routerProps} /> } />
-          <Route exact path='/arcanas' render={routerProps => <ArcanasContainer {...routerProps} cards={this.props.cards.cards}/> } />
-          <Route exact path='/suits' render={routerProps => <SuitsContainer {...routerProps} cards={this.props.cards.cards}/> } />
+          <Route exact path='/arcanas' render={routerProps => <ArcanasContainer {...routerProps} arcanas={this.props.arcanas.arcanas} cards={this.props.cards.cards}/> } />
+          <Route exact path='/suits' render={routerProps => <SuitsContainer {...routerProps} suits={this.props.suits.suits} cards={this.props.cards.cards}/> } />
           {/* <Route path="/cards/:id" render={routerProps => {
               return ( <Card {...routerProps} card={this.props.cards.cards.find(card => card.id === parseInt(routerProps.match.params.id))}/> )
           } */}
@@ -57,8 +57,8 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     cards: state.cards,
-    // arcanas: state.arcanas,
-    // suits: state.suits,
+    arcanas: state.arcanas,
+    suits: state.suits,
     loading: state.loading
   }
 }
@@ -66,8 +66,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchCards: () => dispatch(fetchCards()),
-    // fetchArcanas: () => dispatch(fetchArcanas()), 
-    // fetchSuits: () => dispatch(fetchSuits()),
+    fetchArcanas: () => dispatch(fetchArcanas()), 
+    fetchSuits: () => dispatch(fetchSuits()),
     // editCard: (card) => dispatch(editCard(card))
   }
 }

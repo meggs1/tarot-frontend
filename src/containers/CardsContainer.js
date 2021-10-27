@@ -7,9 +7,9 @@ import { editCard, fetchCards } from "../actions/cardActions"
 
 
 class CardsContainer extends Component {
-    componentDidMount() {
-        this.props.fetchCards()
-    }
+    // componentDidMount() {
+    //     this.props.fetchCards()
+    // }
 
     render() {
         return(
@@ -29,7 +29,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-      fetchCards: () => dispatch(fetchCards()),
+    //   fetchCards: () => dispatch(fetchCards()),
       editCard: (card) => dispatch(editCard(card))
     }
   }
