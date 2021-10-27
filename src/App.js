@@ -34,7 +34,7 @@ class App extends Component {
       <div>
         <NavBar exact path="/" />
         <Switch>
-          <Route exact path="/" render={routerProps => <Home {...routerProps} /> }/>
+          <Route exact path="/" render={routerProps => <Home {...routerProps} cards={this.props.cards.cards}/> }/>
           <Route exact path="/signup" render={routerProps => <SignUp {...routerProps} /> } />
           <Route exact path="/login" render={routerProps => <Login {...routerProps} /> } />
           <Route exact path='/cards' render={routerProps => <CardsContainer {...routerProps} /> } />

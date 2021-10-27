@@ -4,12 +4,12 @@ import { Link } from "react-router-dom"
 
 function Card(props) {
     // console.log(props)
-    // debugger
 
     function cardDisplay() {
         const card = props.card
         const num = props.num
-        console.log(props)
+
+        console.log('show card', props)
 
         if (props.className === 'cardInfo') {
             return (

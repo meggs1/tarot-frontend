@@ -1,11 +1,11 @@
 export function fetchCards() {
     return (dispatch) => {
-      dispatch({ type: "LOADING_CARDS", loading: true })
-        // const token = localStorage.getItem("jwt")
+        dispatch({ type: "LOADING_CARDS", loading: true })
+
         fetch('http://localhost:3000/cards')
         .then((response) => response.json())
         .then((data) => {
-            dispatch({ type: "ADD_CARDS", cards: data });
+            dispatch({ type: "ADD_CARDS", cards: data })
         })
         .catch(err => console.log(err))
     }
@@ -13,7 +13,6 @@ export function fetchCards() {
 
 export function editCard(card) {
     return (dispatch) => {
-        console.log(card)
 
         const cardObj = {
             name: card.name,
@@ -24,20 +23,19 @@ export function editCard(card) {
             id: card.id
         }
         
-        debugger
         fetch(`http://localhost:3000/cards/${card.id}`, {
-        method: 'PATCH',
-        body: JSON.stringify(cardObj),
-        headers: {'Content-Type': 'application/json', 'Accept': 'application/json'}
+            method: 'PATCH',
+            body: JSON.stringify(cardObj),
+            headers: {'Content-Type': 'application/json', 'Accept': 'application/json'}
         })
-        .then(resp => {
-            if (resp.ok) {
-                console.log(resp)
-                return resp.json()
+        .then(response => {
+            if (response.ok) {
+                console.log(response)
+                return response.json()
                     .then(json => dispatch({type: 'EDIT_CARD', payload: json}))
             } else {
-                console.log(resp)
-                return resp.json()
+                console.log(response)
+                return response.json()
                     .then((errors) => {
                         return Promise.reject(errors)
                     });
@@ -46,6 +44,7 @@ export function editCard(card) {
         .catch(err => console.log(err))
     }
 }
+
 
     // componentDidMount() {
     //     const token = localStorage.getItem("jwt")

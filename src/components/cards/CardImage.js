@@ -4,37 +4,32 @@ import Card from './Card'
 class CardImage extends Component {
 
     state = {
-        showCard: false
+        showCardInfo: false
     }
     
-    getRandomInt(max) {
-        return Math.floor(Math.random() * max)
-    }
     
     handleClick = () => {
-        console.log("click")
-
-        this.setState({ showCard: !this.state.showCard })
-        console.log(this.state)
+        console.log("click card image")
+        this.setState({ showCardInfo: !this.state.showCardInfo })
     }
 
 
     imgFlip() {
-        const num = this.getRandomInt(2)
+        const num = this.props.num
         const card = this.props.card
 
         if (this.props.className === 'cardImage') {
             return (
                 <div>
                     <img src={card.image_url ? card.image_url.url : null} alt={card.name} width="120" height="198" onClick={this.handleClick} />
-                    {this.state.showCard ? <Card card={card} className="cardInfo"/> : null }
+                    {this.state.showCardInfo ? <Card card={card} className="cardInfo"/> : null }
                 </div>
             )
-        }else if (num === 0 ) {
+        } else if (num === 0 ) {
             return (
                 <div>
                     <img src={card.image_url ? card.image_url.url : null} alt={card.name} width="120" height="198" onClick={this.handleClick} />
-                    {this.state.showCard ? <Card card={card} num={num} /> : null }
+                    {this.state.showCardInfo ? <Card card={card} num={num} /> : null }
                     
                 </div>
             )
@@ -42,8 +37,8 @@ class CardImage extends Component {
         } else if (num === 1){
             return (
                 <div>
-                    <img className="image_reversed" src={card.image_url ? card.image_url.url : null} alt={card.name} width="120" height="198" />
-                    {this.state.showCard ? <Card card={card} num={num} /> : null }
+                    <img className="image_reversed" src={card.image_url ? card.image_url.url : null} alt={card.name} width="120" height="198" onClick={this.handleClick} />
+                    {this.state.showCardInfo ? <Card card={card} num={num} /> : null }
                 </div>
             )
         }

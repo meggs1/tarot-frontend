@@ -13,7 +13,7 @@ class Suit extends Component {
     }
     
     render() {
-        // csole.log('Suit props', this.props)
+        // console.log('Suit props', this.props)
         const suit = this.props.suit
         const cards = this.props.cards
         return (

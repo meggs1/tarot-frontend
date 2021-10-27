@@ -23,7 +23,7 @@ const cardsReducer = (state = { cards: [], loading: false }, action) => {
             ...state.cards.slice(index + 1)
         ], loading: false
       } 
-      
+
     default:
       return state
   }

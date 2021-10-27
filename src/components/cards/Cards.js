@@ -12,6 +12,7 @@ class Cards extends Component {
             {this.props.cards.map( card => 
                 <CardImage card={card} key={card.id} className="cardImage" />
             )}
+            
         </div>
         )
     }
