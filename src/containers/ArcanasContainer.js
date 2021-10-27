@@ -16,7 +16,6 @@ class ArcanasContainer extends Component {
         return(
             <div>
                 <Arcanas arcanas={this.props.arcanas.arcanas} cards={this.props.cards}/>
-                
             </div>
         )
     }

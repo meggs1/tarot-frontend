@@ -1,12 +1,11 @@
 import { Component } from "react"
 import CardImage from "./cards/CardImage"
 
-// import CardForm from "./cards/CardForm"
 class Home extends Component {
-    // console.log('home props', props)
+
     state = {
-        showRandomCard: false,
-        showThreeCards: false
+        showCards: false,
+        cards: []
     }
 
     getRandomInt(max) {
@@ -14,72 +13,52 @@ class Home extends Component {
     }
 
     handleClick = (e) => {
-        if (e.target.value == 'one-card') {
-            console.log("click random card button")
-            
-            this.setState({ 
-                showRandomCard: true,
-                showThreeCards: false
-            })
-            console.log(this.state)
-        } else if (e.target.value == 'three-cards') {
-            this.setState({ 
-                showRandomCard: false,
-                showThreeCards: true 
-            })
-            console.log(this.state)
-        }
-        
+        this.setState({showCards: !this.state.showCards})
+        this.getCards(e.target.value)
     }
 
-    drawOneCard = () => {
-        const card = this.props.cards[Math.floor(Math.random()*this.props.cards.length)]
-        const num = this.getRandomInt(2)
-        
-        console.log(card)
+    getCards = (num) => {
+        const cards = this.props.cards
+        const numOfCards = parseInt(num)
+        const selectedCards = []
 
+        // for (var i = 0; i < numOfCards; i++) {
+        //     selectedCards.push(cards[Math.floor(Math.random()*cards.length)]);
+        // }
+
+        for (var i = 0; i < numOfCards; i++) {
+            var idx = Math.floor(Math.random() * cards.length);
+            selectedCards.push(cards[idx]);
+            cards.splice(idx, 1);
+          }
+        
+        this.setState({cards: selectedCards})
         return (
+            selectedCards
+        )
+    }
+
+    drawCards = () => {
+        const cards = this.state.cards
+        return(
             <div>
-                {this.state.showRandomCard ? <CardImage card={card} num={num}/> : null }
+                {this.state.showCards ? cards.map(card => 
+                    <CardImage card={card} num={this.getRandomInt(2)}/> 
+                    ) : null 
+                }
             </div>
         )
-
     }
-
-    drawThreeCards = () => {
-        const card1 = this.props.cards[Math.floor(Math.random()*this.props.cards.length)]
-        const card2 = this.props.cards[Math.floor(Math.random()*this.props.cards.length)]
-        const card3 = this.props.cards[Math.floor(Math.random()*this.props.cards.length)]
-
-        const cards = [card1, card2, card3]
-
-        if (card1 != card2 && card1 != card3 && card2 != card3) {
-            return (
-                <div>
-                    {this.state.showThreeCards ? 
-                        cards.map(card => <CardImage card={card} num={this.getRandomInt(2)}/> )
-                    : null }
-                </div>
-            )
-        }
-
-        console.log(cards)
-    }
-
-    
     
     render() {
         // console.log('home props', this.props)
         return(
             <div>
                 Home Page
-                {/* <h1>{props.user.name}</h1> */}
-                {/* <p>Your cards {props.user.card_ids.map(card => card.id)}</p> */}
-                {/* <CardForm /> */}
-                <button onClick={this.handleClick} value="one-card">Draw one card</button>
-                <button onClick={this.handleClick} value="three-cards">Draw three cards</button>
-                {this.drawOneCard()}
-                {this.drawThreeCards()}
+                <button onClick={this.handleClick} value="1">Draw one card</button>
+                <button onClick={this.handleClick} value="3">Draw three cards</button>
+                <button onClick={this.handleClick} value="5">Draw five cards</button>
+                {this.drawCards()}
             </div>
         )
     }
