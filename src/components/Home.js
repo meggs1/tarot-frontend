@@ -14,14 +14,19 @@ class Home extends Component {
     }
 
     handleClick = (e) => {
-        debugger
         if (e.target.value == 'one-card') {
             console.log("click random card button")
             
-            this.setState({ showRandomCard: true })
+            this.setState({ 
+                showRandomCard: true,
+                showThreeCards: false
+            })
             console.log(this.state)
-        } else {
-            this.setState({ showThreeCards: true })
+        } else if (e.target.value == 'three-cards') {
+            this.setState({ 
+                showRandomCard: false,
+                showThreeCards: true 
+            })
             console.log(this.state)
         }
         
@@ -32,12 +37,13 @@ class Home extends Component {
         const num = this.getRandomInt(2)
         
         console.log(card)
-        
+
         return (
             <div>
                 {this.state.showRandomCard ? <CardImage card={card} num={num}/> : null }
             </div>
         )
+
     }
 
     drawThreeCards = () => {
@@ -56,8 +62,7 @@ class Home extends Component {
                 </div>
             )
         }
-        
-        
+
         console.log(cards)
     }
 
@@ -72,7 +77,7 @@ class Home extends Component {
                 {/* <p>Your cards {props.user.card_ids.map(card => card.id)}</p> */}
                 {/* <CardForm /> */}
                 <button onClick={this.handleClick} value="one-card">Draw one card</button>
-                <button onClick={this.handleClick}>Draw three cards</button>
+                <button onClick={this.handleClick} value="three-cards">Draw three cards</button>
                 {this.drawOneCard()}
                 {this.drawThreeCards()}
             </div>
