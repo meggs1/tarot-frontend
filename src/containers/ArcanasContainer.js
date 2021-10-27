@@ -15,7 +15,7 @@ class ArcanasContainer extends Component {
         console.log('arcanas container props', this.props)
         return(
             <div>
-                <Arcanas arcanas={this.props.arcanas} cards={this.props.cards}/>
+                <Arcanas arcanas={this.props.arcanas} suits={this.props.suits} cards={this.props.cards}/>
             </div>
         )
     }

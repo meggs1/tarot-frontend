@@ -9,7 +9,10 @@ class Arcanas extends Component {
         return (
             <div>
                 {this.props.arcanas.map( arcana => 
-                    <Arcana key={arcana.id} arcana={arcana} cards={this.props.cards.filter(card => card.arcana.id === arcana.id)}/>
+                    <Arcana key={arcana.id} arcana={arcana} 
+                    suits={this.props.suits.filter(suit => suit.arcana.id === arcana.id)} 
+                    cards={this.props.cards}
+                    />
                 )}
             </div>
         )
