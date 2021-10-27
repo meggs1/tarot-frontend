@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { login } from "../../actions/usersActions"
 
 class Login extends Component {
@@ -15,6 +16,7 @@ class Login extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
+        // this.props.login(this.state)
         this.props.login(this.state)
     }
 
@@ -35,4 +37,10 @@ class Login extends Component {
     }
 }
 
-export default Login
+const mapDispatchToProps = (dispatch) => {
+    return {
+      login: (user) => dispatch(login(user))
+    };
+}
+
+export default connect(null, mapDispatchToProps)(Login)

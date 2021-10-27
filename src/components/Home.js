@@ -48,6 +48,7 @@ class Home extends Component {
     }
     
     render() {
+        console.log(localStorage)
         // console.log('home props', this.props)
         return(
             <div>
