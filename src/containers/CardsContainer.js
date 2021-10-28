@@ -12,6 +12,8 @@ class CardsContainer extends Component {
     // }
 
     render() {
+        console.log('cards container props', this.props)
+        console.log('cards container state', this.state)
         return(
             <div>
                 <Cards cards={this.props.cards.cards} />

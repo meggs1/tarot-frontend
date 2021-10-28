@@ -22,6 +22,7 @@ const NavBar = (props) => {
             <NavLink to="/arcanas">Arcanas</NavLink>
             <br />
             <NavLink to="/suits">Suits</NavLink>
+            <NavLink to="/profile">Profile</NavLink>
         </div>
         </div>
     )

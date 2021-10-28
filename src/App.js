@@ -5,11 +5,12 @@ import NavBar from './components/NavBar'
 import Home from './components/Home'
 import SignUp from './components/users/SignUp'
 import Login from './components/users/Login'
-import Card from './components/cards/Card'
+// import Card from './components/cards/Card'
 import CardForm from './components/cards/CardForm'
 import CardsContainer from './containers/CardsContainer'
 import ArcanasContainer from './containers/ArcanasContainer'
 import SuitsContainer from './containers/SuitsContainer'
+import Profile from './components/users/Profile'
 
 import { fetchArcanas } from "./actions/arcanaActions"
 import { fetchSuits } from "./actions/suitActions"
@@ -29,6 +30,7 @@ class App extends Component {
   }
 
   render() {
+    // console.log('App state', this.state)
     console.log('App props', this.props)
     return (
       <div>
@@ -38,8 +40,10 @@ class App extends Component {
           <Route exact path="/signup" render={routerProps => <SignUp {...routerProps} /> } />
           <Route exact path="/login" render={routerProps => <Login {...routerProps} /> } />
           <Route exact path='/cards' render={routerProps => <CardsContainer {...routerProps} /> } />
-          <Route exact path='/arcanas' render={routerProps => <ArcanasContainer {...routerProps} arcanas={this.props.arcanas.arcanas} suits={this.props.suits.suits} cards={this.props.cards.cards}/>} />
-          <Route exact path='/suits' render={routerProps => <SuitsContainer {...routerProps} suits={this.props.suits.suits} cards={this.props.cards.cards}/> } />
+          <Route exact path='/arcanas' render={routerProps => <ArcanasContainer {...routerProps} />} />
+          <Route exact path='/suits' render={routerProps => <SuitsContainer {...routerProps} /> } />
+          <Route exact path='/profile' render={routerProps => <Profile {...routerProps} />  } />
+          
           {/* <Route path="/cards/:id" render={routerProps => {
               return ( <Card {...routerProps} card={this.props.cards.cards.find(card => card.id === parseInt(routerProps.match.params.id))}/> )
           } */}

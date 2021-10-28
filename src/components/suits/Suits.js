@@ -2,21 +2,22 @@ import React, { Component } from 'react'
 
 import Suit from './Suit'
 
-class Suits extends Component {
+function Suits(props) {
 
-    render() {
-        console.log('suits props', this.props)
+
+        console.log('suits props', props)
+        // console.log('suits state', state)
         return (
             
         <div>
             <div>
-                {this.props.suits.map( suit => 
-                    <Suit key={suit.id} suit={suit} cards={this.props.cards.filter(card => card.suit.id === suit.id)}/>
+                {props.suits.map( suit => 
+                    <Suit key={suit.id} suit={suit} cards={props.cards.filter(card => card.suit.id === suit.id)}/>
                 )}
             </div>
         </div>
         )
-    }
+    
 }
 
 export default Suits

@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
 
-// import { fetchSuits } from "../actions/suitActions"
+import { fetchSuits } from "../actions/suitActions"
 import Suits from '../components/suits/Suits'
 
 class SuitsContainer extends Component {
@@ -14,18 +14,19 @@ class SuitsContainer extends Component {
     render() {
         return(
             <div>
-                <Suits suits={this.props.suits} cards={this.props.cards}/>
+                <Suits suits={this.props.suits.suits} cards={this.props.cards.cards}/>
             </div>
         )
     }
 
 }
 
-// const mapStateToProps = (state) => {
-//     return {
-//       suits: state.suits,
-//     }
-// }
+const mapStateToProps = (state) => {
+    return {
+      suits: state.suits,
+      cards: state.cards
+    }
+}
 
 // const mapDispatchToProps = (dispatch) => {
 //     return {
@@ -33,5 +34,5 @@ class SuitsContainer extends Component {
 //     }
 // }
 
-export default SuitsContainer
-// export default connect(mapStateToProps, mapDispatchToProps)(SuitsContainer)
+// export default SuitsContainer
+export default connect(mapStateToProps)(SuitsContainer)

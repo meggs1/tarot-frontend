@@ -2,21 +2,21 @@ import React, { Component } from 'react'
 import Arcana from './Arcana'
 
 
-class Arcanas extends Component {
+function Arcanas(props) {
     
-    render() {
-        // console.log('arcanas props', this.props)
+
+        console.log('arcanas props', props)
         return (
             <div>
-                {this.props.arcanas.map( arcana => 
+                {props.arcanas.map( arcana => 
                     <Arcana key={arcana.id} arcana={arcana} 
-                    suits={this.props.suits.filter(suit => suit.arcana.id === arcana.id)} 
-                    cards={this.props.cards}
+                    suits={props.suits.filter(suit => suit.arcana.id === arcana.id)} 
+                    cards={props.cards}
                     />
                 )}
             </div>
         )
-    }
+    
 }
 
 export default Arcanas

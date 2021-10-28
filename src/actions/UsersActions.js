@@ -19,11 +19,10 @@ export const signUp = (user) => {
       .then(data => ({ data, resp })))
       .then(({ data, resp }) =>  {
       if (resp.ok) {
-        console.log(resp)
+        // console.log(resp)
         localStorage.setItem('token', data.jwt)
         dispatch({ type: "AUTHENTICATED", payload: data })
-        console.log(localStorage)
-
+        // console.log(localStorage)
       } else {
         dispatch({ type: "NOT_AUTHENTICATED" })
         return Promise.reject(resp)
@@ -52,11 +51,10 @@ export const login = (user) => {
         .then(data => ({ data, resp })))
         .then(({ data, resp }) =>  {
         if (resp.ok) {
-          console.log(resp)
+          // console.log(resp)
           localStorage.setItem('token', data.jwt)
           dispatch({ type: "AUTHENTICATED", payload: data })
-          console.log(localStorage)
-
+          console.log('login successful')
         } else {
           dispatch({ type: "NOT_AUTHENTICATED" })
           return Promise.reject(resp)
