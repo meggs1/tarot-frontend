@@ -17,13 +17,18 @@ class DrawCard extends Component {
 
     handleClick = (e) => {
         this.setState({showCards: !this.state.showCards})
-        this.getCards(e.target.value)
+        if (this.state.showCards === true ) {
+            this.getCards(e.target.value)
+        }
     }
 
     getCards = (num) => {
         const cards = this.props.cards.cards
         const numOfCards = parseInt(num)
+
         const selectedCards = []
+        const currentUserCards = this.props.user.currentUser.user.card_ids
+        console.log('current user cards', currentUserCards)
 
         // for (var i = 0; i < numOfCards; i++) {
         //     selectedCards.push(cards[Math.floor(Math.random()*cards.length)]);
@@ -32,10 +37,12 @@ class DrawCard extends Component {
         for (var i = 0; i < numOfCards; i++) {
             var idx = Math.floor(Math.random() * cards.length)
             selectedCards.push(cards[idx])
+            currentUserCards.push(cards[idx])
             cards.splice(idx, 1)
           }
         
         this.setState({drawnCards: selectedCards})
+
     }
 
     drawCards = () => {
@@ -53,6 +60,7 @@ class DrawCard extends Component {
     render() {
         // console.log(localStorage)
         console.log('DrawCard props', this.props)
+
         return(
             <div>
                 DrawCard Page
@@ -67,7 +75,8 @@ class DrawCard extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        cards: state.cards
+        cards: state.cards,
+        user: state.user
     }
 }
 
