@@ -9,20 +9,26 @@ class Profile extends Component {
     }
 
     render() {
-        console.log('profile props', this.props)
-        return (
-            <div>
-                profile
-            </div>
-        )
+        console.log('profile', this.props)
+        const { authChecked, currentUser } = this.props.user
+        if (authChecked) {
+            return <div> {currentUser.name} </div>
+        } else {
+          return <div>log in</div>
+        }
+      }
     }
-}
   
-const mapDispatchToProps = (dispatch) => {
-    return {
-    checkAuth: () => dispatch(checkAuth())
+    const mapStateToProps = (state) => {
+        return {
+            user: state.user
+        }
     }
-}
-    
+  
+    const mapDispatchToProps = (dispatch) => {
+      return {
+        checkAuth: () => dispatch(checkAuth())
+      }
+    }
 
-export default connect(null, mapDispatchToProps)(Profile)
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)

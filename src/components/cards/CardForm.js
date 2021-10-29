@@ -45,8 +45,10 @@ class CardForm extends Component {
     }
 
     render() {
-        // console.log('card form props', this.props)
+        console.log('card form props', this.props)
         // console.log('card form state', this.state)
+        const currentUser = this.props.user.currentUser
+        if (currentUser.is_admin === true) {
         return (
             <div>
                 <form onSubmit={this.handleOnSubmit}>
@@ -88,11 +90,19 @@ class CardForm extends Component {
                 </form>
             </div>
         )
+        } else {
+            return (
+             <div>you must be an admin to view this page</div>
+            )
+        }
     }
 }
 
 const mapStateToProps = state => {
-    return { cards: state.cards }
+    return { 
+        cards: state.cards, 
+        user: state.user
+    }
 }
 
 export default connect(mapStateToProps, { editCard })(CardForm)

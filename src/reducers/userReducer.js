@@ -1,4 +1,4 @@
-const usersReducer = (state = { currentUser: {}, authChecked: false, loggedIn: false  }, action) => {
+const userReducer = (state = { currentUser: {}, authChecked: false, loggedIn: false  }, action) => {
     switch (action.type) {  
         case "AUTHENTICATED":
           return {
@@ -17,4 +17,4 @@ const usersReducer = (state = { currentUser: {}, authChecked: false, loggedIn: f
     }
 }
 
-export default usersReducer
+export default userReducer
