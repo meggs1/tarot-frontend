@@ -46,33 +46,45 @@ export const login = (user) => {
         }
       })
     })
-      .then(resp =>
-        resp.json()
-        .then(data => ({ data, resp })))
-        .then(({ data, resp }) =>  {
-        if (resp.ok) {
-          // console.log(resp)
-          localStorage.setItem('token', data.jwt)
-          dispatch({ type: "AUTHENTICATED", payload: data })
-          console.log('login successful')
-        } else {
-          dispatch({ type: "NOT_AUTHENTICATED" })
-          return Promise.reject(resp)
-        }
-      }).catch(err => console.log("Error: ", err))
+    .then(resp =>
+      resp.json()
+      .then(data => ({ data, resp })))
+      .then(({ data, resp }) =>  {
+      if (resp.ok) {
+        // console.log(resp)
+        localStorage.setItem('token', data.jwt)
+        dispatch({ type: "AUTHENTICATED", payload: data })
+        console.log('login successful')
+      } else {
+        dispatch({ type: "NOT_AUTHENTICATED" })
+        return Promise.reject(resp)
+      }
+    }).catch(err => console.log("Error: ", err))
   }
 }
 
-// export const fetchUserPage = () => {
-//     const token = localStorage.getItem("jwt")
-//     const userId = this.state.user.id
-//     fetch(`http://localhost:3000/users/${userId}`, {
-//         method: "GET",
-//         headers: {
-//             Authorization: `Bearer ${token}`,
-//         },
-//     })
-//     .then(resp => resp.json())
-//     .then(data => console.log(data))
-//     .catch(err => console.log(err))
-//   }
+export const checkAuth = () => {
+  return (dispatch) => {
+    const token = localStorage.getItem("token")
+    fetch("http://localhost:3000/check_auth", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: token
+      }
+    })
+    .then((response) => {
+      if (response.ok) {
+        console.log(response)
+        return response
+        .json()
+        .then(user => dispatch({ type: "AUTHENTICATED", payload: user }))
+      } else {
+        console.log(response)
+        return Promise.reject(dispatch({type: 'NOT_AUTHENTICATED'}))
+      }
+    })
+    .catch((error) => console.log("api errors:", error))
+  }
+}
+

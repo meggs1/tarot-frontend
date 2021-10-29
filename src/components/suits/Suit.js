@@ -20,8 +20,8 @@ class Suit extends Component {
             <div>
                 <h1> {suit.name} </h1>
                 <p> {suit.description} </p>
-                {this.state.showCards && <Cards cards={cards} className='cardInfo' />}
                 <button onClick={this.handleClick}>Show Cards</button>
+                {this.state.showCards && <Cards cards={cards} className='cardInfo' />}
             </div>
         )
     }

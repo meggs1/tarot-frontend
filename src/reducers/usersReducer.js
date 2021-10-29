@@ -12,7 +12,6 @@ const usersReducer = (state = { currentUser: {}, authChecked: false, loggedIn: f
                 authChecked: false,
                 loggedIn: false
             }
-        
         default:
             return state
     }

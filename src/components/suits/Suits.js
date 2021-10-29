@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+// import React, { Component } from 'react'
 
 import Suit from './Suit'
 
@@ -7,7 +7,7 @@ function Suits(props) {
 
         console.log('suits props', props)
         // console.log('suits state', state)
-        return (
+    return (
             
         <div>
             <div>
@@ -16,7 +16,7 @@ function Suits(props) {
                 )}
             </div>
         </div>
-        )
+    )
     
 }
 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+// import React, { Component } from 'react'
 import CardImage from './CardImage'
 
 function Cards(props) {
@@ -10,7 +10,6 @@ function Cards(props) {
             {props.cards.map( card => 
                 <CardImage card={card} key={card.id} className="cardImage" />
             )}
-            
         </div>
     )
 }

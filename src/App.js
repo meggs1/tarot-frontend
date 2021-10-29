@@ -31,7 +31,7 @@ class App extends Component {
 
   render() {
     // console.log('App state', this.state)
-    console.log('App props', this.props)
+    // console.log('App props', this.props)
     return (
       <div>
         <NavBar exact path="/" />
@@ -71,8 +71,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchCards: () => dispatch(fetchCards()),
     fetchArcanas: () => dispatch(fetchArcanas()), 
-    fetchSuits: () => dispatch(fetchSuits()),
-    // editCard: (card) => dispatch(editCard(card))
+    fetchSuits: () => dispatch(fetchSuits())
   }
 }
 
