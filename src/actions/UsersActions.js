@@ -73,18 +73,40 @@ export const checkAuth = () => {
         Authorization: token
       }
     })
-    .then((response) => {
-      if (response.ok) {
-        console.log(response)
-        return response
+    .then((resp) => {
+      if (resp.ok) {
+        console.log(resp)
+        return resp
         .json()
         .then(user => dispatch({ type: "AUTHENTICATED", payload: user }))
       } else {
-        console.log(response)
+        console.log(resp)
         return Promise.reject(dispatch({type: 'NOT_AUTHENTICATED'}))
       }
     })
     .catch((error) => console.log("api errors:", error))
+  }
+}
+
+export const logout = () => {
+  return (dispatch) => {
+    const token = localStorage.getItem("token")
+    return fetch("http://localhost:3000/logout", {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    })
+    .then((resp) => {
+      if (resp.ok) {
+        console.log('logout successful')
+        return dispatch({ type: 'NOT_AUTHENTICATED' })
+      } else {
+        return Promise.reject(dispatch({type: 'NOT_AUTHENTICATED'}))
+      }
+    })
   }
 }
 

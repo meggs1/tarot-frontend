@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
-import { checkAuth } from '../../actions/usersActions'
+import { checkAuth, logout } from '../../actions/usersActions'
 
 class Profile extends Component {
 
@@ -12,7 +12,13 @@ class Profile extends Component {
         console.log('profile', this.props)
         const { authChecked, currentUser } = this.props.user
         if (authChecked) {
-            return <div> {currentUser.name} </div>
+
+            return (
+                <div> 
+                    {currentUser.name} 
+                    <button onClick={this.props.logout}>logout</button>
+                </div>
+            )
         } else {
           return <div>log in</div>
         }
@@ -27,7 +33,8 @@ class Profile extends Component {
   
     const mapDispatchToProps = (dispatch) => {
       return {
-        checkAuth: () => dispatch(checkAuth())
+        checkAuth: () => dispatch(checkAuth()),
+        logout: () => dispatch(logout())
       }
     }
 
