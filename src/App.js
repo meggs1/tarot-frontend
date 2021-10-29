@@ -36,7 +36,7 @@ class App extends Component {
       <div>
         <NavBar exact path="/" />
         <Switch>
-          <Route exact path="/" render={routerProps => <Home {...routerProps} /> }/>
+          <Route exact path="/" render={routerProps => <Home {...routerProps} user={this.props.user}/> }/>
           <Route exact path="/signup" render={routerProps => <SignUp {...routerProps} /> } />
           <Route exact path="/login" render={routerProps => <Login {...routerProps} /> } />
           <Route exact path='/cards' render={routerProps => <CardsContainer {...routerProps} /> } />
@@ -61,6 +61,7 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     cards: state.cards,
+    user: state.user,
     // arcanas: state.arcanas,
     // suits: state.suits,
     loading: state.loading

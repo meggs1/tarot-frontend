@@ -3,12 +3,14 @@ import CardImage from "./CardImage"
 
 import { connect } from 'react-redux'
 // import CardsContainer from "../containers/CardsContainer"
+import { addCardsToUser } from '../../actions/usersActions'
 
 class DrawCard extends Component {
 
     state = {
         showCards: false,
-        drawnCards: []
+        drawnCards: [],
+        currentUserCards: []
     }
 
     getRandomInt(max) {
@@ -16,19 +18,19 @@ class DrawCard extends Component {
     }
 
     handleClick = (e) => {
-        this.setState({showCards: !this.state.showCards})
-        if (this.state.showCards === true ) {
+        if (!this.state.showCards) {
             this.getCards(e.target.value)
         }
+        this.setState({showCards: !this.state.showCards})
     }
 
     getCards = (num) => {
         const cards = this.props.cards.cards
         const numOfCards = parseInt(num)
-
         const selectedCards = []
-        const currentUserCards = this.props.user.currentUser.user.card_ids
-        console.log('current user cards', currentUserCards)
+
+
+
 
         // for (var i = 0; i < numOfCards; i++) {
         //     selectedCards.push(cards[Math.floor(Math.random()*cards.length)]);
@@ -37,7 +39,13 @@ class DrawCard extends Component {
         for (var i = 0; i < numOfCards; i++) {
             var idx = Math.floor(Math.random() * cards.length)
             selectedCards.push(cards[idx])
-            currentUserCards.push(cards[idx])
+            if (this.props.user.authChecked) {
+                const userCards = this.props.user.currentUser.card_ids
+                console.log('current user cards', userCards)
+            
+                userCards.push(cards[idx])
+                this.props.addCardsToUser(userCards)
+            }
             cards.splice(idx, 1)
           }
         
@@ -47,6 +55,7 @@ class DrawCard extends Component {
 
     drawCards = () => {
         const cards = this.state.drawnCards
+        console.log(this.state.drawnCards)
         return(
             <div>
                 {this.state.showCards ? cards.map(card => 
@@ -80,4 +89,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(DrawCard)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addCardsToUser: (card) => dispatch(addCardsToUser(card))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DrawCard)

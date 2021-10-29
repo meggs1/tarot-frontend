@@ -1,8 +1,11 @@
 import DrawCard from "./cards/DrawCard"
 
-const Home = () => {
+const Home = (props) => {
+    console.log('home props', props)
     return(
-        <DrawCard />
+        <div>
+            <DrawCard />
+        </div>
     )
 }
 
