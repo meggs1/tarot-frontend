@@ -102,6 +102,7 @@ export const logout = () => {
     .then((resp) => {
       if (resp.ok) {
         console.log('logout successful')
+        localStorage.removeItem('token')
         return dispatch({ type: 'NOT_AUTHENTICATED' })
       } else {
         return Promise.reject(dispatch({type: 'NOT_AUTHENTICATED'}))

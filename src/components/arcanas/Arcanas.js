@@ -10,8 +10,7 @@ function Arcanas(props) {
         <div>
             {props.arcanas.map( arcana => 
                 <Arcana key={arcana.id} arcana={arcana} 
-                suits={props.suits.filter(suit => suit.arcana.id === arcana.id)} 
-                cards={props.cards}
+                    suits={props.suits.filter(suit => suit.arcana.id === arcana.id)} 
                 />
             )}
         </div>
