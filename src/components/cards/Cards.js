@@ -4,7 +4,7 @@ import CardImage from './CardImage'
 function Cards(props) {
 
 
-    // console.log('cards props', this.props)
+    console.log('cards props', props)
     return (
         <div className="card-list">
             {props.cards.map( card => 

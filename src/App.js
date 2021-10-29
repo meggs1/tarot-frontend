@@ -12,8 +12,8 @@ import ArcanasContainer from './containers/ArcanasContainer'
 import SuitsContainer from './containers/SuitsContainer'
 import Profile from './components/users/Profile'
 
-import { fetchArcanas } from "./actions/arcanaActions"
-import { fetchSuits } from "./actions/suitActions"
+// import { fetchArcanas } from "./actions/arcanaActions"
+// import { fetchSuits } from "./actions/suitActions"
 import { fetchCards } from './actions/cardActions'
 
 import { connect } from "react-redux";
@@ -25,8 +25,8 @@ class App extends Component {
 
   componentDidMount() {
     this.props.fetchCards()
-    this.props.fetchArcanas()
-    this.props.fetchSuits()
+    // this.props.fetchArcanas()
+    // this.props.fetchSuits()
   }
 
   render() {
@@ -36,7 +36,7 @@ class App extends Component {
       <div>
         <NavBar exact path="/" />
         <Switch>
-          <Route exact path="/" render={routerProps => <Home {...routerProps} cards={this.props.cards.cards}/> }/>
+          <Route exact path="/" render={routerProps => <Home {...routerProps} /> }/>
           <Route exact path="/signup" render={routerProps => <SignUp {...routerProps} /> } />
           <Route exact path="/login" render={routerProps => <Login {...routerProps} /> } />
           <Route exact path='/cards' render={routerProps => <CardsContainer {...routerProps} /> } />
@@ -61,8 +61,8 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     cards: state.cards,
-    arcanas: state.arcanas,
-    suits: state.suits,
+    // arcanas: state.arcanas,
+    // suits: state.suits,
     loading: state.loading
   }
 }
@@ -70,8 +70,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchCards: () => dispatch(fetchCards()),
-    fetchArcanas: () => dispatch(fetchArcanas()), 
-    fetchSuits: () => dispatch(fetchSuits())
+    // fetchArcanas: () => dispatch(fetchArcanas()), 
+    // fetchSuits: () => dispatch(fetchSuits())
   }
 }
 

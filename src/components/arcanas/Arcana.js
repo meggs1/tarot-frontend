@@ -5,7 +5,7 @@ import SuitsContianer from '../../containers/SuitsContainer'
 class Arcana extends Component {
     
     render() {
-        // console.log('arcana props', this.props)
+        console.log('arcana props', this.props)
         const arcana = this.props.arcana
         const suits = this.props.suits
         return (
