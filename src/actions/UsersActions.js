@@ -52,7 +52,7 @@ export const login = (user) => {
       .then(({ data, resp }) =>  {
       if (resp.ok) {
         localStorage.setItem('token', data.jwt)
-        dispatch({ type: "AUTHENTICATED", payload: data })
+        dispatch({ type: "AUTHENTICATED", payload: data.user })
         console.log('login successful')
       } else {
         dispatch({ type: "NOT_AUTHENTICATED" })
@@ -74,7 +74,7 @@ export const checkAuth = () => {
     })
     .then((resp) => {
       if (resp.ok) {
-        console.log(resp)
+        // console.log('check auth', resp)
         return resp
         .json()
         .then(user => dispatch({ type: "AUTHENTICATED", payload: user }))
@@ -110,38 +110,4 @@ export const logout = () => {
   }
 }
 
-export const addCardsToUser = (card) => {
-  return (dispatch, getState) => {
-    const user = getState().user.currentUser
-    debugger
-    const token = localStorage.getItem("token")
-    fetch(`http://localhost:3000/users/${user.id}`, {
-      method: "PATCH",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: token
-      },
-      body: JSON.stringify({
-        name: user.name,
-        username: user.username,
-        password: user.password,
-        card_ids: card.id 
-      })
-    })
-    .then((resp) => {
-
-      if (resp.ok) {
-          console.log(resp)
-          return resp
-          .json()
-          .then(user => dispatch({ type: "ADD_CARDS_TO_USER", payload: user }))
-      } else {
-          console.log(resp)
-          // return Promise.reject(dispatch({type: 'NOT_AUTHENTICATED'}))
-      }
-      })
-      .catch((error) => console.log("api errors:", error))
-  }
-} 
 

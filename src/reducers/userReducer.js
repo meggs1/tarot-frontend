@@ -12,11 +12,6 @@ const userReducer = (state = { currentUser: {}, authChecked: false, loggedIn: fa
         authChecked: false,
         loggedIn: false
       }
-    case "ADD_CARDS_TO_USER":
-      return {
-        ...state,
-        cards_id: action.payload
-      }
     default:
       return state
   }

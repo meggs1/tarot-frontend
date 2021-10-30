@@ -45,10 +45,6 @@ export function editCard(card) {
     }
 }
 
-
-
-
-
     // componentDidMount() {
     //     const token = localStorage.getItem("jwt")
     //     fetch('http://localhost:3000/cards', {

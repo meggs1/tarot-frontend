@@ -10,15 +10,17 @@ class Profile extends Component {
     }
 
     render() {
-        console.log('profile', this.props.user)
+        console.log('profile', this.props)
         const { authChecked, currentUser } = this.props.user
-        // const cards = currentUser.card_ids
+        const userCards = JSON.parse(localStorage.getItem('userCards'))
+        
+        console.log('local storage', userCards)
         if (authChecked) {
-
+          console.log(userCards)
           return (
             <div> 
               {currentUser.name} 
-              {/* {this.props.userCards.map(card => <CardImage card={card} />)} */}
+              {userCards.map(card => <CardImage card={card} num={0}/>)}
               <button onClick={this.props.logout}>logout</button>
             </div>
           )
@@ -30,8 +32,7 @@ class Profile extends Component {
   
     const mapStateToProps = (state) => {
       return {
-        user: state.user,
-        userCards: state.userCards
+        user: state.user
       }
     }
   

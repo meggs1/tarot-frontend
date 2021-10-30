@@ -3,14 +3,14 @@ import CardImage from "./CardImage"
 
 import { connect } from 'react-redux'
 // import CardsContainer from "../containers/CardsContainer"
-import { addCardsToUser } from '../../actions/usersActions'
+// import { addCardsToUser } from '../../actions/usersActions'
 
 class DrawCard extends Component {
 
     state = {
         showCards: false,
         drawnCards: [],
-        currentUserCards: []
+
     }
 
     getRandomInt(max) {
@@ -29,33 +29,21 @@ class DrawCard extends Component {
         const numOfCards = parseInt(num)
         const selectedCards = []
 
-
-
-
-        // for (var i = 0; i < numOfCards; i++) {
-        //     selectedCards.push(cards[Math.floor(Math.random()*cards.length)]);
-        // }
-
-        for (var i = 0; i < numOfCards; i++) {
-            var idx = Math.floor(Math.random() * cards.length)
-            selectedCards.push(cards[idx])
-            if (this.props.user.authChecked) {
-                const userCards = this.props.user.currentUser.card_ids
-                console.log('current user cards', userCards)
+        for (var i=0; i<numOfCards; i++) {
+            selectedCards.push(cards.splice(Math.random()*(cards.length-1),1).pop())
             
-                userCards.push(cards[idx])
-                this.props.addCardsToUser(userCards)
-            }
-            cards.splice(idx, 1)
-          }
-        
-        this.setState({drawnCards: selectedCards})
-
+            localStorage.setItem('userCards', JSON.stringify(selectedCards))
+            this.setState({
+                drawnCards: selectedCards
+            })
+        }
     }
 
     drawCards = () => {
         const cards = this.state.drawnCards
-        console.log(this.state.drawnCards)
+        
+            console.log(this.state)
+
         return(
             <div>
                 {this.state.showCards ? cards.map(card => 
@@ -68,7 +56,7 @@ class DrawCard extends Component {
     
     render() {
         // console.log(localStorage)
-        console.log('DrawCard props', this.props)
+        console.log('DrawCard props', this.props, localStorage)
 
         return(
             <div>
@@ -89,10 +77,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addCardsToUser: (card) => dispatch(addCardsToUser(card))
-    }
-}
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         addCardsToUser: (cards) => dispatch(addCardsToUser(cards))
+//     }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DrawCard)
+export default connect(mapStateToProps)(DrawCard)
