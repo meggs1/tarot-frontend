@@ -14,13 +14,15 @@ class Profile extends Component {
         const { authChecked, currentUser } = this.props.user
         const userCards = JSON.parse(localStorage.getItem('userCards'))
         
+
         console.log('local storage', userCards)
         if (authChecked) {
           console.log(userCards)
           return (
             <div> 
               {currentUser.name} 
-              {userCards.map(card => <CardImage card={card} num={0}/>)}
+              <h2>Your last tarot cards</h2>
+              {userCards.map(card => <CardImage card={card} num={card}/>)}
               <button onClick={this.props.logout}>logout</button>
             </div>
           )

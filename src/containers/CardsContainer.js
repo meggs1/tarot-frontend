@@ -11,7 +11,7 @@ class CardsContainer extends Component {
   render() {
       console.log('cards container props', this.props)
       return(
-          <div>
+          <div className="container">
               <Cards cards={this.props.cards.cards} />
           </div>
       )
