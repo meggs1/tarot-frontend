@@ -23,7 +23,7 @@ class CardImage extends Component {
                 <div class="container">
                     <div class="row justify-content-md-center">
                         <div class="col-md-auto">
-                            <img src={card.image_url ? card.image_url.url : null} alt={card.name} width="120" height="198" onClick={this.handleClick} class="rounded mx-auto d-block"/>
+                        <img src={card.image_url ? card.image_url.url : null} alt={card.name} width="120" height="198" onClick={this.handleClick} class="rounded mx-auto d-block"/>
                             {this.state.showCardInfo ? <Card card={card} className="cardInfo"/> : null }
                         </div>
                     </div>
@@ -31,7 +31,6 @@ class CardImage extends Component {
             )
         } else if (num === 0 ) {
             return (
-
                 <div class="container">
                     <div class="row justify-content-md-center">
                         <div class="col-md-auto">

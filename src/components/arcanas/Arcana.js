@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import SuitsContianer from '../../containers/SuitsContainer'
+import Suits from '../suits/Suits'
 
 class Arcana extends Component {
     
@@ -11,7 +11,7 @@ class Arcana extends Component {
         return (
             <div>
                 <h1> {arcana.name} </h1>
-                <SuitsContianer suits={suits} cards={this.props.cards}/>
+                <Suits suits={suits} cards={this.props.cards}/>
             </div>
         )
     }

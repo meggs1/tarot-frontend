@@ -12,7 +12,6 @@ class NavBar extends Component{
     }
 
     toggleUserLinks() {
-        console.log(this.props.user)
         const loggedIn = this.props.user.loggedIn
 
         return loggedIn ? (   
@@ -21,7 +20,6 @@ class NavBar extends Component{
                 <Link to="/logout" onClick={this.props.logout} class="nav-link active">Logout</Link>
             </>
         ) : (
-            
             <>
                 <Link to="/signup" class="nav-link active">Sign Up</Link>
                 <Link to="/login" class="nav-link active">Login</Link>
@@ -31,7 +29,6 @@ class NavBar extends Component{
     }
 
     render() {
-        console.log(this.props)
         return(
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">

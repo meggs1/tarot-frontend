@@ -13,7 +13,7 @@ import SuitsContainer from './containers/SuitsContainer'
 import Profile from './components/users/Profile'
 
 // import { fetchArcanas } from "./actions/arcanaActions"
-// import { fetchSuits } from "./actions/suitActions"
+import { fetchSuits } from "./actions/suitActions"
 import { fetchCards } from './actions/cardActions'
 
 import { connect } from "react-redux";
@@ -26,7 +26,7 @@ class App extends Component {
   componentDidMount() {
     this.props.fetchCards()
     // this.props.fetchArcanas()
-    // this.props.fetchSuits()
+    this.props.fetchSuits()
   }
 
   render() {
@@ -63,7 +63,7 @@ const mapStateToProps = (state) => {
     cards: state.cards,
     user: state.user,
     // arcanas: state.arcanas,
-    // suits: state.suits,
+    suits: state.suits,
     loading: state.loading
   }
 }
@@ -72,7 +72,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchCards: () => dispatch(fetchCards()),
     // fetchArcanas: () => dispatch(fetchArcanas()), 
-    // fetchSuits: () => dispatch(fetchSuits())
+    fetchSuits: () => dispatch(fetchSuits())
   }
 }
 

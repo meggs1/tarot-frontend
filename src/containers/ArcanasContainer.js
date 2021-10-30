@@ -14,17 +14,17 @@ class ArcanasContainer extends Component {
         console.log(this.props)
         return(
             <div className="container">
-                <Arcanas arcanas={this.props.arcanas.arcanas} suits={this.props.suits.suits}/>
+                <Arcanas arcanas={this.props.arcanas.arcanas} suits={this.props.suits.suits} cards={this.props.cards.cards}/>
             </div>
         )
     }
-
 }
 
 const mapStateToProps = (state) => {
     return {
       arcanas: state.arcanas,
-      suits: state.suits
+      suits: state.suits,
+      cards: state.cards
     }
 }
 
