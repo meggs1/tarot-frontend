@@ -20,25 +20,37 @@ class CardImage extends Component {
 
         if (this.props.className === 'cardImage') {
             return (
-                <div>
-                    <img src={card.image_url ? card.image_url.url : null} alt={card.name} width="120" height="198" onClick={this.handleClick} />
-                    {this.state.showCardInfo ? <Card card={card} className="cardInfo"/> : null }
+                <div class="container">
+                    <div class="row justify-content-md-center">
+                        <div class="col-md-auto">
+                            <img src={card.image_url ? card.image_url.url : null} alt={card.name} width="120" height="198" onClick={this.handleClick} class="rounded mx-auto d-block"/>
+                            {this.state.showCardInfo ? <Card card={card} className="cardInfo"/> : null }
+                        </div>
+                    </div>
                 </div>
             )
         } else if (num === 0 ) {
             return (
-                <div>
-                    <img src={card.image_url ? card.image_url.url : null} alt={card.name} width="120" height="198" onClick={this.handleClick} />
-                    {this.state.showCardInfo ? <Card card={card} num={num} /> : null }
-                    
+
+                <div class="container">
+                    <div class="row justify-content-md-center">
+                        <div class="col-md-auto">
+                            <img src={card.image_url ? card.image_url.url : null} alt={card.name} width="120" height="198" onClick={this.handleClick} class="rounded mx-auto d-block"/>
+                            {this.state.showCardInfo ? <Card card={card} num={num} /> : null }
+                        </div>
+                    </div>
                 </div>
             )
 
         } else if (num === 1){
             return (
-                <div>
-                    <img className="image_reversed" src={card.image_url ? card.image_url.url : null} alt={card.name} width="120" height="198" onClick={this.handleClick} />
-                    {this.state.showCardInfo ? <Card card={card} num={num} /> : null }
+                <div class="container">
+                    <div class="row justify-content-md-center">
+                        <div class="col-md-auto">
+                            <img className="image_reversed" src={card.image_url ? card.image_url.url : null} alt={card.name} width="120" height="198" onClick={this.handleClick} class="rounded mx-auto d-block"/>
+                            {this.state.showCardInfo ? <Card card={card} num={num} /> : null }
+                        </div>
+                    </div>
                 </div>
             )
         }

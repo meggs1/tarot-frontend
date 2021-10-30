@@ -13,7 +13,7 @@ function Card(props) {
 
         if (props.className === 'cardInfo') {
             return (
-                <div id={card.id}>
+                <div id={card.id} class="card">
                     <h1>{card.name}</h1>
                     {/* <img src={card.image_url ? card.image_url.url : null} alt={card.name} width="120" height="198" /> */}
                     <br />
@@ -29,6 +29,7 @@ function Card(props) {
                     <Link to={`/cards/${card.id}`}>Show</Link>
                     <Link to={`/cards/${card.id}/edit`}>Edit</Link>
                 </div>
+            
             )
         } else if (num === 0 ) {
             return (

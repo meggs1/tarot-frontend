@@ -34,7 +34,7 @@ class App extends Component {
     // console.log('App props', this.props)
     return (
       <div>
-        <NavBar exact path="/" />
+        <NavBar />
         <Switch>
           <Route exact path="/" render={routerProps => <Home {...routerProps} user={this.props.user}/> }/>
           <Route exact path="/signup" render={routerProps => <SignUp {...routerProps} /> } />

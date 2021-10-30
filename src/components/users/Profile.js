@@ -10,12 +10,12 @@ class Profile extends Component {
     }
 
     render() {
-        console.log('profile', this.props)
+        // console.log('profile', this.props)
         const { authChecked, currentUser } = this.props.user
         const userCards = JSON.parse(localStorage.getItem('userCards'))
         
 
-        console.log('local storage', userCards)
+        // console.log('local storage', userCards)
         if (authChecked) {
           console.log(userCards)
           return (

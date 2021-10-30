@@ -10,7 +10,7 @@ class SuitsContainer extends Component {
     }
 
     render() {
-        console.log('suits contaianer props', this.props)
+        // console.log('suits contaianer props', this.props)
         return(
             <div className="container">
                 <Suits suits={this.props.suits.suits} cards={this.props.cards.cards}/>

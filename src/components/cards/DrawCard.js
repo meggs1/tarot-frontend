@@ -42,7 +42,7 @@ class DrawCard extends Component {
     drawCards = () => {
         const cards = this.state.drawnCards
         
-            console.log(this.state)
+            // console.log(this.state)
 
         return(
             <div>
@@ -56,7 +56,7 @@ class DrawCard extends Component {
     
     render() {
         // console.log(localStorage)
-        console.log('DrawCard props', this.props, localStorage)
+        // console.log('DrawCard props', this.props, localStorage)
 
         return(
             <div>

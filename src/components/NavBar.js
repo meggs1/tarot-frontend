@@ -1,43 +1,68 @@
 import React from "react";
-import { NavLink } from "react-router-dom"
+import { Link } from "react-router-dom"
+import {connect} from "react-redux"
+import { Component } from 'react'
+import { checkAuth } from '../actions/usersActions'
 
-const NavBar = (props) => {
-    // console.log('navBar' + props.user)
-    return(
-        <div class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <NavLink to="/" class="nav-link active">Home </NavLink>
-                    </li>
-                        {/* {props.user.username ? <p>Welcome {props.user.name}</p> : ( */}
-                        <li class="nav-item">       
-                            <NavLink to="/signup" class="nav-link active">Sign Up </NavLink>
+class NavBar extends Component{
 
-                        </li>
-                        
-                        <li class="nav-item">
-                            <NavLink to="/login" class="nav-link active">Login </NavLink>
-                        </li>
-                    {/* )} */}
+    componentDidMount() {
+        this.props.checkAuth()
+    }
 
-                    <li class="nav-item">
-                        <NavLink to="/cards" class="nav-link active">Cards </NavLink>
-                    </li>
-                    <li class="nav-item">
-                        <NavLink to="/arcanas" class="nav-link active">Arcanas </NavLink>
-                    </li>
-                    <li class="nav-item">
-                        <NavLink to="/suits" class="nav-link active">Suits </NavLink>
-                    </li>
+    toggleUserLinks() {
+        const authChecked =this.props.user.authChecked
+        const loggedIn = this.props.user.loggedIn
+        if (authChecked) {
+            return loggedIn ? (   
+                <>
+                    <Link to="/profile" class="nav-link active">Profile</Link>
+                    <Link onClick={this.props.logout} class="nav-link active">Logout</Link>
+                </>
+            ) : (
+                <>
+                    <Link to="/signup" class="nav-link active">Sign Up</Link>
+                    <Link to="/login" class="nav-link active">Login</Link>
+                </>
+            )
+        } 
+    }
 
-                    <li class="nav-item">
-                        <NavLink to="/profile" class="nav-link active">Profile </NavLink>
-                    </li> 
-                </ul>
-            </div>
-        </div>
-    )
+    render() {
+        console.log(this.props)
+        return(
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <ul class="navbar-nav mr-auto">
+                            <Link to="/" class="nav-link active">Home</Link>
+                            <Link to="/cards" class="nav-link active">Cards</Link>
+                            <Link to="/arcanas" class="nav-link active">Arcanas</Link>
+                            <Link to="/suits" class="nav-link active">Suits</Link>
+                    </ul>
+                </div>
+                <div class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container-fluid">
+                        <ul class="navbar-nav ml-auto">
+                            {this.toggleUserLinks()}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        )
+    }
+    
 }
 
-export default NavBar
+const mapStateToProps = (state) => {
+    return {
+        user: state.user
+    }
+  };
+  
+  const mapDispatchToProps = (dispatch) => {
+    return {
+        checkAuth: () => dispatch(checkAuth())
+    }
+  }
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar)
