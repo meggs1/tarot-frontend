@@ -43,6 +43,7 @@ class App extends Component {
           <Route exact path='/arcanas' render={routerProps => <ArcanasContainer {...routerProps} />} />
           <Route exact path='/suits' render={routerProps => <SuitsContainer {...routerProps} /> } />
           <Route exact path='/profile' render={routerProps => <Profile {...routerProps} />  } />
+          
           <Route path="/cards/:id" 
             render={routerProps => {
               return ( <Card {...routerProps} 
@@ -51,6 +52,7 @@ class App extends Component {
               )
             }} 
           />
+          
           <Route path="/cards/:id/edit" render={routerProps => {
             return ( <CardForm {...routerProps} /> )}} 
           />

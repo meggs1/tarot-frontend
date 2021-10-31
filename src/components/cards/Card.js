@@ -3,27 +3,23 @@ import { Link } from "react-router-dom"
 // import CardImage from './CardImage'
 
 function Card(props) {
-    // console.log(props)
-
-
 
     function cardDisplay() {
         const card = props.card
         const num = props.num
-
-        // console.log('show card', props)
-
+        console.log('show card', props)
+        // debugger
         if (props.className === 'cardInfo') {
+
             return (
                 
                 <div id={card.id} class="container">
                     <div class="row justify-content-center">
-                        <div class="col-md-5" >
+                        <div class="col" >
                             <img src={card.image_url ? card.image_url.url : null} alt={card.name} />
-
                         </div>
 
-                        <div class="col-md-6" >
+                        <div class="col-md-6">
                         <h1>{card.name}</h1>
                         <p><strong>{card.arcana.name} Arcana Suit of {card.suit.name}</strong></p>
                         
@@ -40,12 +36,11 @@ function Card(props) {
                     {/* <Link to={`/cards/${card.id}`}>Show</Link> */}
                     <Link to={`/cards/${card.id}/edit`}>Edit</Link>
                 </div>
-                
             )
+
         } else if (num === 0 ) {
             return (
-                <div>
-
+                <div class="row justify-content-md-center">
                     <h2>{card.name} Upright Meaning</h2>
                     <p>{card.upright_meaning}</p>
                 </div>
@@ -57,7 +52,11 @@ function Card(props) {
                     <p>{card.reversed_meaning}</p>
                 </div>
             )
-        } 
+        } else {
+            <div>
+                cant find that card
+            </div>
+        }
     }
     
     return (

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Card from './Card'
 
+
 class CardImage extends Component {
 
     state = {
@@ -8,30 +9,35 @@ class CardImage extends Component {
     }
     
     handleClick = () => {
-        console.log("click card image")
+        // console.log(this.props.card)
         this.setState({ showCardInfo: !this.state.showCardInfo })
     }
 
     imgFlip() {
+        // console.log("card img", this.props)
         const num = this.props.num
         const card = this.props.card
 
         if (this.props.className === 'cardImage') {
+                // console.log('card img', card)
             return (
                 <div class="container">
-                    <img src={card.image_url ? card.image_url.url : null} alt={card.name} width="120" height="198" onClick={this.handleClick} class="rounded mx-auto d-block"/>
+                    <img src={card.image_url ? card.image_url.url : null} alt={card.name} width="120" height="198" onClick={this.handleClick} class="rounded mx-auto d-block" />
                     {this.state.showCardInfo ? <Card card={card} className="cardInfo"/> : null }
                 </div>
             )
+
         } else if (num === 0 && this.props.className === 'drawCard') {
             return (
                 <div class="container">
+
                     <img src={card.image_url ? card.image_url.url : null} alt={card.name} width="168" height="276" onClick={this.handleClick} class="rounded mx-auto d-block"/>
                     {this.state.showCardInfo ? <Card card={card} num={num} /> : null }
+
                 </div>
             )
 
-        } else if (num === 1 && this.props.className === 'drawCard') {
+        } else if (num === 1 && this.props.className === 'drawCard'){
             return (
 
                 <div class="container">
@@ -49,6 +55,9 @@ class CardImage extends Component {
             </div>
         )
     }
+
+    
+    
 
 }
 

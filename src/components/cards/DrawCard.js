@@ -9,8 +9,7 @@ class DrawCard extends Component {
 
     state = {
         showCards: false,
-        drawnCards: [],
-
+        drawnCards: []
     }
 
     getRandomInt(max) {
@@ -41,7 +40,6 @@ class DrawCard extends Component {
 
     drawCards = () => {
         const cards = this.state.drawnCards
-
         return(
         
             <div class="row">

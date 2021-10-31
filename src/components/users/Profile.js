@@ -1,7 +1,8 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
-import { checkAuth, logout } from '../../actions/usersActions'
+import { checkAuth } from '../../actions/usersActions'
 import CardImage from '../cards/CardImage'
+// import Cards from '../cards/Cards'
 
 class Profile extends Component {
 
@@ -9,25 +10,34 @@ class Profile extends Component {
         this.props.checkAuth()
     }
 
+    state = {
+      userCards: []
+    }
+
     render() {
         // console.log('profile', this.props)
         const { authChecked, currentUser } = this.props.user
         const userCards = JSON.parse(localStorage.getItem('userCards'))
         
+        
 
-        // console.log('local storage', userCards)
+        console.log(userCards)
         if (authChecked) {
-          console.log(userCards)
+          // console.log(userCards)
+          // debugger
+          
           return (
-            <div> 
-              {currentUser.name} 
+            <div class="container"> 
+              <h1>Welcome, {currentUser.name} </h1>
               <h2>Your last tarot cards</h2>
-              {userCards.map(card => <CardImage card={card} num={card}/>)}
-              <button onClick={this.props.logout}>logout</button>
+              
+                <div class="container">
+                  
+                  {userCards.map(card => <CardImage card={card} className='cardImage'/>)}
+                </div>
+            
             </div>
           )
-        } else {
-          return <div>log in</div>
         }
       }
     }
@@ -41,7 +51,6 @@ class Profile extends Component {
     const mapDispatchToProps = (dispatch) => {
       return {
         checkAuth: () => dispatch(checkAuth()),
-        logout: () => dispatch(logout())
       }
     }
 
