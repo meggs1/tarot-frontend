@@ -46,7 +46,7 @@ class CardForm extends Component {
 
     render() {
         console.log('card form props', this.props)
-        // console.log('card form state', this.state)
+
         const currentUser = this.props.user.currentUser
         if (currentUser.is_admin === true) {
         return (

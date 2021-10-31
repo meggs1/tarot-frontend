@@ -13,7 +13,7 @@ class ArcanasContainer extends Component {
     render() {
         console.log(this.props)
         return(
-            <div className="container">
+            <div className="container p-3 mb-2 bg-white text-dark bg-opacity-75">
                 <Arcanas arcanas={this.props.arcanas.arcanas} suits={this.props.suits.suits} cards={this.props.cards.cards}/>
             </div>
         )

@@ -20,15 +20,13 @@ class Profile extends Component {
         const { authChecked, currentUser } = this.props.user
         const userCards = JSON.parse(localStorage.getItem('userCards'))
         
-        
-
         console.log(userCards)
         if (authChecked) {
           // console.log(userCards)
           // debugger
           
           return (
-            <div class="container"> 
+            <div className="container p-3 mb-2 bg-white text-dark bg-opacity-75">
               <h1>Welcome, {currentUser.name} </h1>
               <h2>Your last tarot cards</h2>
               

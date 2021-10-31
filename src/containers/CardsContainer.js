@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import Cards from '../components/cards/Cards'
-
+import CardImage from '../components/cards/CardImage'
+import { Link } from "react-router-dom"
 import { connect } from "react-redux";
 
 import { fetchCards, editCard } from "../actions/cardActions"
@@ -8,13 +8,24 @@ import { fetchCards, editCard } from "../actions/cardActions"
 
 class CardsContainer extends Component {
 
+  componentDidUpdate() {
+    this.props.fetchCards()
+  }
+
   render() {
       console.log('cards container props', this.props)
       return(
-          <div className="container">
-              <Cards cards={this.props.cards.cards} />
-          </div>
+        <div class="row justify-content-md-center">
+          {this.props.cards.cards.map( card => 
+            <div class="col-md-auto">
+                <Link to={{pathname: `/cards/${card.id}`}}>
+                    <CardImage card={card} className="cardImage" />
+                </Link>
+            </div>
+        ) }
+        </div>
       )
+      
   }
 
 }
@@ -27,7 +38,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-      // fetchCards: () => dispatch(fetchCards()),
+      fetchCards: () => dispatch(fetchCards()),
       editCard: (card) => dispatch(editCard(card))
     }
   }
