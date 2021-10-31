@@ -1,5 +1,26 @@
-.image_reversed {
-  transform: rotateX(180deg)
+.reversed {
+  transform: scaleY(-1)
+}
+
+img.small {
+  width: 120px;
+  height: 198px;
+}
+
+img.medium {
+  width: 168px;
+  height: 276px;
+}
+
+img.large {
+  width: 360px;
+  height: 591px;
+}
+
+.back {
+  width: 360px;
+  height: 591px;
+  overflow-y: auto;
 }
 
 body {

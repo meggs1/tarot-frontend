@@ -9,8 +9,11 @@ class DrawCard extends Component {
 
     state = {
         showCards: false,
-        drawnCards: []
+        showCardInfo: false,
+        drawnCards: [],
+
     }
+    
 
     getRandomInt(max) {
         return Math.floor(Math.random() * max)
@@ -40,24 +43,28 @@ class DrawCard extends Component {
 
     drawCards = () => {
         const cards = this.state.drawnCards
+        
+        
         return(
         
-            <div class="row">
+            <>
                 {this.state.showCards ? cards.map(card => 
                     <div class="col">
-                    <CardImage card={card} num={this.getRandomInt(2)} className="drawCard"/> 
+                        <CardImage card={card} num={this.getRandomInt(2)} className="drawCard"/> 
                     </div>
+                
                     ) : null 
                 }
-            </div>
+            </>
             
         )
     }
+
     
     render() {
         // console.log(localStorage)
         // console.log('DrawCard props', this.props, localStorage)
-
+        
         return(
             <div class="container">
                 <div class="row justify-content-md-center">
@@ -69,7 +76,7 @@ class DrawCard extends Component {
                         <button onClick={this.handleClick} value="5" class="btn btn-dark btn-lg">Draw five cards</button>
                     </div>
                 </div>
-                <div class="container">
+                <div class="row justify-content-md-center">
                     {this.drawCards()}
                 </div>
             </div>

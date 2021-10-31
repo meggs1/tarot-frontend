@@ -15,7 +15,7 @@ function Card(props) {
                 <div id={card.id}  className="container p-3 mb-2 bg-white text-dark bg-opacity-75">
                     <div class="row justify-content-center">
                         <div class="col" >
-                            <img src={card.image_url ? card.image_url.url : null} alt={card.name}  width="480" height="788" />
+                            <img src={card.image_url ? card.image_url.url : null} alt={card.name}  class="large" />
                         </div>
 
                         <div class="col">
@@ -37,29 +37,29 @@ function Card(props) {
                 </div>
             )
 
-        } else if (num === 0 ) {
+        } 
+        else if (num === 0 ) {
+            console.log(props)
             return (
-                <div class="row justify-content-md-center">
+                <div class ="container bw-white">
                     <h2>{card.name} Upright Meaning</h2>
                     <p>{card.upright_meaning}</p>
+                
                 </div>
             )
         } else if (num === 1) {
             return (
-                <div>
+                <div class ="container bg-white">
                     <h2>{card.name} Reversed Meaning</h2>
                     <p>{card.reversed_meaning}</p>
+                    {/* <button onClick={props.handleClick()}> show img</button> */}
                 </div>
             )
-        } else {
-            <div>
-                cant find that card
-            </div>
-        }
+        } 
     }
     
     return (
-        <div>
+        <div class="row-md-auto">
             {cardDisplay()}
         </div>
     )

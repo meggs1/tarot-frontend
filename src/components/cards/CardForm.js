@@ -11,6 +11,8 @@ class CardForm extends Component {
         uprightMeaning: '',
         reversedMeaning: '',
         image: '',
+        arcara: '',
+        suit: '',
         id: ''
     }
 
@@ -29,6 +31,8 @@ class CardForm extends Component {
             fullMeaning: card.full_meaning,
             uprightMeaning: card.upright_meaning,
             reversedMeaning: card.reversed_meaning,
+            suit: card.suit.name,
+            arcana: card.arcana.name
         })
     }
 
@@ -51,48 +55,52 @@ class CardForm extends Component {
         const currentUser = this.props.user.currentUser
         if (currentUser.is_admin === true) {
         return (
-            <div className="container p-3 mb-2 bg-white text-dark bg-opacity-75">
-                
-                <form onSubmit={this.handleOnSubmit}>
-                    Card Name: {this.state.name}
-
-                    <br /><br />
-                    
-                        Card Full Meaning:
+        <div className="container p-3 mb-2 bg-white text-dark bg-opacity-75">
+            <div class="row justify-content-center">
+                <div class="col" >
+                    <img src={this.state.image ? this.state.image.url : null} alt={this.state.name}  width="480" height="788" /> 
+                </div>
+                <div class="col">
+                    <h1> Edit: {this.state.name} </h1>
+                    <p><strong>{this.state.arcana} Arcana Suit of {this.state.suit}</strong></p>
+                    <form onSubmit={this.handleOnSubmit}>
+                        <h2>Card Full Meaning:</h2>
                         <textarea
                             type="text"
                             name="fullMeaning"
                             value={this.state.fullMeaning}
                             onChange={(e) => this.handleOnChange(e)} 
                             class="form-control"
-                            rows="3"
+                            rows="7"
                         />
-                
-                
-                    Card Upright Meaning:
-                    <textarea
-                        type="text"
-                        name="uprightMeaning"
-                        value={this.state.uprightMeaning}
-                        onChange={(e) => this.handleOnChange(e)} 
-                        class="form-control"
-                        rows="3"
-                    />
                     
-                    Card Reverse Meaning:
-                    <textarea
-                        type="text"
-                        name="reversedMeaning"
-                        value={this.state.reversedMeaning}
-                        onChange={(e) => this.handleOnChange(e)} 
-                        class="form-control"
-                        rows="3"
-                    />
-                    <br />
-                    <input type="submit" />
-                </form>
+                    
+                        <h2>Card Upright Meaning:</h2>
+                        <textarea
+                            type="text"
+                            name="uprightMeaning"
+                            value={this.state.uprightMeaning}
+                            onChange={(e) => this.handleOnChange(e)} 
+                            class="form-control"
+                            rows="7"
+                        />
+                        
+                        <h2>Card Reverse Meaning:</h2>
+                        <textarea
+                            type="text"
+                            name="reversedMeaning"
+                            value={this.state.reversedMeaning}
+                            onChange={(e) => this.handleOnChange(e)} 
+                            class="form-control"
+                            rows="7"
+                        />
+                        <br />
+                    
+                        <input type="submit" class="btn btn-secondary btn-lg btn-block"/>
+                    </form>
+                </div>    
             </div>
-           
+            </div>
         )
         } else {
             return (

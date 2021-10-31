@@ -31,10 +31,8 @@ class Profile extends Component {
               <h2>Your last tarot cards</h2>
               
                 <div class="container">
-                
                     {/* <Cards cards={userCards} /> */}
                   {userCards.map(card => 
-                 
                   <Card card={card} className='cardInfo'/> )}
                 </div>
                 
