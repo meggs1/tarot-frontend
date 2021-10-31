@@ -1,8 +1,9 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
 import { checkAuth } from '../../actions/usersActions'
-import CardImage from '../cards/CardImage'
-// import Cards from '../cards/Cards'
+// import CardImage from '../cards/CardImage'
+import { fetchCards } from '../../actions/cardActions'
+import Cards from '../cards/Cards'
 
 class Profile extends Component {
 
@@ -32,10 +33,11 @@ class Profile extends Component {
               <h2>Your last tarot cards</h2>
               
                 <div class="container">
-                  
-                  {userCards.map(card => <CardImage card={card} className='cardImage'/>)}
+                  <div class="row">
+                    <Cards cards={userCards} />
+                  {/* {userCards.map(card => <CardImage card={card} className='cardImage'/>)} */}
                 </div>
-            
+                </div>
             </div>
           )
         }
@@ -51,6 +53,7 @@ class Profile extends Component {
     const mapDispatchToProps = (dispatch) => {
       return {
         checkAuth: () => dispatch(checkAuth()),
+        // fetchCards: () => dispatch(fetchCards())
       }
     }
 
