@@ -41,16 +41,18 @@ class DrawCard extends Component {
 
     drawCards = () => {
         const cards = this.state.drawnCards
-        
-            // console.log(this.state)
 
         return(
-            <div>
+        
+            <div class="row">
                 {this.state.showCards ? cards.map(card => 
-                    <CardImage card={card} num={this.getRandomInt(2)}/> 
+                    <div class="col">
+                    <CardImage card={card} num={this.getRandomInt(2)} className="drawCard"/> 
+                    </div>
                     ) : null 
                 }
             </div>
+            
         )
     }
     
@@ -59,12 +61,19 @@ class DrawCard extends Component {
         // console.log('DrawCard props', this.props, localStorage)
 
         return(
-            <div>
-                DrawCard Page
-                <button onClick={this.handleClick} value="1">Draw one card</button>
-                <button onClick={this.handleClick} value="3">Draw three cards</button>
-                <button onClick={this.handleClick} value="5">Draw five cards</button>
-                {this.drawCards()}
+            <div class="container">
+                <div class="row justify-content-md-center">
+                    <div class="col-md-auto ">
+                        <button onClick={this.handleClick} value="1" class="btn btn-dark btn-lg">Draw one card</button>
+                        
+                        <button onClick={this.handleClick} value="3" class="btn btn-dark btn-lg">Draw three cards</button>
+
+                        <button onClick={this.handleClick} value="5" class="btn btn-dark btn-lg">Draw five cards</button>
+                    </div>
+                </div>
+                <div class="container">
+                    {this.drawCards()}
+                </div>
             </div>
         )
     }

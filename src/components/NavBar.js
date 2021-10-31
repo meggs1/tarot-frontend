@@ -32,18 +32,20 @@ class NavBar extends Component{
         return(
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
-                    <ul class="navbar-nav mr-auto">
-                        <Link to="/" class="nav-link active">Home</Link>
-                        <Link to="/cards" class="nav-link active">Cards</Link>
-                        <Link to="/arcanas" class="nav-link active">Arcanas</Link>
-                        <Link to="/suits" class="nav-link active">Suits</Link>
-                    </ul>
-                </div>
-                <div class="navbar navbar-expand-lg navbar-light bg-light">
-                    <div class="container-fluid">
-                        <ul class="navbar-nav ml-auto">
-                            {this.toggleUserLinks()}
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav me-auto mb-2 ">
+                            <Link to="/" class="nav-link active">Home</Link>
+                            <Link to="/cards" class="nav-link active">Cards</Link>
+                            <Link to="/arcanas" class="nav-link active">Arcanas</Link>
+                            <Link to="/suits" class="nav-link active">Suits</Link>
                         </ul>
+                    </div>
+                    <div class="navbar navbar-expand-lg navbar-light bg-light">
+                        <div class="container-fluid">
+                            <ul class="navbar-nav mr-auto">
+                                {this.toggleUserLinks()}
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </nav>

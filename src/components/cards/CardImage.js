@@ -7,12 +7,10 @@ class CardImage extends Component {
         showCardInfo: false
     }
     
-    
     handleClick = () => {
         console.log("click card image")
         this.setState({ showCardInfo: !this.state.showCardInfo })
     }
-
 
     imgFlip() {
         const num = this.props.num
@@ -21,35 +19,26 @@ class CardImage extends Component {
         if (this.props.className === 'cardImage') {
             return (
                 <div class="container">
-                    <div class="row justify-content-md-center">
-                        <div class="col-md-auto">
-                        <img src={card.image_url ? card.image_url.url : null} alt={card.name} width="120" height="198" onClick={this.handleClick} class="rounded mx-auto d-block"/>
-                            {this.state.showCardInfo ? <Card card={card} className="cardInfo"/> : null }
-                        </div>
-                    </div>
+                    <img src={card.image_url ? card.image_url.url : null} alt={card.name} width="120" height="198" onClick={this.handleClick} class="rounded mx-auto d-block"/>
+                    {this.state.showCardInfo ? <Card card={card} className="cardInfo"/> : null }
                 </div>
             )
-        } else if (num === 0 ) {
+        } else if (num === 0 && this.props.className === 'drawCard') {
             return (
                 <div class="container">
-                    <div class="row justify-content-md-center">
-                        <div class="col-md-auto">
-                            <img src={card.image_url ? card.image_url.url : null} alt={card.name} width="120" height="198" onClick={this.handleClick} class="rounded mx-auto d-block"/>
-                            {this.state.showCardInfo ? <Card card={card} num={num} /> : null }
-                        </div>
-                    </div>
+
+                    <img src={card.image_url ? card.image_url.url : null} alt={card.name} width="168" height="276" onClick={this.handleClick} class="rounded mx-auto d-block"/>
+                    {this.state.showCardInfo ? <Card card={card} num={num} /> : null }
+
                 </div>
             )
 
-        } else if (num === 1){
+        } else if (num === 1 && this.props.className === 'drawCard'){
             return (
+
                 <div class="container">
-                    <div class="row justify-content-md-center">
-                        <div class="col-md-auto">
-                            <img className="image_reversed" src={card.image_url ? card.image_url.url : null} alt={card.name} width="120" height="198" onClick={this.handleClick} class="rounded mx-auto d-block"/>
-                            {this.state.showCardInfo ? <Card card={card} num={num} /> : null }
-                        </div>
-                    </div>
+                    <img src={card.image_url ? card.image_url.url : null} alt={card.name} width="168" height="276" onClick={this.handleClick} class="rounded mx-auto d-block image_reversed"/>
+                    {this.state.showCardInfo ? <Card card={card} num={num} /> : null }
                 </div>
             )
         }

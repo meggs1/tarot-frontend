@@ -35,9 +35,7 @@ function Card(props) {
             return (
                 <div>
                     {/* <img src={card.image_url ? card.image_url.url : null} alt={card.name} width="120" height="198" /> */}
-                    <p><strong>{card.arcana.name} Arcana</strong></p>
-                    <p><strong>Suit: {card.suit.name}</strong></p>
-                    <h3>Upright Meaning</h3>
+                    <h2>{card.name} Upright Meaning</h2>
                     <p>{card.upright_meaning}</p>
                 </div>
             )
@@ -45,9 +43,7 @@ function Card(props) {
             return (
                 <div>
                     {/* <img className="image_reversed" src={card.image_url ? card.image_url.url : null} alt={card.name} width="120" height="198" /> */}
-                    <p><strong>{card.arcana.name} Arcana</strong></p>
-                    <p><strong>Suit: {card.suit.name}</strong></p>
-                    <h3>Reversed Meaning</h3>
+                    <h2>{card.name} Reversed Meaning</h2>
                     <p>{card.reversed_meaning}</p>
                 </div>
             )
