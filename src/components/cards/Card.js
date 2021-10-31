@@ -12,8 +12,7 @@ function Card(props) {
         if (props.className === 'cardInfo') {
 
             return (
-                
-                <div id={card.id} class="container">
+                <div id={card.id}  className="container p-3 mb-2 bg-white text-dark bg-opacity-75">
                     <div class="row justify-content-center">
                         <div class="col" >
                             <img src={card.image_url ? card.image_url.url : null} alt={card.name} />

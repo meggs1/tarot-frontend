@@ -46,49 +46,52 @@ class CardForm extends Component {
 
     render() {
         console.log('card form props', this.props)
-
+        // console.log('card form state', this.state)
         const currentUser = this.props.user.currentUser
         if (currentUser.is_admin === true) {
         return (
-            <div>
+            <div className="container p-3 mb-2 bg-white text-dark bg-opacity-75">
+                
                 <form onSubmit={this.handleOnSubmit}>
                     Card Name: {this.state.name}
 
-                    <br />
-                    Card Full Meaning:
-                    <textarea
-                        type="text"
-                        name="fullMeaning"
-                        value={this.state.fullMeaning}
-                        onChange={(e) => this.handleOnChange(e)} 
-                    />
-                    <br />
+                    <br /><br />
+                    
+                        Card Full Meaning:
+                        <textarea
+                            type="text"
+                            name="fullMeaning"
+                            value={this.state.fullMeaning}
+                            onChange={(e) => this.handleOnChange(e)} 
+                            class="form-control"
+                            rows="3"
+                        />
+                
+                
                     Card Upright Meaning:
                     <textarea
                         type="text"
                         name="uprightMeaning"
                         value={this.state.uprightMeaning}
                         onChange={(e) => this.handleOnChange(e)} 
+                        class="form-control"
+                        rows="3"
                     />
-                    <br />
+                    
                     Card Reverse Meaning:
                     <textarea
                         type="text"
                         name="reversedMeaning"
                         value={this.state.reversedMeaning}
                         onChange={(e) => this.handleOnChange(e)} 
-                    />
-                    <br />
-
-                    <input 
-                        type="file"
-                        name="image"
-                        // accept="image/png, image/jpeg"
+                        class="form-control"
+                        rows="3"
                     />
                     <br />
                     <input type="submit" />
                 </form>
             </div>
+           
         )
         } else {
             return (

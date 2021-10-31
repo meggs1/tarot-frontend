@@ -17,7 +17,7 @@ class CardsContainer extends Component {
       return(
         <div class="row justify-content-md-center">
           {this.props.cards.cards.map( card => 
-            <div class="col-md-auto">
+            <div class="col-md-auto bg-white text-dark bg-opacity-75">
                 <Link to={{pathname: `/cards/${card.id}`}}>
                     <CardImage card={card} className="cardImage" />
                 </Link>

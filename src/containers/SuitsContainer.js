@@ -2,19 +2,32 @@ import React, {Component} from 'react'
 
 import { connect } from "react-redux";
 import { fetchSuits } from '../actions/suitActions';
-import Suits from '../components/suits/Suits'
+import Suit from '../components/suits/Suit'
 
 class SuitsContainer extends Component {
     componentDidMount() {
         this.props.fetchSuits()
     }
 
+    filterCards = (suit_id) => {
+        const cards = this.props.cards.cards
+        const filteredCards = cards.filter(card => {
+            return (card.suit.id == suit_id)
+        })
+        return filteredCards
+    }
+    
+
     render() {
-        // console.log('suits contaianer props', this.props)
+        console.log('suits contaianer props', this.props)
         return(
+            
             <div className="container p-3 mb-2 bg-white text-dark bg-opacity-75">
-                <Suits suits={this.props.suits.suits} cards={this.props.cards.cards}/>
+                {this.props.suits.suits.map( suit => 
+                    <Suit key={suit.id} suit={suit} cards={this.filterCards(suit.id)}/>
+                )}
             </div>
+        
         )
     }
 
