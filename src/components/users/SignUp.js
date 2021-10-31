@@ -25,6 +25,7 @@ class SignUp extends Component {
         const password = this.state.password
         // console.log(this.state)
         this.props.signUp({ name, username, password })
+        this.props.history.push(`/`)
     }
 
     render() {

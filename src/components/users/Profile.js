@@ -1,9 +1,9 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
 import { checkAuth } from '../../actions/usersActions'
-// import CardImage from '../cards/CardImage'
-import { fetchCards } from '../../actions/cardActions'
-import Cards from '../cards/Cards'
+import Card from '../cards/Card'
+// import { fetchCards } from '../../actions/cardActions'
+// import Cards from '../cards/Cards'
 
 class Profile extends Component {
 
@@ -31,11 +31,13 @@ class Profile extends Component {
               <h2>Your last tarot cards</h2>
               
                 <div class="container">
-                  <div class="row">
-                    <Cards cards={userCards} />
-                  {/* {userCards.map(card => <CardImage card={card} className='cardImage'/>)} */}
+                
+                    {/* <Cards cards={userCards} /> */}
+                  {userCards.map(card => 
+                 
+                  <Card card={card} className='cardInfo'/> )}
                 </div>
-                </div>
+                
             </div>
           )
         }

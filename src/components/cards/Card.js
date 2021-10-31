@@ -15,21 +15,21 @@ function Card(props) {
                 <div id={card.id}  className="container p-3 mb-2 bg-white text-dark bg-opacity-75">
                     <div class="row justify-content-center">
                         <div class="col" >
-                            <img src={card.image_url ? card.image_url.url : null} alt={card.name} />
+                            <img src={card.image_url ? card.image_url.url : null} alt={card.name}  width="480" height="788" />
                         </div>
 
-                        <div class="col-md-6">
-                        <h1>{card.name}</h1>
-                        <p><strong>{card.arcana.name} Arcana Suit of {card.suit.name}</strong></p>
-                        
-                        <h3>Full Meaning</h3>
-                        <p>{card.full_meaning}</p>
-  
-                        <h3>Upright Meaning</h3>
-                        <p>{card.upright_meaning}</p>
+                        <div class="col">
+                            <h1>{card.name}</h1>
+                            <p><strong>{card.arcana.name} Arcana Suit of {card.suit.name}</strong></p>
+                            
+                            <h3>Full Meaning</h3>
+                            <p>{card.full_meaning}</p>
+    
+                            <h3>Upright Meaning</h3>
+                            <p>{card.upright_meaning}</p>
 
-                        <h3>Reversed Meaning</h3>
-                        <p>{card.reversed_meaning}</p>
+                            <h3>Reversed Meaning</h3>
+                            <p>{card.reversed_meaning}</p>
                         </div>
                     </div>
                     {/* <Link to={`/cards/${card.id}`}>Show</Link> */}

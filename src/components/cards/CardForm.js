@@ -42,6 +42,7 @@ class CardForm extends Component {
         e.preventDefault()
         const card = this.state
         this.props.editCard(card)
+        this.props.history.push(`/cards/${this.state.id}`)
     }
 
     render() {

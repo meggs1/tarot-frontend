@@ -21,10 +21,10 @@ class CardImage extends Component {
         if (this.props.className === 'cardImage') {
                 // console.log('card img', card)
             return (
-                <div class="container">
+                <>
                     <img src={card.image_url ? card.image_url.url : null} alt={card.name} width="120" height="198" onClick={this.handleClick} class="rounded mx-auto d-block" />
                     {this.state.showCardInfo ? <Card card={card} className="cardInfo"/> : null }
-                </div>
+                </>
             )
 
         } else if (num === 0 && this.props.className === 'drawCard') {

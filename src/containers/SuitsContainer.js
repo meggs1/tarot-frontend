@@ -12,7 +12,7 @@ class SuitsContainer extends Component {
     filterCards = (suit_id) => {
         const cards = this.props.cards.cards
         const filteredCards = cards.filter(card => {
-            return (card.suit.id == suit_id)
+            return (card.suit.id === suit_id)
         })
         return filteredCards
     }
