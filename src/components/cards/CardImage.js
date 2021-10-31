@@ -26,14 +26,12 @@ class CardImage extends Component {
         } else if (num === 0 && this.props.className === 'drawCard') {
             return (
                 <div class="container">
-
                     <img src={card.image_url ? card.image_url.url : null} alt={card.name} width="168" height="276" onClick={this.handleClick} class="rounded mx-auto d-block"/>
                     {this.state.showCardInfo ? <Card card={card} num={num} /> : null }
-
                 </div>
             )
 
-        } else if (num === 1 && this.props.className === 'drawCard'){
+        } else if (num === 1 && this.props.className === 'drawCard') {
             return (
 
                 <div class="container">
@@ -51,7 +49,6 @@ class CardImage extends Component {
             </div>
         )
     }
-    
 
 }
 

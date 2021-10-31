@@ -4,7 +4,6 @@ import Arcana from './Arcana'
 
 function Arcanas(props) {
     
-
     console.log('arcanas props', props)
 
     const filterSuits = (arcana_id) => {

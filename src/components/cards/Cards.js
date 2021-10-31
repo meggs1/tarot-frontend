@@ -1,5 +1,6 @@
 // import React, { Component } from 'react'
 import CardImage from './CardImage'
+import { Link } from "react-router-dom"
 
 function Cards(props) {
 
@@ -9,7 +10,9 @@ function Cards(props) {
         <div class="row justify-content-md-center">
                 {props.cards.map( card => 
                 <div class="col-md-auto">
-                    <CardImage card={card} key={card.id} className="cardImage" />
+                    <Link to={`/cards/${card.id}`}>
+                        <CardImage card={card} key={card.id} className="cardImage" />
+                    </Link>
                 </div>
                 )}
                 
