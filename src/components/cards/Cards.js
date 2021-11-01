@@ -11,6 +11,7 @@ const Cards = (props) => {
 
         console.log('cards props', props)
         return (
+            <div class="container">
             <div class="row justify-content-md-center">
                 {props.cards.map( card => 
                     <div class="col-md-auto">
@@ -19,6 +20,7 @@ const Cards = (props) => {
                         </Link>
                     </div>
                 )}
+            </div>
             </div>
         )
     

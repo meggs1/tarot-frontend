@@ -25,13 +25,10 @@ class CardImage extends Component {
                 // console.log('card img', card)
             return (
                 <>
-                    {this.state.showCardInfo ? 
-                    <Card card={card} className="cardInfo"/> : 
-                        <img src={card.image_url ? card.image_url.url : null} 
-                        alt={card.name} width="120" height="198" 
-                        onClick={this.handleClick} 
-                        class="rounded mx-auto d-block" 
-                    /> }
+                    <img src={card.image_url ? card.image_url.url : null} 
+                    alt={card.name} width="120" height="198" onClick={this.handleClick} 
+                     />
+                    {this.state.showCardInfo ? <Card card={card} className="cardInfo"/> : null }
                 </>
             )
 
