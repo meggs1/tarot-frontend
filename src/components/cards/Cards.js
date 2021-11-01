@@ -1,17 +1,9 @@
-import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import CardImage from './CardImage'
-import { connect } from 'react-redux'
-import { fetchCards } from '../../actions/cardActions'
-
 
 const Cards = (props) => {
-
-    
-
-        console.log('cards props', props)
-        return (
-            <div class="container">
+    return (
+        <div class="container">
             <div class="row justify-content-md-center">
                 {props.cards.map( card => 
                     <div class="col-md-auto">
@@ -21,9 +13,8 @@ const Cards = (props) => {
                     </div>
                 )}
             </div>
-            </div>
-        )
-    
+        </div>
+    )
 }
 
 // mapStateToProps = (state) => {

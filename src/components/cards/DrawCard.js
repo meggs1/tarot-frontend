@@ -2,8 +2,6 @@ import { Component } from "react"
 import CardImage from "./CardImage"
 
 import { connect } from 'react-redux'
-// import CardsContainer from "../containers/CardsContainer"
-// import { addCardsToUser } from '../../actions/usersActions'
 
 class DrawCard extends Component {
 
@@ -14,7 +12,6 @@ class DrawCard extends Component {
 
     }
     
-
     getRandomInt(max) {
         return Math.floor(Math.random() * max)
     }
@@ -43,37 +40,26 @@ class DrawCard extends Component {
 
     drawCards = () => {
         const cards = this.state.drawnCards
-        
-        
         return(
-        
             <>
                 {this.state.showCards ? cards.map(card => 
-                    <div class="col">
+                    <div class="col  p-3">
                         <CardImage card={card} num={this.getRandomInt(2)} className="drawCard"/> 
-                    </div>
-                
-                    ) : null 
+                    </div> ) : null 
                 }
             </>
-            
         )
     }
 
     
     render() {
-        // console.log(localStorage)
-        // console.log('DrawCard props', this.props, localStorage)
-        
         return(
             <div class="container">
                 <div class="row justify-content-md-center">
-                    <div class="col-md-auto ">
-                        <button onClick={this.handleClick} value="1" class="btn btn-dark btn-lg">Draw one card</button>
-                        
-                        <button onClick={this.handleClick} value="3" class="btn btn-dark btn-lg">Draw three cards</button>
-
-                        <button onClick={this.handleClick} value="5" class="btn btn-dark btn-lg">Draw five cards</button>
+                    <div class="col-md-auto">
+                        <button onClick={this.handleClick} value="1" class="btn btn-dark btn-lg button-space">Draw one card</button>
+                        <button onClick={this.handleClick} value="3" class="btn btn-dark btn-lg button-space">Draw three cards</button>
+                        <button onClick={this.handleClick} value="5" class="btn btn-dark btn-lg button-space">Draw five cards</button>
                     </div>
                 </div>
                 <div class="row justify-content-md-center">
@@ -90,11 +76,5 @@ const mapStateToProps = (state) => {
         user: state.user
     }
 }
-
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         addCardsToUser: (cards) => dispatch(addCardsToUser(cards))
-//     }
-// }
 
 export default connect(mapStateToProps)(DrawCard)

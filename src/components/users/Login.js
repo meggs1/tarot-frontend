@@ -23,16 +23,22 @@ class Login extends Component {
     render() {
         console.log(this.props)
         return (
-            <form onSubmit={this.handleSubmit}>
-                <h1>Log in form</h1>
-                <label>Username: </label>
-                <input name="username" value={this.state.username} onChange={this.handleChange}/>
-                <br />
-                <label>Password: </label>
-                <input name="password" type="password"  value={this.state.password} onChange={this.handleChange}/>
-                <br />
-                <input type="submit" value="Log in"/>
-            </form>
+            <div >
+                <div class="row justify-content-center">
+                    <div class="col-md-4 p-3 bg-white text-dark bg-opacity-75">  
+                        <form onSubmit={this.handleSubmit}>
+                            <h1>Log in form</h1>
+                            <label>Username: </label>
+                            <input name="username" value={this.state.username} onChange={this.handleChange} class="form-control"/>
+                            <br />
+                            <label>Password: </label>
+                            <input name="password" type="password"  value={this.state.password} onChange={this.handleChange} class="form-control"/>
+                            <br />
+                            <input type="submit" value="Log in"  class="btn btn-secondary btn-lg btn-block"/>
+                        </form>
+                    </div> 
+                </div>
+            </div>
         )
     }
 }

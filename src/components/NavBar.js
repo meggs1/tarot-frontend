@@ -13,7 +13,6 @@ class NavBar extends Component{
 
     toggleUserLinks() {
         const loggedIn = this.props.user.loggedIn
-
         return loggedIn ? (   
             <>
                 <Link to="/profile" class="nav-link active">Profile</Link>
@@ -24,8 +23,7 @@ class NavBar extends Component{
                 <Link to="/signup" class="nav-link active">Sign Up</Link>
                 <Link to="/login" class="nav-link active">Login</Link>
             </>
-        )
-        
+        ) 
     }
 
     render() {
@@ -54,11 +52,11 @@ class NavBar extends Component{
     
 }
 
-const mapStateToProps = (state) => {
-    return {
-        user: state.user
+    const mapStateToProps = (state) => {
+        return {
+            user: state.user
+        }
     }
-  };
   
   const mapDispatchToProps = (dispatch) => {
     return {

@@ -26,7 +26,7 @@ class CardImage extends Component {
             return (
                 <>
                     <img src={card.image_url ? card.image_url.url : null} 
-                    alt={card.name} width="120" height="198" onClick={this.handleClick} 
+                        alt={card.name} width="120" height="198" onClick={this.handleClick} 
                      />
                     {this.state.showCardInfo ? <Card card={card} className="cardInfo"/> : null }
                 </>
@@ -34,45 +34,42 @@ class CardImage extends Component {
 
         } else if (num === 0 && this.props.className === "drawCard") {
  
-                return (
-                    <div className="upright-card">
-                        <ReactCardFlip isFlipped={this.state.isFlipped} >
-                                <div class="front">
-                                    <img src={card.image_url ? card.image_url.url : null} 
-                                        alt={card.name} onClick={this.handleClick} 
-                                        class="large rounded mx-auto d-block"
-                                    />
-                                </div>  
-                                <div class ="back container bg-white rounded" onClick={this.handleClick} >
-                                    <div class="card-text">
-                                        <h3 class="text-center">{card.name} Upright</h3>
-                                        <p>{card.upright_meaning}</p>
-                                    </div>
+            return (
+                <div className="upright-card">
+                    <ReactCardFlip isFlipped={this.state.isFlipped} >
+                            <div class="front">
+                                <img src={card.image_url ? card.image_url.url : null} 
+                                    alt={card.name} onClick={this.handleClick} 
+                                    class="large rounded mx-auto d-block"
+                                />
+                            </div>  
+                            <div class ="back container bg-white rounded" onClick={this.handleClick} >
+                                <div class="card-text">
+                                    <h3 class="text-center">{card.name} Upright</h3>
+                                    <p>{card.upright_meaning}</p>
                                 </div>
-                        </ReactCardFlip>
-                    </div>
+                            </div>
+                    </ReactCardFlip>
+                </div>
             )
         } else if (num === 1  && this.props.className === "drawCard"){
             return (
-
                 <div className="reversed-card">
-                <ReactCardFlip isFlipped={this.state.isFlipped} >
-                        <div class="front">
-                            <img src={card.image_url ? card.image_url.url : null} 
-                                alt={card.name} onClick={this.handleClick} 
-                                class="large reversed rounded mx-auto d-block"
-                            />
-                        </div>  
-                        <div class ="back container bg-white rounded" onClick={this.handleClick} >
-                            <div class="card-text">
-                                <h3 class="text-center">{card.name} Reversed</h3>
-                                <p>{card.reversed_meaning}</p>
+                    <ReactCardFlip isFlipped={this.state.isFlipped} >
+                            <div class="front">
+                                <img src={card.image_url ? card.image_url.url : null} 
+                                    alt={card.name} onClick={this.handleClick} 
+                                    class="large reversed rounded mx-auto d-block"
+                                />
+                            </div>  
+                            <div class ="back container bg-white rounded" onClick={this.handleClick} >
+                                <div class="card-text">
+                                    <h3 class="text-center">{card.name} Reversed</h3>
+                                    <p>{card.reversed_meaning}</p>
+                                </div>
                             </div>
-                        </div>
-                </ReactCardFlip>
-            </div>
-
-                
+                    </ReactCardFlip>
+                </div>
             )
         }
     }

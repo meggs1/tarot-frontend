@@ -13,7 +13,7 @@ import SuitsContainer from './containers/SuitsContainer'
 import Profile from './components/users/Profile'
 
 // import { fetchArcanas } from "./actions/arcanaActions"
-import { fetchSuits } from "./actions/suitActions"
+// import { fetchSuits } from "./actions/suitActions"
 import { fetchCards } from './actions/cardActions'
 
 import { connect } from "react-redux";
@@ -26,38 +26,38 @@ class App extends Component {
   componentDidMount() {
     this.props.fetchCards()
     // this.props.fetchArcanas()
-    this.props.fetchSuits()
+    // this.props.fetchSuits()
   }
 
   render() {
-    // console.log('App state', this.state)
     console.log('App props', this.props)
     return (
       <div>
         <NavBar />
-        <Switch>
-          <Route exact path="/" render={routerProps => <Home {...routerProps} user={this.props.user}/> }/>
-          <Route exact path="/signup" render={routerProps => <SignUp {...routerProps} /> } />
-          <Route exact path="/login" render={routerProps => <Login {...routerProps} /> } />
-          <Route exact path='/cards' render={routerProps => <CardsContainer {...routerProps} /> } />
-          <Route exact path='/arcanas' render={routerProps => <ArcanasContainer {...routerProps} />} />
-          <Route exact path='/suits' render={routerProps => <SuitsContainer {...routerProps} /> } />
-          <Route exact path='/profile' render={routerProps => <Profile {...routerProps} />  } />
-          
-          <Route exact path="/cards/:id" 
-            render={routerProps => {
-              return ( <Card {...routerProps} 
-                card={this.props.cards.cards.find(card => card.id === parseInt(routerProps.match.params.id))}
-                className="cardInfo" />
-              )
-            }} 
-          />
-
-          <Route exact path="/cards/:id/edit" render={routerProps => {
-            return ( <CardForm {...routerProps} /> )}} 
-          />
-        </Switch>
-      </div>
+        <div class="container bg-white text-dark bg-opacity-75 align-items-stretch">
+          <Switch>
+            <Route exact path="/" render={routerProps => <Home {...routerProps} user={this.props.user}/> }/>
+            <Route exact path="/signup" render={routerProps => <SignUp {...routerProps} /> } />
+            <Route exact path="/login" render={routerProps => <Login {...routerProps} /> } />
+            <Route exact path='/cards' render={routerProps => <CardsContainer {...routerProps} /> } />
+            <Route exact path='/arcanas' render={routerProps => <ArcanasContainer {...routerProps} />} />
+            <Route exact path='/suits' render={routerProps => <SuitsContainer {...routerProps} /> } />
+            <Route exact path='/profile' render={routerProps => <Profile {...routerProps} />  } />
+            <Route exact path="/cards/:id" 
+              render={routerProps => {
+                return ( <Card {...routerProps} 
+                  card={this.props.cards.cards.find(card => card.id === parseInt(routerProps.match.params.id))}
+                  className="cardInfo" />
+                )
+              }} 
+            />
+            <Route exact path="/cards/:id/edit" render={routerProps => {
+              return ( <CardForm {...routerProps} /> )}} 
+            />
+          </Switch>
+        </div>
+        </div>
+      
     )
   }
 }
@@ -67,8 +67,8 @@ const mapStateToProps = (state) => {
     cards: state.cards,
     user: state.user,
     // arcanas: state.arcanas,
-    suits: state.suits,
-    loading: state.loading
+    // suits: state.suits,
+    loading: state.cards.loading
   }
 }
 
@@ -76,7 +76,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchCards: () => dispatch(fetchCards()),
     // fetchArcanas: () => dispatch(fetchArcanas()), 
-    fetchSuits: () => dispatch(fetchSuits())
+    // fetchSuits: () => dispatch(fetchSuits())
   }
 }
 

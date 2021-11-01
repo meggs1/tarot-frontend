@@ -19,11 +19,9 @@ class SignUp extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        // this.props.signUp(this.state)
         const name = this.state.name
         const username = this.state.username
         const password = this.state.password
-        // console.log(this.state)
         this.props.signUp({ name, username, password })
         this.props.history.push(`/`)
     }
@@ -31,19 +29,23 @@ class SignUp extends Component {
     render() {
         console.log(this.props)
         return (
+            <div class="row justify-content-center">
+            <div class="col-md-4 p-3 bg-white text-dark bg-opacity-7">  
             <form onSubmit={this.handleSubmit}>
-                <h1>Sign up form</h1>
+                <h1>Sign Up</h1>
                 <label>Name: </label>
-                <input name="name" value={this.state.name} onChange={this.handleChange}/>
+                <input name="name" value={this.state.name} onChange={this.handleChange} class="form-control"/>
                 <br />
                 <label>Username: </label>
-                <input name="username" value={this.state.username} onChange={this.handleChange}/>
+                <input name="username" value={this.state.username} onChange={this.handleChange} class="form-control"/>
                 <br />
                 <label>Password: </label>
-                <input name="password" type="password"  value={this.state.password} onChange={this.handleChange}/>
+                <input name="password" type="password"  value={this.state.password} onChange={this.handleChange} class="form-control"/>
                 <br />
-                <input type="submit" value="Sign up"/>
+                <input type="submit" value="Sign Up" class="btn btn-secondary btn-lg btn-block"/>
             </form>
+            </div>
+            </div>
         )
     }
 }

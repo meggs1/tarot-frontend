@@ -2,6 +2,15 @@
   transform: scaleY(-1)
 }
 
+html, #root, .App {
+  height: 100%;
+}
+
+.full-height {
+  height: 100%;
+  display: flex;
+}
+
 img.small {
   width: 120px;
   height: 198px;
@@ -23,7 +32,12 @@ img.large {
   overflow-y: auto;
 }
 
+.button-space {
+  margin-right: 5px;
+}
+
 body {
   background-image: url("./background-image.jpg");
   background-attachment: fixed;
+  height: 100%
 }

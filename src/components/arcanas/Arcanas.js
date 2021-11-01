@@ -2,7 +2,7 @@
 import Arcana from './Arcana'
 
 
-function Arcanas(props) {
+const Arcanas = (props) => {
     
     console.log('arcanas props', props)
 
@@ -27,8 +27,8 @@ function Arcanas(props) {
         <div>
             {props.arcanas.map( arcana => 
                 <Arcana key={arcana.id} arcana={arcana} 
-                suits={filterSuits(arcana.id)} 
-                cards={filterCards(arcana.id)} 
+                    suits={filterSuits(arcana.id)} 
+                    cards={filterCards(arcana.id)} 
                 />
             )}
         </div>

@@ -3,10 +3,6 @@
 import Suit from './Suit'
 
 function Suits(props) {
-    
-
-    // console.log('suits props', props)
-        // console.log('suits state', state)
 
     const filterCards = (suit_id) => {
         const cards = props.cards
@@ -17,7 +13,6 @@ function Suits(props) {
     }
     
     return (
-            
         <div>
             <div>
                 {props.suits.map( suit => 
