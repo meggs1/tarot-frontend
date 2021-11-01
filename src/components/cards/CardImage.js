@@ -10,7 +10,6 @@ class CardImage extends Component {
         drawnCards: [],
         showCardInfo: false
     }
-
     
     handleClick = () => {
         this.setState((prevState) => ({ isFlipped: !prevState.isFlipped }))
@@ -23,6 +22,7 @@ class CardImage extends Component {
 
         if (this.props.className === 'cardImage') {
                 // console.log('card img', card)
+                // debugger
             return (
                 <>
                     <img src={card.image_url ? card.image_url.url : null} 

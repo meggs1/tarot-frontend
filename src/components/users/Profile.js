@@ -1,6 +1,7 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
 import { checkAuth } from '../../actions/usersActions'
+import CardsContainer from '../../containers/CardsContainer'
 import Card from '../cards/Card'
 
 class Profile extends Component {
@@ -12,7 +13,7 @@ class Profile extends Component {
   render() {
     const { authChecked, currentUser } = this.props.user
     const userCards = JSON.parse(localStorage.getItem('userCards'))
-    
+    debugger
     console.log(userCards)
     if (authChecked) {
       return (
@@ -20,8 +21,8 @@ class Profile extends Component {
           <h1>Welcome, {currentUser.name} </h1>
           <h2>Your last tarot cards</h2>
           <div class="container">
-            {userCards.map(card => 
-              <Card card={card} className='cardInfo'/> )}
+
+              <CardsContainer userCards={userCards} className='cardInfo'/>
           </div> 
         </div>
         )
