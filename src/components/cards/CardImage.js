@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReactCardFlip from 'react-card-flip'
 import Card from './Card'
+import CardInfo from './CardInfo'
 
 
 class CardImage extends Component {
@@ -27,13 +28,13 @@ class CardImage extends Component {
                 <>
                     <img src={card.image_url ? card.image_url.url : null} 
                         alt={card.name} width="120" height="198" onClick={this.handleClick} 
-                     />
-                    {this.state.showCardInfo ? <Card card={card} className="cardInfo"/> : null }
+                     /> 
+                     {this.state.showCardInfo ? <Card card={card} className="cardInfo"/> : null }
                 </>
             )
 
         } else if (num === 0 && this.props.className === "drawCard") {
- 
+            console.log(card)
             return (
                 <div className="upright-card">
                     <ReactCardFlip isFlipped={this.state.isFlipped} >
@@ -44,11 +45,13 @@ class CardImage extends Component {
                                 />
                             </div>  
                             <div class ="back container bg-white rounded" onClick={this.handleClick} >
-                                <div class="card-text">
+                                <CardInfo card={card} num={num} />
+                                {/* <div class="card-text">
                                     <h3 class="text-center">{card.name} Upright</h3>
                                     <p>{card.upright_meaning}</p>
-                                </div>
+                                </div> */}
                             </div>
+
                     </ReactCardFlip>
                 </div>
             )
