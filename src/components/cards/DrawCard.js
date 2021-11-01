@@ -1,5 +1,5 @@
 import { Component } from "react"
-import CardImage from "./CardImage"
+import Card from "./Card"
 
 import { connect } from 'react-redux'
 
@@ -44,7 +44,7 @@ class DrawCard extends Component {
             <>
                 {this.state.showCards ? cards.map(card => 
                     <div class="col  p-3">
-                        <CardImage card={card} num={this.getRandomInt(2)} className="drawCard"/> 
+                        <Card card={card} num={this.getRandomInt(2)} className="drawCard"/> 
                     </div> ) : null 
                 }
             </>

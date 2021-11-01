@@ -5,7 +5,7 @@ import NavBar from './components/NavBar'
 import Home from './components/Home'
 import SignUp from './components/users/SignUp'
 import Login from './components/users/Login'
-import Card from './components/cards/Card'
+import CardInfo from './components/cards/CardInfo'
 import CardForm from './components/cards/CardForm'
 import CardsContainer from './containers/CardsContainer'
 import ArcanasContainer from './containers/ArcanasContainer'
@@ -24,10 +24,17 @@ import { Switch, Route } from 'react-router-dom';
 
 class App extends Component {
 
+  componentDidMount() {
+    this.props.fetchCards()
+    // this.props.fetchArcanas()
+    // this.props.fetchSuits()
+  }
+
   render() {
     console.log('App props', this.props)
 
-    if (!!this.props.cards.cards.loading) {
+
+    if (!!this.props.loading) {
       return <Spinner />
     }
 
@@ -45,7 +52,7 @@ class App extends Component {
             <Route exact path='/profile' render={routerProps => <Profile {...routerProps} />  } />
             <Route exact path="/cards/:id" 
               render={routerProps => {
-                return ( <Card {...routerProps} 
+                return ( <CardInfo {...routerProps} 
                   card={this.props.cards.cards.find(card => card.id === parseInt(routerProps.match.params.id))}
                   className="cardInfo" />
                 )

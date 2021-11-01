@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import CardImage from './CardImage'
+import Card from './Card'
 
 const Cards = (props) => {
     console.log(props)
@@ -10,7 +10,7 @@ const Cards = (props) => {
                 {props.cards.map( card => 
                     <div class="col-md-auto">
                         <Link to={{pathname: `/cards/${card.id}`}}>
-                            <CardImage card={card} className="cardImage" />
+                            <Card card={card} className="card" />
                         </Link>
                     </div>
                 )}
