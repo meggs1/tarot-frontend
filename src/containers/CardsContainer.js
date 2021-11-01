@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import CardImage from '../components/cards/CardImage'
+import Cards from '../components/cards/Cards'
 import { Link } from "react-router-dom"
 import { connect } from "react-redux";
 import Spinner from '../components/Spinner'
@@ -19,50 +19,26 @@ class CardsContainer extends Component {
       return <Spinner />
     }
 
-    console.log('cards container props', this.props)
+    // console.log('cards container props', this.props)
     if (suitCards) {
       return(
         <div class="row justify-content-md-center">
-          {suitCards.map( card => 
-            <div class="col-md-auto">
-                <Link to={{pathname: `/cards/${card.id}`}}>
-                  <CardImage card={card} className="cardImage" />
-                </Link>
-            </div>
-          )}
+          <Cards cards={suitCards} />
         </div>
       )
-
-    } else if (userCards) {
-      return (
-        <div>
-          <div class="row justify-content-md-center">
-            {userCards.map( card => 
-              <div class="col-md-auto">
-                  <Link to={{pathname: `/cards/${card.id}`}}>
-                    <CardImage card={card} className="cardImage" />
-                  </Link>
-              </div>
-            )}
-          </div>
-        </div>
-      )
-    } else {
+    } else if (cards) {
+       console.log(cards)
+      //  debugger
       return(
         <div class="row justify-content-md-center">
-          {cards.map( card => 
-            <div class="col-md-auto">
-                <Link to={{pathname: `/cards/${card.id}`}}>
-                  <CardImage card={card} className="cardImage" />
-                </Link>
-            </div>
-          )}
+          <Cards cards={cards} />
         </div>
-      )
-        
-  } }
+      )  
+    }
+  }
+} 
 
-}
+
 
 const mapStateToProps = (state) => {
     return {

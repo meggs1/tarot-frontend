@@ -24,17 +24,10 @@ import { Switch, Route } from 'react-router-dom';
 
 class App extends Component {
 
-  componentDidMount() {
-    // this.props.fetchCards()
-    // this.props.fetchArcanas()
-    // this.props.fetchSuits()
-  }
-
   render() {
     console.log('App props', this.props)
 
-
-    if (!!this.props.loading) {
+    if (!!this.props.cards.cards.loading) {
       return <Spinner />
     }
 
