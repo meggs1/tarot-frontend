@@ -2,10 +2,6 @@
   transform: scaleY(-1);
 }
 
-html, #root, .App {
-  height: 100%;
-}
-
 .full-height {
   height: 100%;
   display: flex;
@@ -26,6 +22,13 @@ img.large {
   width: 360px;
   height: 591px;
 }
+
+img.exrta-large {
+  /* position: absolute; */
+  width: 480px;
+  height: 788px;
+}
+
 
 .back {
   width: 360px;

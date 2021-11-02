@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import ReactCardFlip from 'react-card-flip'
 import CardImage from './CardImage'
 import CardInfo from './CardInfo'
 
@@ -11,6 +10,7 @@ class Card extends Component {
     }
     
     handleClick = () => {
+        debugger
         this.setState({showCardInfo: !this.state.showCardInfo})
     }
 
@@ -19,16 +19,18 @@ class Card extends Component {
         const num = this.props.num
 
         if (this.props.className === 'card') {
+            console.log(this.props)
             return (
-                <div class="front" onClick={this.handleClick}>
+                <div class="front">
                     <CardImage card={card} className='cardImage' />
-                    {this.state.showCardInfo ? <CardInfo card={card} className="cardInfo"/> : null }
+                    {this.state.showCardInfo ? 
+                    <CardInfo card={card} className="cardInfo" /> : null }
                 </div>
             )
         } 
         else if (num === 0) {
             return (
-                <div className="large rounded mx-auto d-block" onClick={this.handleClick}>
+                <div className="card-container" onClick={this.handleClick}>
                     {this.state.showCardInfo ? <CardInfo card={card} num={num} /> : 
                         <CardImage card={card} num={num} className="drawCard" /> 
                     }
@@ -37,7 +39,7 @@ class Card extends Component {
         } 
         else if (num === 1) {
             return (
-                <div className="large rounded mx-auto d-block" onClick={this.handleClick}>
+                <div className="card-container " onClick={this.handleClick}>
                     {this.state.showCardInfo ? <CardInfo card={card} num={num} /> 
                         : <CardImage card={card} num={num} className="drawCard" /> 
                     }

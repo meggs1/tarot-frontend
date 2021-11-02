@@ -21,7 +21,7 @@ class CardForm extends Component {
 
     findCard = () => {
         const card = this.props.cards.cards.find(card => card.id === parseInt(this.props.match.params.id))
-
+        
         this.setState({
             id: card.id,
             name: card.name,
@@ -57,7 +57,7 @@ class CardForm extends Component {
                 <div class="row justify-content-center">
                     <div class="col" >
                         <img src={this.state.image ? this.state.image.url : null} 
-                        alt={this.state.name}  width="480" height="788" /> 
+                        alt={this.state.name}  class="large rounded mx-auto d-block" /> 
                     </div>
                     <div class="col">
                         <h1> Edit: {this.state.name} </h1>

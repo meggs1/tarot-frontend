@@ -8,13 +8,10 @@ import Login from './components/users/Login'
 import CardInfo from './components/cards/CardInfo'
 import CardForm from './components/cards/CardForm'
 import CardsContainer from './containers/CardsContainer'
-import ArcanasContainer from './containers/ArcanasContainer'
 import SuitsContainer from './containers/SuitsContainer'
 import Profile from './components/users/Profile'
 import Spinner from './components/Spinner'
 
-// import { fetchArcanas } from "./actions/arcanaActions"
-// import { fetchSuits } from "./actions/suitActions"
 import { fetchCards } from './actions/cardActions'
 
 import { connect } from "react-redux";
@@ -50,11 +47,11 @@ class App extends Component {
             <Route exact path="/signup" render={routerProps => <SignUp {...routerProps} /> } />
             <Route exact path="/login" render={routerProps => <Login {...routerProps} /> } />
             <Route exact path='/cards' render={routerProps => <CardsContainer {...routerProps} /> } />
-            <Route exact path='/arcanas' render={routerProps => <ArcanasContainer {...routerProps} />} />
             <Route exact path='/suits' render={routerProps => <SuitsContainer {...routerProps} /> } />
             <Route exact path='/profile' render={routerProps => <Profile {...routerProps} />  } />
             <Route exact path="/cards/:id" 
               render={routerProps => {
+                debugger
                 return ( <CardInfo {...routerProps} 
                   card={this.props.cards.cards.find(card => card.id === parseInt(routerProps.match.params.id))} />
                 )
@@ -65,7 +62,7 @@ class App extends Component {
             />
           </Switch >
         </div>
-        </div>
+      </div>
       
     )
   }

@@ -1,4 +1,3 @@
-
 const CardImage = (props) => {
     const card = props.card
     const num = props.num
@@ -22,12 +21,12 @@ const CardImage = (props) => {
         )
     } else if (props.className === 'cardImage') {
         return (
-            <>
+            <div class="container p-1">
                 <img src={card.image_url ? card.image_url.url : null} 
                     alt={card.name} 
-                    class="small"  
+                    class="medium rounded mx-auto d-block"  
                 /> 
-            </>
+            </div>
         )
     }
 }

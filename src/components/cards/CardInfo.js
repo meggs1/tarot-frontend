@@ -15,6 +15,13 @@ const CardInfo = (props) => {
     const displayCardInfo = () => {
         const card = props.card
         const num = props.num
+        if (!card) {
+            return (
+                <div class="alert alert-danger" role="alert">
+                    That card doesn't exist
+                </div>
+            )
+        }
         if (num === 0 ) {
             return (
                 <div className="large rounded mx-auto d-block back bg-white p-3">
@@ -25,18 +32,18 @@ const CardInfo = (props) => {
         } else if (num === 1) {
             return (
                 <div className="large rounded mx-auto d-block back bg-white p-3">
-                    <h3 class="text-center">{card.name} Reversed Meaning</h3>
+                    <h3 class="text-center">{card.name} Reversed</h3>
                     <p>{card.reversed_meaning}</p>
                 </div>
             )
-        } else if (props.className === 'cardInfo') {
+        } else {
             return (
-                <div id={card.id}  className="container p-3 mb-2 bg-white text-dark bg-opacity-75">
-                    <div class="row justify-content-center">
-                        <div class="col" >
-                            <img src={card.image_url ? card.image_url.url : null} alt={card.name}  class="large" />
+                <div id={card.id}  className="container p-3 mb-2 d-flex justify-content-center">
+                    <div class="row">
+                        <div class="col sm-2" >
+                            <img src={card.image_url ? card.image_url.url : null} alt={card.name}  class="large rounded  mx-auto d-block" />
                         </div>
-                        <div class="col">
+                        <div class="col-sm-8 justify-content-md-center bg-white text-dark bg-opacity-75">
                             <h1>{card.name}</h1>
                             <p><strong>{card.arcana.name} Arcana Suit of {card.suit.name}</strong></p>
                             
@@ -48,15 +55,11 @@ const CardInfo = (props) => {
 
                             <h3>Reversed Meaning</h3>
                             <p>{card.reversed_meaning}</p>
+                            {renderLinkIfAdmin(card.id)}
                         </div>
-                    </div>
-                    <div>
-                        {renderLinkIfAdmin(card.id)}
                     </div>
                 </div>
             )
-        } else {
-            <Home />
         }
     }
     

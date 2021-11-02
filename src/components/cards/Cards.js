@@ -3,7 +3,6 @@ import Card from './Card'
 
 const Cards = (props) => {
     console.log(props)
-    // debugger
     return (
         <div class="container">
             <div class="row justify-content-md-center">
