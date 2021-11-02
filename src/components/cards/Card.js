@@ -19,7 +19,7 @@ class Card extends Component {
     displayCard() {
         const card = this.props.card
         const num = this.props.num
-        console.log(card, num)
+
         if (this.props.className === 'card') {
             return (
                 <div class="front" onClick={this.handleClick}>
@@ -55,12 +55,12 @@ class Card extends Component {
         else if (num === 1) {
             return (
                 <>
-                        <div class="reversed" onClick={this.handleClick} >
-                            <CardImage card={card} num={num}  className="drawCard" />
-                        </div>  
-                        <div>
-                            {this.state.showCardInfo ? <CardInfo card={card} num={num} className="reversed" /> : null }
-                        </div>
+                    <div class="reversed" onClick={this.handleClick} >
+                        <CardImage card={card} num={num}  className="drawCard" />
+                    </div>  
+                    <div>
+                        {this.state.showCardInfo ? <CardInfo card={card} num={num} className="reversed" /> : null }
+                    </div>
                   </>
                 
             )

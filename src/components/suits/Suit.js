@@ -14,7 +14,7 @@ class Suit extends Component {
     }
     
     render() {
-        console.log('Suit props', this.props)
+        // console.log('Suit props', this.props)
         const suit = this.props.suit
         const suitCards = this.props.cards
         return (
@@ -22,8 +22,8 @@ class Suit extends Component {
                 <h1> {suit.name} </h1>
                 <p> {suit.description} </p>
                 <button onClick={this.handleClick}>Show Cards</button>
-                                {this.state.showCards && <CardsContainer suitCards={suitCards} className='suitCards' />}
-                {/* {this.state.showCards && <CardsContainer suitCards={cards} className='suitCards' />} */}
+                    {/* {this.state.showCards ? <Cards suitCards={suitCards} /> : null} */}
+                {this.state.showCards && <CardsContainer suitCards={suitCards} className='suitCards' />}
             </div>
         )
     }

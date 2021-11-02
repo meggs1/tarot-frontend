@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { fetchCards, editCard } from "../actions/cardActions"
 
 class CardsContainer extends Component {
+  
   // componentDidMount() {
   //   this.props.fetchCards()
   // }
@@ -11,18 +12,19 @@ class CardsContainer extends Component {
   render() {
     const cards = this.props.cards.cards
     const suitCards = this.props.suitCards
-
+    console.log('cards container', this.props)
 
     if (suitCards) {
       return (
         <div class="row justify-content-md-center">
-          <Cards cards={suitCards} />
+          <Cards cards={suitCards} className='card'/>
         </div>
       )
-    } else if (cards) {
+    } 
+    else if (cards) {
       return (
         <div class="row justify-content-md-center">
-          <Cards cards={cards} />
+          <Cards cards={cards}  className='card'/>
         </div>
       )  
     }

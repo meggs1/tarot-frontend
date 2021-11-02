@@ -26,8 +26,6 @@ class App extends Component {
 
   componentDidMount() {
     this.props.fetchCards()
-    // this.props.fetchArcanas()
-    // this.props.fetchSuits()
   }
 
   render() {
@@ -35,7 +33,12 @@ class App extends Component {
 
 
     if (!!this.props.cards.loading) {
-      return <Spinner />
+      return (
+        <div>
+        <NavBar />
+        <Spinner />
+        </div>
+      )
     }
 
     return (
@@ -53,8 +56,7 @@ class App extends Component {
             <Route exact path="/cards/:id" 
               render={routerProps => {
                 return ( <CardInfo {...routerProps} 
-                  card={this.props.cards.cards.find(card => card.id === parseInt(routerProps.match.params.id))}
-                  className="cardInfo" />
+                  card={this.props.cards.cards.find(card => card.id === parseInt(routerProps.match.params.id))} />
                 )
               }} 
             />

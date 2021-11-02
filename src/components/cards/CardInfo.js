@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import Home from '../Home'
 
 const CardInfo = (props) => {
 
@@ -54,6 +55,8 @@ const CardInfo = (props) => {
                     </div>
                 </div>
             )
+        } else {
+            <Home />
         }
     }
     

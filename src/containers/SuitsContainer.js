@@ -32,8 +32,8 @@ class SuitsContainer extends Component {
 
 const mapStateToProps = (state) => {
     return {
-    suits: state.suits,
-    cards: state.cards
+        suits: state.suits,
+        cards: state.cards
     }
 }
 

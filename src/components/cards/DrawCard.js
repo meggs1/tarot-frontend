@@ -2,6 +2,7 @@ import { Component } from "react"
 import Card from "./Card"
 
 import { connect } from 'react-redux'
+import { fetchCards } from "../../actions/cardActions"
 
 class DrawCard extends Component {
 
@@ -25,11 +26,12 @@ class DrawCard extends Component {
 
     getCards = (num) => {
         const cards = this.props.cards.cards
+        const slicedCards = cards.slice()
         const numOfCards = parseInt(num)
         const selectedCards = []
 
         for (var i=0; i<numOfCards; i++) {
-            selectedCards.push(cards.splice(Math.random()*(cards.length-1),1).pop())
+            selectedCards.push(slicedCards.splice(Math.random() * (slicedCards.length-1) ,1).pop())
             
             localStorage.setItem('userCards', JSON.stringify(selectedCards))
             this.setState({
@@ -52,6 +54,9 @@ class DrawCard extends Component {
         )
     }
 
+    // componentWillUnmount() {
+
+    // }
     
     render() {
         return(
@@ -78,4 +83,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(DrawCard)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchCards: () => dispatch(fetchCards())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DrawCard)
