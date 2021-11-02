@@ -15,24 +15,20 @@ const CardImage = (props) => {
         )
     } else if (num === 1) {
         return (
-
             <img src={card.image_url ? card.image_url.url : null} 
                 alt={card.name}
-                class="large rounded mx-auto d-block"
-                
+                class="large reversed rounded mx-auto d-block"
             />
-
         )
-        
     } else if (props.className === 'cardImage') {
-    return (
-        <>
-            <img src={card.image_url ? card.image_url.url : null} 
-                alt={card.name} 
-                class="small"  
-            /> 
-        </>
-    )
+        return (
+            <>
+                <img src={card.image_url ? card.image_url.url : null} 
+                    alt={card.name} 
+                    class="small"  
+                /> 
+            </>
+        )
     }
 }
 

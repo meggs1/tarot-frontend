@@ -6,13 +6,11 @@ import CardInfo from './CardInfo'
 class Card extends Component {
 
     state = {
-        isFlipped: false,
         showCardInfo: false,
         drawnCards: []
     }
     
     handleClick = () => {
-        // this.setState((prevState) => ({ isFlipped: !prevState.isFlipped }))
         this.setState({showCardInfo: !this.state.showCardInfo})
     }
 
@@ -24,45 +22,26 @@ class Card extends Component {
             return (
                 <div class="front" onClick={this.handleClick}>
                     <CardImage card={card} className='cardImage' />
-                    {this.state.isFlipped ? <CardInfo card={card} className="cardInfo"/> : null }
+                    {this.state.showCardInfo ? <CardInfo card={card} className="cardInfo"/> : null }
                 </div>
             )
         } 
         else if (num === 0) {
             return (
-                // <div className="upright-card">
-                //     <ReactCardFlip isFlipped={this.state.isFlipped} >
-                //         <div class="front" onClick={this.handleClick}>
-                //             <CardImage card={card} num={num} className="drawCard" />
-                //         </div>  
-                //         <div class ="back container bg-white rounded" onClick={this.handleClick} >
-                //             <CardInfo card={card} num={num} />
-                //         </div>
-                //     </ReactCardFlip>
-                // </div>
-                <div className="upright-card">
-                
-                    <div class="front" onClick={this.handleClick}>
-                        <CardImage card={card} num={num} className="drawCard" />
-                    </div>  
-                    <div>
-                        {this.state.showCardInfo ? <CardInfo card={card} num={num} className="reversed" /> : null }
-                    </div>
-                
+                <div className="large rounded mx-auto d-block" onClick={this.handleClick}>
+                    {this.state.showCardInfo ? <CardInfo card={card} num={num} /> : 
+                        <CardImage card={card} num={num} className="drawCard" /> 
+                    }
                 </div>
             )
         } 
         else if (num === 1) {
             return (
-                <>
-                    <div class="reversed" onClick={this.handleClick} >
-                        <CardImage card={card} num={num}  className="drawCard" />
-                    </div>  
-                    <div>
-                        {this.state.showCardInfo ? <CardInfo card={card} num={num} className="reversed" /> : null }
-                    </div>
-                  </>
-                
+                <div className="large rounded mx-auto d-block" onClick={this.handleClick}>
+                    {this.state.showCardInfo ? <CardInfo card={card} num={num} /> 
+                        : <CardImage card={card} num={num} className="drawCard" /> 
+                    }
+                </div>
             )
         }
     }

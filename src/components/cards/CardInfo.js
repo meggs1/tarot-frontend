@@ -17,14 +17,14 @@ const CardInfo = (props) => {
         const num = props.num
         if (num === 0 ) {
             return (
-                <div className="card-text p-3 mb-2 bg-white text-dark bg-opacity-75">
+                <div className="large rounded mx-auto d-block back bg-white p-3">
                     <h3 class="text-center">{card.name} Upright</h3>
                     <p>{card.upright_meaning}</p>
                 </div>
             )
         } else if (num === 1) {
             return (
-                <div className="card-text p-3 mb-2 bg-white text-dark bg-opacity-75">
+                <div className="large rounded mx-auto d-block back bg-white p-3">
                     <h3 class="text-center">{card.name} Reversed Meaning</h3>
                     <p>{card.reversed_meaning}</p>
                 </div>
