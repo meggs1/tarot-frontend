@@ -11,16 +11,16 @@ class DrawCard extends Component {
         drawnCards: [],
 
     }
-    
-    getRandomInt(max) {
-        return Math.floor(Math.random() * max)
-    }
 
     handleClick = (e) => {
         if (!this.state.showCards) {
             this.getCards(e.target.value)
         }
         this.setState({showCards: !this.state.showCards})
+    }
+
+    getRandomInt(max) {
+        return Math.floor(Math.random() * max)
     }
 
     getCards = (num) => {
@@ -40,11 +40,12 @@ class DrawCard extends Component {
 
     drawCards = () => {
         const cards = this.state.drawnCards
+        // const num = this.getRandomInt(2)
         return(
             <>
                 {this.state.showCards ? cards.map(card => 
                     <div class="col  p-3">
-                        <Card card={card} num={this.getRandomInt(2)} className="drawCard"/> 
+                        <Card card={card} num={this.getRandomInt(2)} className="drawnCard"/> 
                     </div> ) : null 
                 }
             </>

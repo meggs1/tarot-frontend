@@ -4,9 +4,9 @@ import { connect } from "react-redux";
 import { fetchCards, editCard } from "../actions/cardActions"
 
 class CardsContainer extends Component {
-  componentDidMount() {
-    this.props.fetchCards()
-  }
+  // componentDidMount() {
+  //   this.props.fetchCards()
+  // }
   
   render() {
     const cards = this.props.cards.cards

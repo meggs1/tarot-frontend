@@ -34,7 +34,7 @@ class App extends Component {
     console.log('App props', this.props)
 
 
-    if (!!this.props.loading) {
+    if (!!this.props.cards.loading) {
       return <Spinner />
     }
 
