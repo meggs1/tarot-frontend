@@ -1,3 +1,5 @@
+import Home from "../components/Home"
+
 export const signUp = (user) => {
   return (dispatch) => {
     fetch('http://localhost:3000/users', {
@@ -102,7 +104,7 @@ export const logout = () => {
       if (resp.ok) {
         console.log('logout successful')
         localStorage.removeItem('token')
-        return dispatch({ type: 'NOT_AUTHENTICATED' })
+        dispatch({ type: 'NOT_AUTHENTICATED' })
       } else {
         return Promise.reject(dispatch({type: 'NOT_AUTHENTICATED'}))
       }

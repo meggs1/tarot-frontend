@@ -30,7 +30,7 @@ class DrawCard extends Component {
         const numOfCards = parseInt(num)
         const selectedCards = []
 
-        for (var i=0; i<numOfCards; i++) {
+        for (let i=0; i<numOfCards; i++) {
             selectedCards.push(slicedCards.splice(Math.random() * (slicedCards.length-1) ,1).pop())
             
             localStorage.setItem('userCards', JSON.stringify(selectedCards))
@@ -42,7 +42,6 @@ class DrawCard extends Component {
 
     drawCards = () => {
         const cards = this.state.drawnCards
-        // const num = this.getRandomInt(2)
         return(
             <>
                 {this.state.showCards ? cards.map(card => 
@@ -53,10 +52,6 @@ class DrawCard extends Component {
             </>
         )
     }
-
-    // componentWillUnmount() {
-
-    // }
     
     render() {
         return(

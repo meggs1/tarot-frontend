@@ -20,7 +20,7 @@ class SuitsContainer extends Component {
     render() {
         console.log('suits contaianer props', this.props)
         return(
-            <div className="container p-3 mb-2 bg-white text-dark bg-opacity-75">
+            <div className="container p-4 mb-2">
                 {this.props.suits.suits.map( suit => 
                     <Suit key={suit.id} suit={suit} cards={this.filterCards(suit.id)}/>
                 )}

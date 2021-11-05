@@ -5,12 +5,10 @@ import CardInfo from './CardInfo'
 class Card extends Component {
 
     state = {
-        showCardInfo: false,
-        drawnCards: []
+        showCardInfo: false
     }
     
     handleClick = () => {
-        debugger
         this.setState({showCardInfo: !this.state.showCardInfo})
     }
 
@@ -28,7 +26,9 @@ class Card extends Component {
                 </div>
             )
         } 
-        else if (num === 0) {
+        else 
+        
+        if (num === 0 || num === 1) {
             return (
                 <div className="card-container" onClick={this.handleClick}>
                     {this.state.showCardInfo ? <CardInfo card={card} num={num} /> : 
@@ -37,15 +37,6 @@ class Card extends Component {
                 </div>
             )
         } 
-        else if (num === 1) {
-            return (
-                <div className="card-container " onClick={this.handleClick}>
-                    {this.state.showCardInfo ? <CardInfo card={card} num={num} /> 
-                        : <CardImage card={card} num={num} className="drawCard" /> 
-                    }
-                </div>
-            )
-        }
     }
 
     render() {

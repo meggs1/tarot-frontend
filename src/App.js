@@ -51,7 +51,6 @@ class App extends Component {
             <Route exact path='/profile' render={routerProps => <Profile {...routerProps} />  } />
             <Route exact path="/cards/:id" 
               render={routerProps => {
-                debugger
                 return ( <CardInfo {...routerProps} 
                   card={this.props.cards.cards.find(card => card.id === parseInt(routerProps.match.params.id))} />
                 )

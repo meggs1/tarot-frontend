@@ -34,7 +34,6 @@ class NavBar extends Component{
                         <ul class="navbar-nav me-auto mb-2 ">
                             <Link to="/" class="nav-link active">Home</Link>
                             <Link to="/cards" class="nav-link active">Cards</Link>
-                            {/* <Link to="/arcanas" class="nav-link active">Arcanas</Link> */}
                             <Link to="/suits" class="nav-link active">Suits</Link>
                         </ul>
                     </div>

@@ -11,7 +11,6 @@ class Profile extends Component {
   }
 
   render() {
-
     const { authChecked, currentUser } = this.props.user
     const userCards = JSON.parse(localStorage.getItem('userCards'))
     

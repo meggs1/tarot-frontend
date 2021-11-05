@@ -19,11 +19,14 @@ class Suit extends Component {
         const suitCards = this.props.cards
         return (
             <div>
-                <h1> {suit.name} </h1>
-                <p> {suit.description} </p>
-                <button onClick={this.handleClick}>Show Cards</button>
-                    {/* {this.state.showCards ? <Cards suitCards={suitCards} /> : null} */}
-                {this.state.showCards && <CardsContainer suitCards={suitCards} className='suitCards' />}
+                <div className="container p-4 mb-2 text-dark">
+                    <h1> {suit.name} </h1>
+                    <p> {suit.description} </p>
+                    <button onClick={this.handleClick} class="btn btn-secondary btn-lg btn-block ">Show Cards</button>
+                </div>
+                <div>
+                    {this.state.showCards && <CardsContainer suitCards={suitCards} className='suitCards' />}
+                </div>
             </div>
         )
     }
