@@ -71,7 +71,6 @@ const mapStateToProps = (state) => {
   return {
     cards: state.cards,
     user: state.user,
-    // arcanas: state.arcanas,
     // suits: state.suits,
     loading: state.loading
   }

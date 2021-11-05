@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { editCard } from '../../actions/cardActions'
 import { connect } from 'react-redux'
+import { checkAuth } from '../../actions/usersActions'
 
 class CardForm extends Component {
     
@@ -16,22 +17,32 @@ class CardForm extends Component {
     }
 
     componentDidMount() {
+        this.props.checkAuth()
         this.findCard()
     }
 
     findCard = () => {
         const card = this.props.cards.cards.find(card => card.id === parseInt(this.props.match.params.id))
-        
-        this.setState({
-            id: card.id,
-            name: card.name,
-            image: card.image_url,
-            fullMeaning: card.full_meaning,
-            uprightMeaning: card.upright_meaning,
-            reversedMeaning: card.reversed_meaning,
-            suit: card.suit.name,
-            arcana: card.arcana.name
-        })
+        if (card) {
+            this.setState({
+                id: card.id,
+                name: card.name,
+                image: card.image_url,
+                fullMeaning: card.full_meaning,
+                uprightMeaning: card.upright_meaning,
+                reversedMeaning: card.reversed_meaning,
+                suit: card.suit.name,
+                arcana: card.arcana.name
+            })
+        }
+    }
+
+    notAdmin = () => {
+        return (
+            <div class="alert alert-danger" role="alert">
+                You must be an admin to view this page.
+            </div>
+        )
     }
 
     handleOnChange = (e) => {
@@ -47,13 +58,9 @@ class CardForm extends Component {
         this.props.history.push(`/cards/${this.state.id}`)
     }
 
-    render() {
-        console.log('card form props', this.props)
-        // console.log('card form state', this.state)
-        const currentUser = this.props.user.currentUser
-        if (currentUser.is_admin === true) {
+    cardForm = () => {
         return (
-            <div className="container p-3 mb-2 bg-white text-dark bg-opacity-75">
+            <div className="container mb-2 bg-white text-dark bg-opacity-75">
                 <div class="row justify-content-center">
                     <div class="col" >
                         <img src={this.state.image ? this.state.image.url : null} 
@@ -97,10 +104,15 @@ class CardForm extends Component {
                 </div>
             </div>
         )
+    }
+
+    render() {
+        console.log('card form props', this.props)
+        const currentUser = this.props.user.currentUser
+        if (!!currentUser.is_admin) {
+            return this.cardForm()
         } else {
-            return (
-                <div>You must be an admin to view this page.</div>
-            )
+            return this.notAdmin()
         }
     }
 }
@@ -112,4 +124,11 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { editCard })(CardForm)
+const mapDispatchToProps = dispatch => {
+    return { 
+        editCard: (card) => dispatch(editCard(card)),
+        checkAuth: () => dispatch(checkAuth())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CardForm)
