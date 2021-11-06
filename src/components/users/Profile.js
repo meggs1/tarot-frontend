@@ -21,22 +21,32 @@ class Profile extends Component {
     )
   }
 
+  userNotLoggedIn = () => {
+    return (
+        <div class="alert alert-danger" role="alert">
+            Please log in to view your profile
+        </div>
+    )
+}
+
   render() {
     const userCards = JSON.parse(localStorage.getItem('userCards'))
     const { authChecked, currentUser } = this.props.user
 
     if (authChecked) {
       return (
-        <div className="container p-3 mb-2 bg-white text-dark bg-opacity-75">
+        <div className="container p-3 ">
           <h1>Welcome, {currentUser.name} </h1>
-          { userCards ? this.displayUserCards(userCards) : null }
+          { userCards ? this.displayUserCards(userCards) : 
+            <h3>Draw cards to get started</h3>
+          }
         </div>
       )
     } else {
       return (
-        <div className="container justify-content-center">
-          <h1>Please log in to view your profile</h1>
-        </div>
+        <>
+          {this.userNotLoggedIn()}
+        </>
       )
     }
   } 

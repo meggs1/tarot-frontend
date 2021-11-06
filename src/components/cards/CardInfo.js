@@ -1,15 +1,18 @@
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import Home from '../Home'
 
 const CardInfo = (props) => {
 
     const renderLinkIfAdmin = (cardId) => {
         if (props.user.currentUser.is_admin) {
             return (
-            <Link to={`/cards/${cardId}/edit`}>Edit</Link>
+                <Link to={`/cards/${cardId}/edit`}>Edit</Link>
             )
         }
+    }
+
+    const handleOnClick = () => {
+        props.history.push('/cards')
     }
 
     const displayCardInfo = () => {
@@ -18,7 +21,7 @@ const CardInfo = (props) => {
         if (!card) {
             return (
                 <div class="alert alert-danger" role="alert">
-                    That card doesn't exist
+                    That card doesn't exist!
                 </div>
             )
         }
@@ -41,7 +44,10 @@ const CardInfo = (props) => {
                 <div id={card.id}  className="container p-3 mb-2 d-flex justify-content-center">
                     <div class="row">
                         <div class="col sm-2" >
-                            <img src={card.image_url ? card.image_url.url : null} alt={card.name}  class="large rounded  mx-auto d-block" />
+                            <img src={card.image_url ? card.image_url.url : null} 
+                            alt={card.name}  
+                            class="large rounded  mx-auto d-block"
+                            onClick={handleOnClick} />
                         </div>
                         <div class="col-sm-8 justify-content-md-center bg-white text-dark bg-opacity-75">
                             <h1>{card.name}</h1>
