@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-
-// import CardsContainer from '../../containers/CardsContainer'
 import Cards from '../cards/Cards'
 
 class Suit extends Component {
@@ -14,9 +12,8 @@ class Suit extends Component {
     }
     
     render() {
-        // console.log('Suit props', this.props)
         const suit = this.props.suit
-        const suitCards = this.props.cards
+        const cards = this.props.cards
         return (
             <div>
                 <div className="container p-4 mb-2 text-dark">
@@ -25,7 +22,7 @@ class Suit extends Component {
                     <button onClick={this.handleClick} class="btn btn-secondary btn-lg btn-block ">Show Cards</button>
                 </div>
                 <div>
-                    {this.state.showCards && <Cards cards={suitCards} className='suitCards' />}
+                    {this.state.showCards && <Cards cards={cards} />}
                 </div>
             </div>
         )

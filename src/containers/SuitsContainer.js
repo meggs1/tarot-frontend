@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
-
-import { connect } from "react-redux";
-import { fetchSuits } from '../actions/suitActions';
+import { connect } from "react-redux"
+import { fetchSuits } from '../actions/suitActions'
 import Suit from '../components/suits/Suit'
 
 class SuitsContainer extends Component {
@@ -18,11 +17,10 @@ class SuitsContainer extends Component {
     }
     
     render() {
-        console.log('suits contaianer props', this.props)
         return(
             <div className="container p-4 mb-2">
                 {this.props.suits.suits.map( suit => 
-                    <Suit key={suit.id} suit={suit} cards={this.filterCards(suit.id)}/>
+                    <Suit key={suit.id} suit={suit} cards={this.filterCards(suit.id)} />
                 )}
             </div>
         )
@@ -41,6 +39,6 @@ const mapDispatchToProps = (dispatch) => {
     return {
       fetchSuits: () => dispatch(fetchSuits())
     }
-  }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(SuitsContainer)

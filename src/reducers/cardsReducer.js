@@ -6,11 +6,11 @@ const cardsReducer = (state = { cards: [], loading: false }, action) => {
         cards: [...state.cards],
         loading: true,
       }
-      
+
     case "ADD_CARDS":
       return {
         ...state,
-        cards: action.cards,
+        cards: action.payload,
         loading: false
       }
     
@@ -22,8 +22,7 @@ const cardsReducer = (state = { cards: [], loading: false }, action) => {
             action.payload,
             ...state.cards.slice(index + 1)
         ], loading: false
-      } 
-
+      }
     default:
       return state
   }

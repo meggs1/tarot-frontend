@@ -1,4 +1,4 @@
-const userReducer = (state = { currentUser: {}, authChecked: false, loggedIn: false  }, action) => {
+const userReducer = (state = { currentUser: {}, authChecked: false, loggedIn: false }, action) => {
   switch (action.type) {  
     case "AUTHENTICATED":
       return {
@@ -11,11 +11,6 @@ const userReducer = (state = { currentUser: {}, authChecked: false, loggedIn: fa
         currentUser: {},
         authChecked: false,
         loggedIn: false
-      }
-    case 'ADD_CARDS_TO_USER':
-      return {
-        ...state,
-        currentUser: action.payload
       }
     default:
       return state

@@ -1,12 +1,11 @@
 export function fetchCards() {
-
     return (dispatch) => {
         dispatch({ type: "LOADING_CARDS", loading: true })
 
         fetch('http://localhost:3000/cards')
         .then((response) => response.json())
         .then((data) => {
-            dispatch({ type: "ADD_CARDS", cards: data, loading: false })
+            dispatch({ type: "ADD_CARDS", payload: data, loading: false })
         })
         .catch(err => console.log(err))
     }
@@ -14,7 +13,6 @@ export function fetchCards() {
 
 export function editCard(card) {
     return (dispatch) => {
-
         const cardObj = {
             name: card.name,
             full_meaning: card.fullMeaning,

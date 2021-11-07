@@ -12,14 +12,44 @@ const CardInfo = (props) => {
     }
 
     const handleOnClick = () => {
-        if (props.className !== 'cardInfo') { 
-            props.history.push('/cards') 
+        if (props.history) { 
+            props.history.goBack()
         }
+    }
+
+    const fullCardInfo = (card) => {
+        return (
+            <div id={card.id}  className="container p-3 mb-2 d-flex justify-content-center">
+                <div class="row">
+                    <div class="col sm-2" >
+                        <img src={card.image_url ? card.image_url.url : null} 
+                        alt={card.name}  
+                        class="large rounded mx-auto d-block"
+                        onClick={handleOnClick} />
+                    </div>
+                    <div class="col-sm-8 justify-content-md-center bg-white text-dark bg-opacity-75">
+                        <h1>{card.name}</h1>
+                        <p><strong>{card.arcana.name} Arcana Suit of {card.suit.name}</strong></p>
+                        
+                        <h3>Full Meaning</h3>
+                        <p>{card.full_meaning}</p>
+
+                        <h3>Upright Meaning</h3>
+                        <p>{card.upright_meaning}</p>
+
+                        <h3>Reversed Meaning</h3>
+                        <p>{card.reversed_meaning}</p>
+                        {renderLinkIfAdmin(card.id)}
+                    </div>
+                </div>
+            </div>
+        )
     }
 
     const displayCardInfo = () => {
         const card = props.card
         const num = props.num
+        
         if (!card) {
             return (
                 <div class="alert alert-danger" role="alert">
@@ -43,30 +73,7 @@ const CardInfo = (props) => {
             )
         } else {
             return (
-                <div id={card.id}  className="container p-3 mb-2 d-flex justify-content-center">
-                    <div class="row">
-                        <div class="col sm-2" >
-                            <img src={card.image_url ? card.image_url.url : null} 
-                            alt={card.name}  
-                            class="large rounded  mx-auto d-block"
-                            onClick={handleOnClick} />
-                        </div>
-                        <div class="col-sm-8 justify-content-md-center bg-white text-dark bg-opacity-75">
-                            <h1>{card.name}</h1>
-                            <p><strong>{card.arcana.name} Arcana Suit of {card.suit.name}</strong></p>
-                            
-                            <h3>Full Meaning</h3>
-                            <p>{card.full_meaning}</p>
-    
-                            <h3>Upright Meaning</h3>
-                            <p>{card.upright_meaning}</p>
-
-                            <h3>Reversed Meaning</h3>
-                            <p>{card.reversed_meaning}</p>
-                            {renderLinkIfAdmin(card.id)}
-                        </div>
-                    </div>
-                </div>
+                fullCardInfo(card)
             )
         }
     }

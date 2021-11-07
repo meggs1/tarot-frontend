@@ -17,7 +17,6 @@ class Card extends Component {
         const num = this.props.num
 
         if (this.props.className === 'card') {
-            console.log(this.props)
             return (
                 <div>
                     <CardImage card={card} className='cardImage' />

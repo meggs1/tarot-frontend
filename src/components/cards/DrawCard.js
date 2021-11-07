@@ -3,16 +3,14 @@ import { connect } from "react-redux"
 import Card from "./Card"
 
 class DrawCard extends Component {
+
     state = {
         showCards: false,
-        showCardInfo: false,
         drawnCards: []
     }
 
     handleClick = (e) => {
-        if (!this.state.showCards) {
-            this.getCards(e.target.value)
-        }
+        this.getCards(e.target.value)
         this.setState({showCards: !this.state.showCards})
     }
 
@@ -22,7 +20,6 @@ class DrawCard extends Component {
 
     getCards = (num) => {
         const cards = this.props.cards.cards
-
         const slicedCards = cards.slice()
         const numOfCards = parseInt(num)
         const selectedCards = []
@@ -30,27 +27,30 @@ class DrawCard extends Component {
         for (let i=0; i<numOfCards; i++) {
             selectedCards.push(slicedCards.splice(Math.random() * (slicedCards.length-1) ,1).pop())
             localStorage.setItem('userCards', JSON.stringify(selectedCards))
+        
             this.setState({
                 drawnCards: selectedCards
             })
         }
     }
 
-    drawCards = () => {
+    showDrawnCards = () => {
         const cards = this.state.drawnCards
         return(
             <>
-                {this.state.showCards ? cards.map(card => 
-                    <div class="col  p-3">
-                        <Card card={card} num={this.getRandomInt(2)} className="drawnCard"/> 
-                    </div> ) : null 
+                {this.state.showCards ? 
+                    cards.map(card => 
+                        <div class="col  p-3">
+                            <Card card={card} num={this.getRandomInt(2)} className="drawnCard"/> 
+                        </div> 
+                    ) 
+                    : null 
                 }
             </>
         )
     }
     
     render() {
-        console.log(this.props.dispatch)
         return(
             <div class="container">
                 <div class="row justify-content-md-center">
@@ -61,7 +61,7 @@ class DrawCard extends Component {
                     </div>
                 </div>
                 <div class="row justify-content-md-center">
-                    {this.drawCards()}
+                    {this.showDrawnCards()}
                 </div>
             </div>
         )

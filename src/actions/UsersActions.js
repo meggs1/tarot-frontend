@@ -19,10 +19,8 @@ export const signUp = (user) => {
       .then(data => ({ data, resp })))
       .then(({ data, resp }) =>  {
       if (resp.ok) {
-        // console.log(resp)
         localStorage.setItem('token', data.jwt)
         dispatch({ type: "AUTHENTICATED", payload: data })
-        // console.log(localStorage)
       } else {
         dispatch({ type: "NOT_AUTHENTICATED" })
         return Promise.reject(resp)
@@ -40,7 +38,7 @@ export const login = (user) => {
           'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-      user:{
+        user:{
           username: user.username,
           password: user.password
         }
@@ -74,7 +72,6 @@ export const checkAuth = () => {
     })
     .then((resp) => {
       if (resp.ok) {
-        // console.log('check auth', resp)
         return resp
         .json()
         .then(user => dispatch({ type: "AUTHENTICATED", payload: user }))
@@ -110,5 +107,3 @@ export const logout = () => {
     })
   }
 }
-
-

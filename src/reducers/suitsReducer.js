@@ -10,7 +10,7 @@ const suitsReducer = (state = { suits: [], loading: false }, action) => {
       case "ADD_SUITS":
         return {
           ...state,
-          suits: action.suits,
+          suits: action.payload,
           loading: false,
         };
   
