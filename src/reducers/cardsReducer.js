@@ -6,7 +6,7 @@ const cardsReducer = (state = { cards: [], loading: false }, action) => {
         cards: [...state.cards],
         loading: true,
       }
-
+      
     case "ADD_CARDS":
       return {
         ...state,

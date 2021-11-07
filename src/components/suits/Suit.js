@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import CardsContainer from '../../containers/CardsContainer'
-// import Cards from '../cards/Cards'
+// import CardsContainer from '../../containers/CardsContainer'
+import Cards from '../cards/Cards'
 
 class Suit extends Component {
     
@@ -25,7 +25,7 @@ class Suit extends Component {
                     <button onClick={this.handleClick} class="btn btn-secondary btn-lg btn-block ">Show Cards</button>
                 </div>
                 <div>
-                    {this.state.showCards && <CardsContainer suitCards={suitCards} className='suitCards' />}
+                    {this.state.showCards && <Cards cards={suitCards} className='suitCards' />}
                 </div>
             </div>
         )

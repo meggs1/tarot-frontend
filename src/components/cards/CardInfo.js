@@ -12,7 +12,9 @@ const CardInfo = (props) => {
     }
 
     const handleOnClick = () => {
-        props.history.push('/cards')
+        if (props.className !== 'cardInfo') { 
+            props.history.push('/cards') 
+        }
     }
 
     const displayCardInfo = () => {
@@ -77,10 +79,10 @@ const CardInfo = (props) => {
 
 }
 
-const mapToProps = (state) => {
+const mapStateToProps = (state) => {
     return {
         user: state.user
     }
 }
 
-export default connect(mapToProps)(CardInfo)
+export default connect(mapStateToProps)(CardInfo)

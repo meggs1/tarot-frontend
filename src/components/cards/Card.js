@@ -19,17 +19,17 @@ class Card extends Component {
         if (this.props.className === 'card') {
             console.log(this.props)
             return (
-                <div class="front">
+                <div>
                     <CardImage card={card} className='cardImage' />
-                    {this.state.showCardInfo ? 
-                    <CardInfo card={card} className="cardInfo" /> : null }
+                    {this.state.showCardInfo ? <CardInfo card={card} /> : null }
                 </div>
             )
         } 
         else if (num === 0 || num === 1) {
             return (
                 <div className="card-container" onClick={this.handleClick}>
-                    {this.state.showCardInfo ? <CardInfo card={card} num={num} /> : 
+                    {this.state.showCardInfo ? 
+                        <CardInfo card={card} num={num} /> : 
                         <CardImage card={card} num={num} className="drawCard" /> 
                     }
                 </div>

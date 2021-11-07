@@ -2,7 +2,6 @@ import { Link } from "react-router-dom"
 import Card from './Card'
 
 const Cards = (props) => {
-    console.log(props)
     return (
         <div class="container">
             <div class="row justify-content-md-center">

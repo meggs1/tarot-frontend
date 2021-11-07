@@ -1,8 +1,9 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
 import { checkAuth } from '../../actions/usersActions'
-import CardInfo from '../cards/CardInfo'
 
+import CardInfo from '../cards/CardInfo'
+import DrawCard from '../cards/DrawCard'
 
 class Profile extends Component {
 
@@ -23,22 +24,24 @@ class Profile extends Component {
 
   userNotLoggedIn = () => {
     return (
-        <div class="alert alert-danger" role="alert">
-            Please log in to view your profile
-        </div>
+      <div class="alert alert-danger" role="alert">
+        Please log in to view your profile
+      </div>
     )
-}
+  }
 
   render() {
     const userCards = JSON.parse(localStorage.getItem('userCards'))
-    const { authChecked, currentUser } = this.props.user
+    const authChecked = this.props.user.authChecked
 
     if (authChecked) {
       return (
         <div className="container p-3 ">
-          <h1>Welcome, {currentUser.name} </h1>
           { userCards ? this.displayUserCards(userCards) : 
-            <h3>Draw cards to get started</h3>
+            <>
+              <h3>Draw cards to get started</h3>
+              <DrawCard />
+            </>
           }
         </div>
       )
@@ -60,7 +63,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    checkAuth: () => dispatch(checkAuth()),
+    checkAuth: () => dispatch(checkAuth())
   }
 }
 
