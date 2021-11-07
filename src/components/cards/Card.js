@@ -23,8 +23,7 @@ class Card extends Component {
                     {this.state.showCardInfo ? <CardInfo card={card} /> : null }
                 </div>
             )
-        } 
-        else if (num === 0 || num === 1) {
+        } else if (num === 0 || num === 1) {
             return (
                 <div className="card-container" onClick={this.handleClick}>
                     {this.state.showCardInfo ? 

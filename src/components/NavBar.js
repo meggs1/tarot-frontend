@@ -15,31 +15,31 @@ class NavBar extends Component{
         const loggedIn = this.props.user.loggedIn
         return loggedIn ? (   
             <>
-                <Link to="/profile" class="nav-link active">Profile</Link>
-                <Link to="/logout" onClick={this.props.logout} class="nav-link active">Logout</Link>
+                <Link to="/profile" className="nav-link active">Profile</Link>
+                <Link to="/logout" onClick={this.props.logout} className="nav-link active">Logout</Link>
             </>
         ) : (
             <>
-                <Link to="/signup" class="nav-link active">Sign Up</Link>
-                <Link to="/login" class="nav-link active">Login</Link>
+                <Link to="/signup" className="nav-link active">Sign Up</Link>
+                <Link to="/login" className="nav-link active">Login</Link>
             </>
         ) 
     }
 
     render() {
         return(
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav me-auto mb-2 ">
-                            <Link to="/" class="nav-link active">Home</Link>
-                            <Link to="/cards" class="nav-link active">Cards</Link>
-                            <Link to="/suits" class="nav-link active">Suits</Link>
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <div className="container-fluid">
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                        <ul className="navbar-nav me-auto mb-2 ">
+                            <Link to="/" className="nav-link active">Home</Link>
+                            <Link to="/cards" className="nav-link active">Cards</Link>
+                            <Link to="/suits" className="nav-link active">Suits</Link>
                         </ul>
                     </div>
-                    <div class="navbar navbar-expand-lg navbar-light bg-light">
-                        <div class="container-fluid">
-                            <ul class="navbar-nav mr-auto">
+                    <div className="navbar navbar-expand-lg navbar-light bg-light">
+                        <div className="container-fluid">
+                            <ul className="navbar-nav mr-auto">
                                 {this.toggleUserLinks()}
                             </ul>
                         </div>

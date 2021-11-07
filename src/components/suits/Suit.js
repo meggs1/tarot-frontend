@@ -19,7 +19,7 @@ class Suit extends Component {
                 <div className="container p-4 mb-2 text-dark">
                     <h1> {suit.name} </h1>
                     <p> {suit.description} </p>
-                    <button onClick={this.handleClick} class="btn btn-secondary btn-lg btn-block ">Show Cards</button>
+                    <button onClick={this.handleClick} className="btn btn-secondary btn-lg btn-block ">Show Cards</button>
                 </div>
                 <div>
                     {this.state.showCards && <Cards cards={cards} />}

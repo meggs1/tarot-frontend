@@ -3,10 +3,10 @@ import Card from './Card'
 
 const Cards = (props) => {
     return (
-        <div class="container">
-            <div class="row justify-content-md-center">
+        <div className="container">
+            <div className="row justify-content-md-center">
                 {props.cards.map( card => 
-                    <div class="col-md-auto">
+                    <div className="col-md-auto" key={card.id}>
                         <Link to={{pathname: `/cards/${card.id}`}}>
                             <Card card={card} className="card" />
                         </Link>

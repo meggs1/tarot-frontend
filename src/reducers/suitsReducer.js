@@ -4,14 +4,14 @@ const suitsReducer = (state = { suits: [], loading: false }, action) => {
         return {
           ...state,
           suits: [...state.suits],
-          loading: true,
+          loading: true
         };
   
       case "ADD_SUITS":
         return {
           ...state,
           suits: action.payload,
-          loading: false,
+          loading: false
         };
   
       default:

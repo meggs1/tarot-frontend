@@ -40,7 +40,7 @@ class DrawCard extends Component {
             <>
                 {this.state.showCards ? 
                     cards.map(card => 
-                        <div class="col  p-3">
+                        <div className="col  p-3" key={card.id}>
                             <Card card={card} num={this.getRandomInt(2)} className="drawnCard"/> 
                         </div> 
                     ) 
@@ -52,15 +52,15 @@ class DrawCard extends Component {
     
     render() {
         return(
-            <div class="container">
-                <div class="row justify-content-md-center">
-                    <div class="col-md-auto">
-                        <button onClick={this.handleClick} value="1" class="btn btn-dark btn-lg button-space">Draw one card</button>
-                        <button onClick={this.handleClick} value="3" class="btn btn-dark btn-lg button-space">Draw three cards</button>
-                        <button onClick={this.handleClick} value="5" class="btn btn-dark btn-lg button-space">Draw five cards</button>
+            <div className="container">
+                <div className="row justify-content-md-center">
+                    <div className="col-md-auto">
+                        <button onClick={this.handleClick} value="1" className="btn btn-dark btn-lg button-space">Draw one card</button>
+                        <button onClick={this.handleClick} value="3" className="btn btn-dark btn-lg button-space">Draw three cards</button>
+                        <button onClick={this.handleClick} value="5" className="btn btn-dark btn-lg button-space">Draw five cards</button>
                     </div>
                 </div>
-                <div class="row justify-content-md-center">
+                <div className="row justify-content-md-center">
                     {this.showDrawnCards()}
                 </div>
             </div>

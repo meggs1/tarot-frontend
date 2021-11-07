@@ -8,7 +8,7 @@ const CardImage = (props) => {
             <div>
                 <img src={cardImage} 
                     alt={card.name} 
-                    class="large rounded mx-auto d-block"
+                    className="large rounded mx-auto d-block"
                 />
             </div>
         )
@@ -16,15 +16,15 @@ const CardImage = (props) => {
         return (
             <img src={cardImage} 
                 alt={card.name}
-                class="large reversed rounded mx-auto d-block"
+                className="large reversed rounded mx-auto d-block"
             />
         )
     } else {
         return (
-            <div class="container p-1">
+            <div className="container p-1">
                 <img src={cardImage} 
                     alt={card.name} 
-                    class="medium rounded mx-auto d-block"  
+                    className="medium rounded mx-auto d-block"  
                 /> 
             </div>
         )

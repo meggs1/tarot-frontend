@@ -39,7 +39,7 @@ class CardForm extends Component {
 
     notAdmin = () => {
         return (
-            <div class="alert alert-danger" role="alert">
+            <div className="alert alert-danger" role="alert">
                 You must be an admin to view this page.
             </div>
         )
@@ -61,12 +61,12 @@ class CardForm extends Component {
     cardForm = () => {
         return (
             <div className="container mb-2 bg-white text-dark bg-opacity-75">
-                <div class="row justify-content-center">
-                    <div class="col" >
+                <div className="row justify-content-center">
+                    <div className="col" >
                         <img src={this.state.image ? this.state.image.url : null} 
-                        alt={this.state.name}  class="large rounded mx-auto d-block" /> 
+                        alt={this.state.name}  className="large rounded mx-auto d-block" /> 
                     </div>
-                    <div class="col">
+                    <div className="col">
                         <h1> Edit: {this.state.name} </h1>
                         <p><strong>{this.state.arcana} Arcana Suit of {this.state.suit}</strong></p>
                         <form onSubmit={this.handleOnSubmit}>
@@ -76,7 +76,7 @@ class CardForm extends Component {
                                 name="fullMeaning"
                                 value={this.state.fullMeaning}
                                 onChange={(e) => this.handleOnChange(e)} 
-                                class="form-control"
+                                className="form-control"
                                 rows="7"
                             />
                             <h2>Card Upright Meaning:</h2>
@@ -85,7 +85,7 @@ class CardForm extends Component {
                                 name="uprightMeaning"
                                 value={this.state.uprightMeaning}
                                 onChange={(e) => this.handleOnChange(e)} 
-                                class="form-control"
+                                className="form-control"
                                 rows="7"
                             />
                             <h2>Card Reverse Meaning:</h2>
@@ -94,11 +94,11 @@ class CardForm extends Component {
                                 name="reversedMeaning"
                                 value={this.state.reversedMeaning}
                                 onChange={(e) => this.handleOnChange(e)} 
-                                class="form-control"
+                                className="form-control"
                                 rows="7"
                             />
                             <br />
-                            <input type="submit" class="btn btn-secondary btn-lg btn-block"/>
+                            <input type="submit" className="btn btn-secondary btn-lg btn-block"/>
                         </form>
                     </div>    
                 </div>

@@ -23,8 +23,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('App props', this.props)
-
     if (!!this.props.cards.loading) {
       return (
         <div>
@@ -37,7 +35,7 @@ class App extends Component {
     return (
       <div>
         <NavBar />
-        <div class="container bg-white text-dark bg-opacity-75 align-items-stretch">
+        <div className="container bg-white text-dark bg-opacity-75 align-items-stretch">
           <Switch>
             <Route exact path="/" render={routerProps => <Home {...routerProps} /> }/>
             <Route exact path="/signup" render={routerProps => <SignUp {...routerProps} /> } />
