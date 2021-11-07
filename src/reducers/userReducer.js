@@ -4,13 +4,13 @@ const userReducer = (state = { currentUser: {}, authChecked: false, loggedIn: fa
       return {
         currentUser: action.payload,
         authChecked: true,
-        loggedIn: true
+        loggedIn: true,
       }
     case "NOT_AUTHENTICATED":
       return {
         currentUser: {},
         authChecked: false,
-        loggedIn: false
+        loggedIn: false,
       }
     default:
       return state

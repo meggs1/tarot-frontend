@@ -1,8 +1,8 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
 import { checkAuth } from '../../actions/usersActions'
-import CardInfo from '../cards/CardInfo'
-import DrawCard from '../cards/DrawCard'
+import CardInfo from '../../components/cards/CardInfo'
+import DrawCard from '../DrawCard'
 
 class Profile extends Component {
 
@@ -15,7 +15,7 @@ class Profile extends Component {
     if (userCards) {
     return (
       <div className="container">
-        <h2 className="text-center">Your last tarot cards</h2>
+        <h2 className="text-center">{this.props.user.currentUser.name}'s last drawn cards </h2>
         {userCards.map(card => 
           <CardInfo card={card} className='cardInfo' key={card.id}/> 
         )}

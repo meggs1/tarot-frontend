@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { editCard } from '../../actions/cardActions'
 import { connect } from 'react-redux'
-import { checkAuth } from '../../actions/usersActions'
+import { editCard } from '../actions/cardActions'
+import { checkAuth } from '../actions/usersActions'
 
 class CardForm extends Component {
     

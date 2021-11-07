@@ -25,7 +25,7 @@ export const signUp = (user) => {
         dispatch({ type: "NOT_AUTHENTICATED" })
         return Promise.reject(resp)
       }
-    }).catch(err => console.log("Error: ", err))
+    }).catch(err => console.log(err))
   }
 }
 
@@ -56,7 +56,7 @@ export const login = (user) => {
         dispatch({ type: "NOT_AUTHENTICATED" })
         return Promise.reject(resp)
       }
-    }).catch(err => console.log("Error: ", err))
+    }).catch(err => console.log(err))
   }
 }
 

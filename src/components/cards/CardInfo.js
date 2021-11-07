@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
 
 const CardInfo = (props) => {
-
+    console.log(props)
     const renderLinkIfAdmin = (cardId) => {
         if (props.user.currentUser.is_admin) {
             return (
@@ -86,10 +85,4 @@ const CardInfo = (props) => {
 
 }
 
-const mapStateToProps = (state) => {
-    return {
-        user: state.user
-    }
-}
-
-export default connect(mapStateToProps)(CardInfo)
+export default CardInfo

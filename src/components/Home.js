@@ -1,4 +1,4 @@
-import DrawCard from "./cards/DrawCard"
+import DrawCard from "../containers/DrawCard"
 
 const Home = () => {
     return(

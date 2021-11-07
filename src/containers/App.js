@@ -5,13 +5,13 @@ import '../App.css'
 
 import NavBar from '../components/NavBar'
 import Home from '../components/Home'
-import SignUp from '../components/users/SignUp'
-import Login from '../components/users/Login'
+import SignUp from './users/SignUp'
+import Login from './users/Login'
 import CardInfo from '../components/cards/CardInfo'
-import CardForm from '../components/cards/CardForm'
+import CardForm from './CardForm'
 import Cards from '../components/cards/Cards'
 import SuitsContainer from './SuitsContainer'
-import Profile from '../components/users/Profile'
+import Profile from './users/Profile'
 import Spinner from '../components/Spinner'
 
 import { fetchCards } from '../actions/cardActions'
@@ -46,6 +46,7 @@ class App extends Component {
             <Route exact path="/cards/:id" 
               render={routerProps => {
                 return ( <CardInfo {...routerProps} 
+                  user={this.props.user} 
                   card={this.props.cards.cards.find(card => card.id === parseInt(routerProps.match.params.id))} />
                 )
               }} 
@@ -62,7 +63,8 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    cards: state.cards
+    cards: state.cards,
+    user: state.user
   }
 }
 
