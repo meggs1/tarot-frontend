@@ -11,7 +11,7 @@ import CardInfo from '../components/cards/CardInfo'
 import CardForm from './CardForm'
 import Cards from '../components/cards/Cards'
 import SuitsContainer from './SuitsContainer'
-import Profile from './users/Profile'
+import ProfileContainer from './users/ProfileContainer'
 import Spinner from '../components/Spinner'
 
 import { fetchCards } from '../actions/cardActions'
@@ -42,7 +42,7 @@ class App extends Component {
             <Route exact path="/login" render={routerProps => <Login {...routerProps} /> } />
             <Route exact path='/cards' render={routerProps => <Cards {...routerProps} cards={this.props.cards.cards} /> } />
             <Route exact path='/suits' render={routerProps => <SuitsContainer {...routerProps} /> } />
-            <Route exact path='/profile' render={routerProps => <Profile {...routerProps} />  } />
+            <Route exact path='/profile' render={routerProps => <ProfileContainer {...routerProps} />  } />
             <Route exact path="/cards/:id" 
               render={routerProps => {
                 return ( <CardInfo {...routerProps} 
