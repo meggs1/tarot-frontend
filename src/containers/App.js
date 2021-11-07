@@ -16,10 +16,6 @@ import Spinner from '../components/Spinner'
 
 import { fetchCards } from '../actions/cardActions'
 
-
-
-
-
 class App extends Component {
 
   componentDidMount() {
@@ -28,6 +24,7 @@ class App extends Component {
 
   render() {
     console.log('App props', this.props)
+
     if (!!this.props.cards.loading) {
       return (
         <div>
@@ -36,6 +33,7 @@ class App extends Component {
         </div>
       )
     }
+
     return (
       <div>
         <NavBar />
@@ -60,7 +58,6 @@ class App extends Component {
           </Switch >
         </div>
       </div>
-      
     )
   }
 }
@@ -78,5 +75,3 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
-
-// export default App
