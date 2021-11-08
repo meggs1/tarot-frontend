@@ -1,9 +1,7 @@
 import { Component } from "react"
-import { connect } from "react-redux"
-import Card from "../components/cards/Card"
+import Card from "./Card"
 
 class DrawCard extends Component {
-
     state = {
         showCards: false,
         drawnCards: []
@@ -19,7 +17,7 @@ class DrawCard extends Component {
     }
 
     getCards = (num) => {
-        const cards = this.props.cards.cards
+        const cards = this.props.cards
         const slicedCards = cards.slice()
         const numOfCards = parseInt(num)
         const selectedCards = []
@@ -43,8 +41,7 @@ class DrawCard extends Component {
                         <div className="col  p-3" key={card.id}>
                             <Card card={card} num={this.getRandomInt(2)} className="drawnCard"/> 
                         </div> 
-                    ) 
-                    : null 
+                    ) : null 
                 }
             </>
         )
@@ -68,10 +65,4 @@ class DrawCard extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-      cards: state.cards
-    }
-}
-
-export default connect(mapStateToProps)(DrawCard)
+export default DrawCard

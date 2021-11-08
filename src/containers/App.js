@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Switch, Route } from 'react-router-dom';
 import '../App.css'
 
-import NavBar from '../components/NavBar'
+import NavBar from './NavBar'
 import Home from '../components/Home'
 import SignUp from './users/SignUp'
 import Login from './users/Login'

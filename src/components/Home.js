@@ -1,9 +1,9 @@
-import DrawCard from "../containers/DrawCard"
+import DrawCardContainer from "../containers/DrawCardContainer"
 
 const Home = () => {
     return(
-        <div className="container p-3"> 
-            <DrawCard />
+        <div className="container p-3">
+            <DrawCardContainer />
         </div>
     )
 }
