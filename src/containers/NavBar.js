@@ -15,7 +15,7 @@ class NavBar extends Component{
         return loggedIn ? (   
             <>
                 <Link to="/profile" className="nav-link active">Profile</Link>
-                <Link to="/logout" onClick={this.props.logout} className="nav-link active">Logout</Link>
+                {/* <Link to="/logout" onClick={this.props.logout} className="nav-link active">Logout</Link> */}
             </>
         ) : (
             <>
@@ -56,11 +56,11 @@ class NavBar extends Component{
         }
     }
   
-  const mapDispatchToProps = (dispatch) => {
-    return {
-        checkAuth: () => dispatch(checkAuth()),
-        logout: () => dispatch(logout())
-    }
-  }
+//   const mapDispatchToProps = (dispatch) => {
+//     return {
+//         checkAuth: () => dispatch(checkAuth()),
+//         logout: () => dispatch(logout())
+//     }
+//   }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar)
+export default connect(mapStateToProps)(NavBar)
