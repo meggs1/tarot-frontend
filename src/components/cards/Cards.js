@@ -2,7 +2,6 @@ import { Link } from "react-router-dom"
 import Card from './Card'
 
 const Cards = (props) => {
-    console.log('cards', props)
     const cards = props.cards
     if (cards) {
         return (

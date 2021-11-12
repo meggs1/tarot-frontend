@@ -1,6 +1,6 @@
 export const signUp = (user) => {
   return (dispatch) => {
-    fetch('http://localhost:3000/users', {
+    fetch('https://tarot-card-reader-api.herokuapp.com/users', {
       method: "POST",
       headers: {
         'Accept': 'application/json',
@@ -31,7 +31,7 @@ export const signUp = (user) => {
 
 export const login = (user) => {
   return (dispatch) => {
-    fetch('http://localhost:3000/login', {
+    fetch('https://tarot-card-reader-api.herokuapp.com/login', {
       method: "POST",
       headers: {
           'Accept': 'application/json',
@@ -63,7 +63,7 @@ export const login = (user) => {
 export const checkAuth = () => {
   return (dispatch) => {
     const token = localStorage.getItem("token")
-    fetch("http://localhost:3000/check_auth", {
+    fetch("https://tarot-card-reader-api.herokuapp.com/check_auth", {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -87,7 +87,7 @@ export const checkAuth = () => {
 export const logout = () => {
   return (dispatch) => {
     const token = localStorage.getItem("token")
-    return fetch("http://localhost:3000/logout", {
+    return fetch("https://tarot-card-reader-api.herokuapp.com/logout", {
       method: "DELETE",
       headers: {
         Accept: "application/json",

@@ -18,9 +18,7 @@ class ProfileContainer extends Component {
   }
 
   render() {
-    
     return (this.props.user.loggedIn ? <Profile user={this.props.user} /> : this.userNotLoggedIn() )
-    // return <Profile user={this.props.user} />
   } 
 }
   

@@ -2,7 +2,7 @@ export function fetchCards() {
     return (dispatch) => {
         dispatch({ type: "LOADING_CARDS", loading: true })
 
-        fetch('http://localhost:3000/cards')
+        fetch('https://tarot-card-reader-api.herokuapp.com/cards')
         .then((response) => response.json())
         .then((data) => {
             dispatch({ type: "ADD_CARDS", payload: data, loading: false })
@@ -22,7 +22,7 @@ export function editCard(card) {
             id: card.id
         }
         
-        fetch(`http://localhost:3000/cards/${card.id}`, {
+        fetch(`https://tarot-card-reader-api.herokuapp.com/cards/${card.id}`, {
             method: 'PATCH',
             body: JSON.stringify(cardObj),
             headers: {'Content-Type': 'application/json', 'Accept': 'application/json'}
