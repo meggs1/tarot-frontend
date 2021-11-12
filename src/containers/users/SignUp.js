@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { signUp } from "../../actions/usersactions"
+import { signUp } from "../../actions/userActions"
 import SignUpForm from '../../components/users/SignUpForm'
 import { Redirect } from 'react-router-dom'
 
