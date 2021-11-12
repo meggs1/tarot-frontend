@@ -6,7 +6,7 @@ class Form extends Component {
     state = {
         id: '',
         name: '',
-        image: '',
+        avatar: '',
         fullMeaning: '',
         uprightMeaning: '',
         reversedMeaning: '',
@@ -31,7 +31,7 @@ class Form extends Component {
         this.setState({
             id: this.props.card.id,
             name: this.props.card.name,
-            image: this.props.card.image_url,
+            avatar: this.props.card.avatar,
             fullMeaning: this.props.card.full_meaning,
             uprightMeaning: this.props.card.upright_meaning,
             reversedMeaning: this.props.card.reversed_meaning,
@@ -95,6 +95,14 @@ class Form extends Component {
                                 rows="7"
                             />
                             <br />
+                            <input 
+                                type="file" 
+                                name="avatar" 
+                                value={this.state.avatar} 
+                                onChange={(e) => this.handleOnChange(e)} 
+                                className="form-control"
+                                rows="7"
+                            />
                             <input type="submit" className="btn btn-secondary btn-lg btn-block"/>
                         </form>
                     </div>    
