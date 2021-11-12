@@ -2,8 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom"
 import {connect} from "react-redux"
 import { Component } from 'react'
-import { checkAuth, logout } from '../actions/usersActions'
-// import { logout } from '../actions/usersActions'
+import { checkAuth, logout } from '../actions/usersactions'
 
 class NavBar extends Component{
 
