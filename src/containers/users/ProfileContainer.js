@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
-import { checkAuth } from '../../actions/usersActions'
+import { checkAuth } from '../../actions/usersactions'
 import Profile from '../../components/users/Profile'
 
 class ProfileContainer extends Component {
