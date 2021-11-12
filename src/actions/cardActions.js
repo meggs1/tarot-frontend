@@ -19,6 +19,7 @@ export function editCard(card) {
             upright_meaning: card.uprightMeaning,
             reversed_meaning: card.reversedMeaning,
             image_url: card.image,
+            avatar: card.avatar,
             id: card.id
         }
         
