@@ -1,13 +1,12 @@
 const CardImage = (props) => {
     const card = props.card
     const num = props.num
-    console.log(card)
-    const cardImage = (card.avatar)
+    const cardImage = (card.avatar ? card.avatar.url : null)
 
     if (num === 0) {
         return (
             <div>
-                <img src={card.avatar ? card.avatar.url : null} 
+                <img src={cardImage} 
                     alt={card.name} 
                     className="large rounded mx-auto d-block"
                 />
@@ -15,7 +14,7 @@ const CardImage = (props) => {
         )
     } else if (num === 1) {
         return (
-            <img src={card.avatar ? card.avatar.url : null} 
+            <img src={cardImage} 
                 alt={card.name}
                 className="large reversed rounded mx-auto d-block"
             />
@@ -23,7 +22,7 @@ const CardImage = (props) => {
     } else {
         return (
             <div className="container p-1">
-                <img src={card.avatar ? card.avatar.url : null} 
+                <img src={cardImage} 
                     alt={card.name} 
                     className="medium rounded mx-auto d-block"  
                 /> 
