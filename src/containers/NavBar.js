@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom"
 import {connect} from "react-redux"
 import { Component } from 'react'
-// import { checkAuth, logout } from '../actions/userActions'
+import { checkAuth, logout } from '../actions/userActions'
 
 class NavBar extends Component{
 
     componentDidMount() {
-        // this.props.checkAuth()
+        this.props.checkAuth()
     }
 
     toggleUserLinks() {
@@ -15,7 +15,7 @@ class NavBar extends Component{
         return loggedIn ? (   
             <>
                 <Link to="/profile" className="nav-link active">Profile</Link>
-                {/* <Link to="/logout" onClick={this.props.logout} className="nav-link active">Logout</Link> */}
+                <Link to="/logout" onClick={this.props.logout} className="nav-link active">Logout</Link>
             </>
         ) : (
             <>
@@ -56,11 +56,11 @@ class NavBar extends Component{
         }
     }
   
-//   const mapDispatchToProps = (dispatch) => {
-//     return {
-//         checkAuth: () => dispatch(checkAuth()),
-//         logout: () => dispatch(logout())
-//     }
-//   }
+  const mapDispatchToProps = (dispatch) => {
+    return {
+        checkAuth: () => dispatch(checkAuth()),
+        logout: () => dispatch(logout())
+    }
+  }
 
-export default connect(mapStateToProps)(NavBar)
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar)
