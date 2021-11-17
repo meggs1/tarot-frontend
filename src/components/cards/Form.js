@@ -60,7 +60,7 @@ class Form extends Component {
             <div className="container mb-2 bg-white text-dark bg-opacity-75">
                 <div className="row justify-content-center">
                     <div className="col" >
-                        <img src={this.state.image ? this.state.image.url : null} 
+                        <img src={this.state.image} 
                         alt={this.state.name}  className="large rounded mx-auto d-block" /> 
                     </div>
                     <div className="col">
