@@ -2,17 +2,17 @@ import { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 
 class Form extends Component {
+    avatar = React.createRef()
     
     state = {
         id: '',
         name: '',
-        avatar: '',
         fullMeaning: '',
         uprightMeaning: '',
         reversedMeaning: '',
         suit: '',
         arcana: '',
-        formComplete: false
+        formSubmitted: false
     }
 
     componentDidMount() {
@@ -37,7 +37,8 @@ class Form extends Component {
             reversedMeaning: this.props.card.reversed_meaning,
             suit: this.props.card.suit.name,
             arcana: this.props.card.arcana.name,
-            formComplete: false
+            formSubmitted: false,
+            complete: false
         })
     }
 
@@ -47,11 +48,15 @@ class Form extends Component {
         })
     }
 
+    
+      
+
     handleOnSubmit = (e) => {
         e.preventDefault()
-        const card = this.state
-        this.props.editCard(card)
-        this.setState({formComplete: true})
+        const formData = new FormData(e.target)
+
+        this.props.editCard(formData)
+        this.setState({formSubmitted: true, complete: false})
     }
 
     cardForm = () => {
@@ -103,6 +108,14 @@ class Form extends Component {
                                 className="form-control"
                                 rows="7"
                             />
+                            <input 
+                                type="file" 
+                                onChange={(e) =>this.onFileChange(e)} 
+                                name="avatar" 
+                                ref={this.state.avatar}
+                                className="form-control" 
+                                rows="7"
+                            />
                             <input type="submit" className="btn btn-secondary btn-lg btn-block"/>
                         </form>
                     </div>    
@@ -113,7 +126,7 @@ class Form extends Component {
 
     render() {
         console.log('form', this.props, this.state)
-        if (!!this.state.formComplete) {
+        if (!!this.state.formSubmitted) {
             return <Redirect push to={`/cards/${this.state.id}`}/>
         }
 
