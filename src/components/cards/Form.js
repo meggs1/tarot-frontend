@@ -6,6 +6,7 @@ class Form extends Component {
     state = {
         id: '',
         name: '',
+        image: '',
         fullMeaning: '',
         uprightMeaning: '',
         reversedMeaning: '',
@@ -30,6 +31,7 @@ class Form extends Component {
         this.setState({
             id: this.props.card.id,
             name: this.props.card.name,
+            image: this.props.card.image_url,
             fullMeaning: this.props.card.full_meaning,
             uprightMeaning: this.props.card.upright_meaning,
             reversedMeaning: this.props.card.reversed_meaning,
@@ -53,12 +55,12 @@ class Form extends Component {
     }
 
     cardForm = () => {
-        console.log('form', this.props)
+        console.log('form props', this.props)
         return (
             <div className="container mb-2 bg-white text-dark bg-opacity-75">
                 <div className="row justify-content-center">
                     <div className="col" >
-                        <img src={this.props.card.image_url} 
+                        <img src={this.state.image} 
                         alt={this.state.name}  className="large rounded mx-auto d-block" /> 
                     </div>
                     <div className="col">
