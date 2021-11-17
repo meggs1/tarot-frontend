@@ -3,6 +3,8 @@ A tarot app that lets user draw 1, 3 or 5 cards and see the meaning of the cards
 Cards can be sorted by suit.
 Starts with a default admin user that can change the meaning of any card.
 
+Deployed on Heroku: https://tarot-card-reader.herokuapp.com/
+
 ## How To Use
 - Fork and clone this repository
 - Fork and clone backend (https://github.com/meggs1/tarot-backend)
