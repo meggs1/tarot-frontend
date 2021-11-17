@@ -1,7 +1,7 @@
 const CardImage = (props) => {
     const card = props.card
     const num = props.num
-    const cardImage = (card.avatar ? card.avatar.url : null)
+    const cardImage = (card.image_url ? card.image_url.url : null)
 
     if (num === 0) {
         return (

@@ -21,7 +21,7 @@ const CardInfo = (props) => {
             <div id={card.id}  className="container p-3 mb-2 d-flex justify-content-center">
                 <div className="row">
                     <div className="col sm-2" >
-                        <img src={card.avatar ? card.avatar.url : null} 
+                        <img src={card.image_url ? card.image_url.url : null} 
                         alt={card.name}  
                         className="large rounded mx-auto d-block"
                         onClick={handleOnClick} />

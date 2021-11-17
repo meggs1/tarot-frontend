@@ -2,17 +2,17 @@ import { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 
 class Form extends Component {
-    avatar = React.createRef()
     
     state = {
         id: '',
         name: '',
+        image: '',
         fullMeaning: '',
         uprightMeaning: '',
         reversedMeaning: '',
         suit: '',
         arcana: '',
-        formSubmitted: false
+        formComplete: false
     }
 
     componentDidMount() {
@@ -31,14 +31,13 @@ class Form extends Component {
         this.setState({
             id: this.props.card.id,
             name: this.props.card.name,
-            avatar: this.props.card.avatar,
+            image: this.props.card.image_url,
             fullMeaning: this.props.card.full_meaning,
             uprightMeaning: this.props.card.upright_meaning,
             reversedMeaning: this.props.card.reversed_meaning,
             suit: this.props.card.suit.name,
             arcana: this.props.card.arcana.name,
-            formSubmitted: false,
-            complete: false
+            formComplete: false
         })
     }
 
@@ -48,15 +47,11 @@ class Form extends Component {
         })
     }
 
-    
-      
-
     handleOnSubmit = (e) => {
         e.preventDefault()
-        const formData = new FormData(e.target)
-
-        this.props.editCard(formData)
-        this.setState({formSubmitted: true, complete: false})
+        const card = this.state
+        this.props.editCard(card)
+        this.setState({formComplete: true})
     }
 
     cardForm = () => {
@@ -100,22 +95,6 @@ class Form extends Component {
                                 rows="7"
                             />
                             <br />
-                            <input 
-                                type="file" 
-                                name="avatar" 
-                                value={this.state.avatar} 
-                                onChange={(e) => this.handleOnChange(e)} 
-                                className="form-control"
-                                rows="7"
-                            />
-                            <input 
-                                type="file" 
-                                onChange={(e) =>this.onFileChange(e)} 
-                                name="avatar" 
-                                ref={this.state.avatar}
-                                className="form-control" 
-                                rows="7"
-                            />
                             <input type="submit" className="btn btn-secondary btn-lg btn-block"/>
                         </form>
                     </div>    
@@ -126,7 +105,7 @@ class Form extends Component {
 
     render() {
         console.log('form', this.props, this.state)
-        if (!!this.state.formSubmitted) {
+        if (!!this.state.formComplete) {
             return <Redirect push to={`/cards/${this.state.id}`}/>
         }
 
